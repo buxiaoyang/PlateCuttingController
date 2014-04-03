@@ -1,0 +1,11 @@
+[INIT]
+PICFIX=1
+SCREENDSIZE=800X480
+SPADDRESS=5000
+[IMG]
+0=0_主菜单.bmp
+1=1_系统参数.bmp
+2=2_板材参数.bmp
+3=3_运行画面.bmp
+4=4_手动操作.bmp
+5=5_数字键盘.bmp
