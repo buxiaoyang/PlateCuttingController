@@ -16,6 +16,7 @@ sbit MotorForward  		= P1^5;  //	电机前进
 sbit MotorBack  		= P1^6;  // 电机后退
 sbit EncoderCounting	= P3^2;  // 编码器计数（绿色）
 sbit EncoderDirection	= P2^4;  // 编码器方向（白色）
+sbit testPin = 	P3^4; //T0
 
 /***************************************************************************/
 // 主函数
@@ -26,9 +27,11 @@ void main()
 {
 	MotorForward = 1;
 	MotorBack = 1;
+	testPin = 0;
 	while(1)
 	{
-		 MotorBack = 0;
+		
+		testPin = ~testPin;
 	}   
 }
 
