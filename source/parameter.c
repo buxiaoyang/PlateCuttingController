@@ -16,16 +16,20 @@
 /***************************************************************************/
 // 参数定义	
 /***************************************************************************/
-enum RunMode runMode;
-enum DisplayMode displayMode; 
-enum DrivingDirect drivingDirect; 
+enum PowerMode powerMode; //启动
+enum RunMode runMode; //运行模式
+struct Board parameterBoard[4];	//板材参数
 
-struct Cistern cistern[8];
-struct Manipulator manipulator;
+unsigned int parameterSignalNumPerMeter; //系统参数一：一米距离编码器的信号数
+unsigned int parameterErrorCorrectionValue ; //系统参数二：误差修正值，信号数
 
-unsigned char displayFlag; //刷新显示标志位  0不刷新 1刷新主页面 2刷新机械臂动作刷新  3复位液晶并初始化显示
-unsigned char MotorSpeedFlag; //加速标志位	 0正常速度 1电机加速 2电机减速
-unsigned char TargetCisternNumber; //机械臂运行目标槽位
+unsigned int settingBoardLength; //设定长度
+unsigned int settingBoardNumber; //设定块数
+
+unsigned int currentlyBoardLength; //已做长度
+unsigned int currentlyBoardNumber; //已做块数
+
+unsigned long currentlySignalNum; //当前编码器信号数
 
 /***************************************************************************/
 // 读取参数
@@ -34,20 +38,7 @@ unsigned char TargetCisternNumber; //机械臂运行目标槽位
 /***************************************************************************/
 unsigned char parameter_read()
 {
-	WORD i, result = 1;
-	Delay(10); 
-	if(IapReadByte(IAP_ADDRESS+256) == 0xEE)
-	{
-		for(i=0; i<8; i++)
-		{
-			cistern[i].settingTime = ((IapReadByte(IAP_ADDRESS+(i*2)) << 8) | IapReadByte(IAP_ADDRESS+(i*2+1)));
-		}
-		result = 1;
-	}
-	else
-	{
-		result = 0;
-	}
+	unsigned char result = 1;
 	return result;
 }
 
@@ -58,34 +49,7 @@ unsigned char parameter_read()
 /***************************************************************************/
 void parameter_init()
 {
-	unsigned char i;
-	runMode = AutoMode;
-	displayMode = MainDisplayMode;
-	for(i=0; i<8; i++)
-	{
-		cistern[i].cisternStatus = InCounting;
-		cistern[i].currentTime = 0;
-	}
-	cistern[1].cisternStatus = Empty; //初始状态一号槽空
-	cistern[2].cisternStatus = Empty; //初始状态二号槽空
-	if(!parameter_read())
-	{
-		cistern[0].settingTime = 1800;
-		cistern[1].settingTime = 720;
-		cistern[2].settingTime = 720;
-		cistern[3].settingTime = 300;
-		cistern[4].settingTime = 300;
-		cistern[5].settingTime = 300;
-		cistern[6].settingTime = 300;
-		cistern[7].settingTime = 1800;
-	}
-	manipulator.manipulaterStatus = Stop;
-	manipulator.manipulatorPosition = Bottom;
-	manipulator.currentPosition = 0;
-	drivingDirect = DStop;
-	displayFlag = 0;
-	MotorSpeedFlag = 0;
-	TargetCisternNumber = 0;
+
 }
 
 /***************************************************************************/
@@ -95,37 +59,7 @@ void parameter_init()
 /***************************************************************************/
 unsigned char parameter_save()
 {
-	WORD i, result = 1;
-	Delay(10);
-    IapEraseSector(IAP_ADDRESS); //拆除EEPROM
-    for (i=0; i<512; i++)           //检测是否擦除成功
-    {
-        if (IapReadByte(IAP_ADDRESS+i) != 0xff)
-            result = 0;
-    }
-    Delay(10);                      //Delay
-	for(i=0; i<8; i++) //写入EEPROM
-	{
-		IapProgramByte(IAP_ADDRESS+(i*2), (BYTE)(cistern[i].perSettingTime>>8));
-		IapProgramByte(IAP_ADDRESS+(i*2+1), (BYTE)cistern[i].perSettingTime);
-	}
-	IapProgramByte(IAP_ADDRESS+256, 0xEE); //写入标志位
-    Delay(10);
-	for(i=0; i<8; i++)  //校验保存值
-	{
-		if(IapReadByte(IAP_ADDRESS+(i*2)) != (BYTE)(cistern[i].perSettingTime>>8))
-		{
-			result = 0;
-		}
-		if(IapReadByte(IAP_ADDRESS+(i*2+1)) != (BYTE)cistern[i].perSettingTime)
-		{
-			result = 0;
-		}
-	}
-	for(i=0; i<8; i++) //设置值为界面值
-	{
-		cistern[i].settingTime = cistern[i].perSettingTime;
-	}
+	unsigned char result = 1;
 	return result;
 }
 

@@ -2,10 +2,7 @@
 ".\output\main.obj",
 ".\output\basefunc.obj",
 ".\output\parameter.obj",
-".\output\eeprom.obj",
-".\output\timer.obj",
-".\output\position.obj",
-".\output\key.obj" 
+".\output\eeprom.obj" 
 TO ".\output\PlateCuttingController" 
 PRINT(".\listing\PlateCuttingController.m51") RAMSIZE(256) 
 XDATA( 0X0000-0X03FE )

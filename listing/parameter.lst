@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   PARAMETER                                                             05/10/2014 18:41:44 PAGE 1   
+C51 COMPILER V7.50   PARAMETER                                                             05/21/2014 22:04:48 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE PARAMETER
@@ -26,131 +26,62 @@ line level    source
   16          /***************************************************************************/
   17          // ²ÎÊý¶¨Òå     
   18          /***************************************************************************/
-  19          enum RunMode runMode;
-  20          enum DisplayMode displayMode; 
-  21          enum DrivingDirect drivingDirect; 
+  19          enum PowerMode powerMode; //Æô¶¯
+  20          enum RunMode runMode; //ÔËÐÐÄ£Ê½
+  21          struct Board parameterBoard[4]; //°å²Ä²ÎÊý
   22          
-  23          struct Cistern cistern[8];
-  24          struct Manipulator manipulator;
+  23          unsigned int parameterSignalNumPerMeter; //ÏµÍ³²ÎÊýÒ»£ºÒ»Ã×¾àÀë±àÂëÆ÷µÄÐÅºÅÊý
+  24          unsigned int parameterErrorCorrectionValue ; //ÏµÍ³²ÎÊý¶þ£ºÎó²îÐÞÕýÖµ£¬ÐÅºÅÊý
   25          
-  26          unsigned char displayFlag; //Ë¢ÐÂÏÔÊ¾±êÖ¾Î»  0²»Ë¢ÐÂ 1Ë¢ÐÂÖ÷Ò³Ãæ 2Ë¢ÐÂ»úÐµ±Û¶¯×÷Ë¢ÐÂ  3¸´Î»Òº¾§²¢³õÊ¼»¯ÏÔÊ
-             -¾
-  27          unsigned char MotorSpeedFlag; //¼ÓËÙ±êÖ¾Î»       0Õý³£ËÙ¶È 1µç»ú¼ÓËÙ 2µç»ú¼õËÙ
-  28          unsigned char TargetCisternNumber; //»úÐµ±ÛÔËÐÐÄ¿±ê²ÛÎ»
-  29          
-  30          /***************************************************************************/
-  31          // ¶ÁÈ¡²ÎÊý
-  32          // ²ÎÊý£ºÎÞ
-  33          // ·µ»ØÖµ£º0Ê§°Ü 1³É¹¦  
+  26          unsigned int settingBoardLength; //Éè¶¨³¤¶È
+  27          unsigned int settingBoardNumber; //Éè¶¨¿éÊý
+  28          
+  29          unsigned int currentlyBoardLength; //ÒÑ×ö³¤¶È
+  30          unsigned int currentlyBoardNumber; //ÒÑ×ö¿éÊý
+  31          
+  32          unsigned long currentlySignalNum; //µ±Ç°±àÂëÆ÷ÐÅºÅÊý
+  33          
   34          /***************************************************************************/
-  35          unsigned char parameter_read()
-  36          {
-  37   1              WORD i, result = 1;
-  38   1              Delay(10); 
-  39   1              if(IapReadByte(IAP_ADDRESS+256) == 0xEE)
-  40   1              {
-  41   2                      for(i=0; i<8; i++)
-  42   2                      {
-  43   3                              cistern[i].settingTime = ((IapReadByte(IAP_ADDRESS+(i*2)) << 8) | IapReadByte(IAP_ADDRESS+(i*2+1)));
-  44   3                      }
-  45   2                      result = 1;
-  46   2              }
-  47   1              else
-  48   1              {
-  49   2                      result = 0;
-  50   2              }
-  51   1              return result;
-  52   1      }
-  53          
-C51 COMPILER V7.50   PARAMETER                                                             05/10/2014 18:41:44 PAGE 2   
+  35          // ¶ÁÈ¡²ÎÊý
+  36          // ²ÎÊý£ºÎÞ
+  37          // ·µ»ØÖµ£º0Ê§°Ü 1³É¹¦  
+  38          /***************************************************************************/
+  39          unsigned char parameter_read()
+  40          {
+  41   1              unsigned char result = 1;
+  42   1              return result;
+  43   1      }
+  44          
+  45          /***************************************************************************/
+  46          // ²ÎÊý³õÊ¼»¯º¯Êý
+  47          // ²ÎÊý£ºÎÞ
+  48          // ·µ»ØÖµ£ºÎÞ   
+  49          /***************************************************************************/
+  50          void parameter_init()
+  51          {
+  52   1      
+  53   1      }
+  54          
+C51 COMPILER V7.50   PARAMETER                                                             05/21/2014 22:04:48 PAGE 2   
 
-  54          /***************************************************************************/
-  55          // ²ÎÊý³õÊ¼»¯º¯Êý
-  56          // ²ÎÊý£ºÎÞ
-  57          // ·µ»ØÖµ£ºÎÞ   
-  58          /***************************************************************************/
-  59          void parameter_init()
-  60          {
-  61   1              unsigned char i;
-  62   1              runMode = AutoMode;
-  63   1              displayMode = MainDisplayMode;
-  64   1              for(i=0; i<8; i++)
-  65   1              {
-  66   2                      cistern[i].cisternStatus = InCounting;
-  67   2                      cistern[i].currentTime = 0;
-  68   2              }
-  69   1              cistern[1].cisternStatus = Empty; //³õÊ¼×´Ì¬Ò»ºÅ²Û¿Õ
-  70   1              cistern[2].cisternStatus = Empty; //³õÊ¼×´Ì¬¶þºÅ²Û¿Õ
-  71   1              if(!parameter_read())
-  72   1              {
-  73   2                      cistern[0].settingTime = 1800;
-  74   2                      cistern[1].settingTime = 720;
-  75   2                      cistern[2].settingTime = 720;
-  76   2                      cistern[3].settingTime = 300;
-  77   2                      cistern[4].settingTime = 300;
-  78   2                      cistern[5].settingTime = 300;
-  79   2                      cistern[6].settingTime = 300;
-  80   2                      cistern[7].settingTime = 1800;
-  81   2              }
-  82   1              manipulator.manipulaterStatus = Stop;
-  83   1              manipulator.manipulatorPosition = Bottom;
-  84   1              manipulator.currentPosition = 0;
-  85   1              drivingDirect = DStop;
-  86   1              displayFlag = 0;
-  87   1              MotorSpeedFlag = 0;
-  88   1              TargetCisternNumber = 0;
-  89   1      }
-  90          
-  91          /***************************************************************************/
-  92          // ²ÎÊý±£´æµ½eeprom
-  93          // ²ÎÊý£ºÎÞ
-  94          // ·µ»ØÖµ£º0Ê§°Ü 1³É¹¦  
-  95          /***************************************************************************/
-  96          unsigned char parameter_save()
-  97          {
-  98   1              WORD i, result = 1;
-  99   1              Delay(10);
- 100   1          IapEraseSector(IAP_ADDRESS); //²ð³ýEEPROM
- 101   1          for (i=0; i<512; i++)           //¼ì²âÊÇ·ñ²Á³ý³É¹¦
- 102   1          {
- 103   2              if (IapReadByte(IAP_ADDRESS+i) != 0xff)
- 104   2                  result = 0;
- 105   2          }
- 106   1          Delay(10);                      //Delay
- 107   1              for(i=0; i<8; i++) //Ð´ÈëEEPROM
- 108   1              {
- 109   2                      IapProgramByte(IAP_ADDRESS+(i*2), (BYTE)(cistern[i].perSettingTime>>8));
- 110   2                      IapProgramByte(IAP_ADDRESS+(i*2+1), (BYTE)cistern[i].perSettingTime);
- 111   2              }
- 112   1              IapProgramByte(IAP_ADDRESS+256, 0xEE); //Ð´Èë±êÖ¾Î»
- 113   1          Delay(10);
- 114   1              for(i=0; i<8; i++)  //Ð£Ñé±£´æÖµ
- 115   1              {
-C51 COMPILER V7.50   PARAMETER                                                             05/10/2014 18:41:44 PAGE 3   
-
- 116   2                      if(IapReadByte(IAP_ADDRESS+(i*2)) != (BYTE)(cistern[i].perSettingTime>>8))
- 117   2                      {
- 118   3                              result = 0;
- 119   3                      }
- 120   2                      if(IapReadByte(IAP_ADDRESS+(i*2+1)) != (BYTE)cistern[i].perSettingTime)
- 121   2                      {
- 122   3                              result = 0;
- 123   3                      }
- 124   2              }
- 125   1              for(i=0; i<8; i++) //ÉèÖÃÖµÎª½çÃæÖµ
- 126   1              {
- 127   2                      cistern[i].settingTime = cistern[i].perSettingTime;
- 128   2              }
- 129   1              return result;
- 130   1      }
- 131          
- 132          
+  55          /***************************************************************************/
+  56          // ²ÎÊý±£´æµ½eeprom
+  57          // ²ÎÊý£ºÎÞ
+  58          // ·µ»ØÖµ£º0Ê§°Ü 1³É¹¦  
+  59          /***************************************************************************/
+  60          unsigned char parameter_save()
+  61          {
+  62   1              unsigned char result = 1;
+  63   1              return result;
+  64   1      }
+  65          
+  66          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    807    ----
+   CODE SIZE        =      7    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =     73       8
+   XDATA SIZE       =     34    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

@@ -4,353 +4,140 @@
 <h1>µVision3 Build Log</h1>
 <h2>Project:</h2>
 C:\ShareXP\GitHub\PlateCuttingController\trunk\PlateCuttingController.uv2
-Project File Date:  05/09/2014
+Project File Date:  05/10/2014
 
 <h2>Output:</h2>
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling main.c...
-compiling ra8806.c...
 compiling basefunc.c...
 compiling parameter.c...
+.\INCLUDE\PARAMETER.H(30): error C230: 'DisplayMode': unknown struct/union/enum tag
+.\INCLUDE\PARAMETER.H(31): error C230: 'DrivingDirect': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(35): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(55): error C202: 'MainDisplayMode': undefined identifier
+SOURCE\PARAMETER.C(58): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(59): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(61): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(62): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(65): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(66): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(67): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(68): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(69): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(70): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(71): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(72): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(74): error C230: 'Manipulator': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(74): error C204: 'manipulaterStatus': undefined member
+SOURCE\PARAMETER.C(75): error C230: 'Manipulator': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(75): error C204: 'manipulatorPosition': undefined member
+SOURCE\PARAMETER.C(76): error C230: 'Manipulator': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(76): error C204: 'currentPosition': undefined member
+SOURCE\PARAMETER.C(77): error C202: 'DStop': undefined identifier
+SOURCE\PARAMETER.C(101): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(102): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(108): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(112): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\PARAMETER.C(119): error C230: 'Cistern': unknown struct/union/enum tag
 compiling eeprom.c...
 compiling timer.c...
+.\INCLUDE\PARAMETER.H(30): error C230: 'DisplayMode': unknown struct/union/enum tag
+.\INCLUDE\PARAMETER.H(31): error C230: 'DrivingDirect': unknown struct/union/enum tag
+SOURCE\TIMER.C(49): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\TIMER.C(51): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\TIMER.C(52): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\TIMER.C(56): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\TIMER.C(60): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\TIMER.C(63): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\TIMER.C(80): error C202: 'DGoOutfall': undefined identifier
+SOURCE\TIMER.C(96): error C202: 'PowerOffed': undefined identifier
 compiling position.c...
-compiling operation.c...
-compiling dispatch.c...
+.\INCLUDE\PARAMETER.H(30): error C230: 'DisplayMode': unknown struct/union/enum tag
+.\INCLUDE\PARAMETER.H(31): error C230: 'DrivingDirect': unknown struct/union/enum tag
+SOURCE\POSITION.C(28): error C202: 'DGoOutfall': undefined identifier
+SOURCE\POSITION.C(31): error C230: 'Manipulator': unknown struct/union/enum tag
+SOURCE\POSITION.C(31): error C204: 'currentPosition': undefined member
+SOURCE\POSITION.C(33): error C230: 'Manipulator': unknown struct/union/enum tag
+SOURCE\POSITION.C(33): error C204: 'currentPosition': undefined member
+SOURCE\POSITION.C(35): error C230: 'Manipulator': unknown struct/union/enum tag
+SOURCE\POSITION.C(35): error C204: 'currentPosition': undefined member
+SOURCE\POSITION.C(38): error C202: 'DGoEntrance': undefined identifier
+SOURCE\POSITION.C(41): error C230: 'Manipulator': unknown struct/union/enum tag
+SOURCE\POSITION.C(41): error C204: 'currentPosition': undefined member
+SOURCE\POSITION.C(43): error C230: 'Manipulator': unknown struct/union/enum tag
+SOURCE\POSITION.C(43): error C204: 'currentPosition': undefined member
+SOURCE\POSITION.C(45): error C230: 'Manipulator': unknown struct/union/enum tag
+SOURCE\POSITION.C(45): error C204: 'currentPosition': undefined member
+SOURCE\POSITION.C(67): error C202: 'DGoOutfall': undefined identifier
+SOURCE\POSITION.C(70): error C230: 'Manipulator': unknown struct/union/enum tag
+SOURCE\POSITION.C(70): error C204: 'currentPosition': undefined member
+SOURCE\POSITION.C(72): error C230: 'Manipulator': unknown struct/union/enum tag
+SOURCE\POSITION.C(72): error C204: 'currentPosition': undefined member
+SOURCE\POSITION.C(74): error C230: 'Manipulator': unknown struct/union/enum tag
+SOURCE\POSITION.C(74): error C204: 'currentPosition': undefined member
+SOURCE\POSITION.C(77): error C202: 'DGoEntrance': undefined identifier
+SOURCE\POSITION.C(80): error C230: 'Manipulator': unknown struct/union/enum tag
+SOURCE\POSITION.C(80): error C204: 'currentPosition': undefined member
+SOURCE\POSITION.C(82): error C230: 'Manipulator': unknown struct/union/enum tag
+SOURCE\POSITION.C(82): error C204: 'currentPosition': undefined member
+SOURCE\POSITION.C(84): error C230: 'Manipulator': unknown struct/union/enum tag
+SOURCE\POSITION.C(84): error C204: 'currentPosition': undefined member
 compiling key.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?LCD_INITAL?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?ENABLE_TP?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?ENABLE_MAUNAL_TP?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TP_MANUALMODE?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SETTINGDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?POWERONDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_MAINDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?MANIPULATORSTATUSDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_TP_RESPONSE?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_INIT?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TIMER_INIT?TIMER
-Program Size: data=17.0 xdata=133 code=9220
-creating hex file from ".\output\PlateCuttingController"...
-".\output\PlateCuttingController" - 0 Error(s), 12 Warning(s).
+.\INCLUDE\PARAMETER.H(30): error C230: 'DisplayMode': unknown struct/union/enum tag
+.\INCLUDE\PARAMETER.H(31): error C230: 'DrivingDirect': unknown struct/union/enum tag
+SOURCE\KEY.C(39): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\KEY.C(41): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\KEY.C(44): error C230: 'Cistern': unknown struct/union/enum tag
+SOURCE\KEY.C(46): error C230: 'Cistern': unknown struct/union/enum tag
+Target not created
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling main.c...
-compiling ra8806.c...
 compiling basefunc.c...
 compiling parameter.c...
+SOURCE\PARAMETER.C(47): error C202: 'cistern': undefined identifier
 compiling eeprom.c...
 compiling timer.c...
+SOURCE\TIMER.C(49): error C202: 'cistern': undefined identifier
+SOURCE\TIMER.C(51): error C202: 'cistern': undefined identifier
+SOURCE\TIMER.C(52): error C202: 'cistern': undefined identifier
+SOURCE\TIMER.C(56): error C202: 'cistern': undefined identifier
+SOURCE\TIMER.C(60): error C202: 'cistern': undefined identifier
+SOURCE\TIMER.C(63): error C202: 'cistern': undefined identifier
+SOURCE\TIMER.C(65): error C202: 'displayFlag': undefined identifier
+SOURCE\TIMER.C(80): error C202: 'drivingDirect': undefined identifier
+SOURCE\TIMER.C(96): error C202: 'displayMode': undefined identifier
+SOURCE\TIMER.C(108): error C202: 'displayFlag': undefined identifier
 compiling position.c...
-compiling operation.c...
-compiling dispatch.c...
+SOURCE\POSITION.C(28): error C202: 'drivingDirect': undefined identifier
+SOURCE\POSITION.C(31): error C202: 'manipulator': undefined identifier
+SOURCE\POSITION.C(32): error C202: 'displayFlag': undefined identifier
+SOURCE\POSITION.C(33): error C202: 'manipulator': undefined identifier
+SOURCE\POSITION.C(35): error C202: 'manipulator': undefined identifier
+SOURCE\POSITION.C(38): error C202: 'drivingDirect': undefined identifier
+SOURCE\POSITION.C(41): error C202: 'manipulator': undefined identifier
+SOURCE\POSITION.C(42): error C202: 'displayFlag': undefined identifier
+SOURCE\POSITION.C(43): error C202: 'manipulator': undefined identifier
+SOURCE\POSITION.C(45): error C202: 'manipulator': undefined identifier
+SOURCE\POSITION.C(67): error C202: 'drivingDirect': undefined identifier
+SOURCE\POSITION.C(70): error C202: 'manipulator': undefined identifier
+SOURCE\POSITION.C(71): error C202: 'displayFlag': undefined identifier
+SOURCE\POSITION.C(72): error C202: 'manipulator': undefined identifier
+SOURCE\POSITION.C(74): error C202: 'manipulator': undefined identifier
+SOURCE\POSITION.C(77): error C202: 'drivingDirect': undefined identifier
+SOURCE\POSITION.C(80): error C202: 'manipulator': undefined identifier
+SOURCE\POSITION.C(81): error C202: 'displayFlag': undefined identifier
+SOURCE\POSITION.C(82): error C202: 'manipulator': undefined identifier
+SOURCE\POSITION.C(84): error C202: 'manipulator': undefined identifier
 compiling key.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?LCD_INITAL?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?ENABLE_TP?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?ENABLE_MAUNAL_TP?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TP_MANUALMODE?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SETTINGDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?POWERONDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_MAINDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?MANIPULATORSTATUSDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_TP_RESPONSE?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_INIT?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TIMER_INIT?TIMER
-Program Size: data=17.0 xdata=133 code=9223
-creating hex file from ".\output\PlateCuttingController"...
-".\output\PlateCuttingController" - 0 Error(s), 12 Warning(s).
-Build target 'Target 1'
-assembling STARTUP.A51...
-compiling main.c...
-SOURCE\MAIN.C(34): warning C275: expression with possibly no effect
-compiling ra8806.c...
-compiling basefunc.c...
-compiling parameter.c...
-compiling eeprom.c...
-compiling timer.c...
-compiling position.c...
-compiling operation.c...
-compiling dispatch.c...
-compiling key.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?LCD_INITAL?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?ENABLE_TP?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?ENABLE_MAUNAL_TP?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TP_MANUALMODE?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SETTINGDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?POWERONDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_MAINDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?MANIPULATORSTATUSDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_TP_RESPONSE?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_INIT?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TIMER_INIT?TIMER
-Program Size: data=17.0 xdata=134 code=9226
-creating hex file from ".\output\PlateCuttingController"...
-".\output\PlateCuttingController" - 0 Error(s), 13 Warning(s).
-Build target 'Target 1'
-assembling STARTUP.A51...
-compiling main.c...
-compiling ra8806.c...
-compiling basefunc.c...
-compiling parameter.c...
-compiling eeprom.c...
-compiling timer.c...
-compiling position.c...
-compiling operation.c...
-compiling dispatch.c...
-compiling key.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?LCD_INITAL?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?ENABLE_TP?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?ENABLE_MAUNAL_TP?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TP_MANUALMODE?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SETTINGDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?POWERONDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_MAINDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?MANIPULATORSTATUSDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_TP_RESPONSE?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_INIT?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TIMER_INIT?TIMER
-Program Size: data=17.0 xdata=134 code=9231
-creating hex file from ".\output\PlateCuttingController"...
-".\output\PlateCuttingController" - 0 Error(s), 12 Warning(s).
-Build target 'Target 1'
-assembling STARTUP.A51...
-compiling main.c...
-compiling ra8806.c...
-compiling basefunc.c...
-compiling parameter.c...
-compiling eeprom.c...
-compiling timer.c...
-compiling position.c...
-compiling operation.c...
-compiling dispatch.c...
-compiling key.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?LCD_INITAL?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?ENABLE_TP?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?ENABLE_MAUNAL_TP?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TP_MANUALMODE?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SETTINGDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?POWERONDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_MAINDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?MANIPULATORSTATUSDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_TP_RESPONSE?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_INIT?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TIMER_INIT?TIMER
-Program Size: data=17.0 xdata=141 code=9322
-creating hex file from ".\output\PlateCuttingController"...
-".\output\PlateCuttingController" - 0 Error(s), 12 Warning(s).
-Build target 'Target 1'
-assembling STARTUP.A51...
-compiling main.c...
-compiling ra8806.c...
-compiling basefunc.c...
-compiling parameter.c...
-compiling eeprom.c...
-compiling timer.c...
-compiling position.c...
-compiling operation.c...
-compiling dispatch.c...
-compiling key.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?LCD_INITAL?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?ENABLE_TP?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?ENABLE_MAUNAL_TP?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TP_MANUALMODE?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SETTINGDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?POWERONDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_MAINDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?MANIPULATORSTATUSDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_TP_RESPONSE?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_INIT?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TIMER_INIT?TIMER
-Program Size: data=17.0 xdata=141 code=9321
-creating hex file from ".\output\PlateCuttingController"...
-".\output\PlateCuttingController" - 0 Error(s), 12 Warning(s).
-Build target 'Target 1'
-assembling STARTUP.A51...
-compiling main.c...
-compiling ra8806.c...
-compiling basefunc.c...
-compiling parameter.c...
-compiling eeprom.c...
-compiling timer.c...
-compiling position.c...
-compiling operation.c...
-compiling dispatch.c...
-compiling key.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?LCD_INITAL?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?ENABLE_TP?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?ENABLE_MAUNAL_TP?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TP_MANUALMODE?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SETTINGDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?POWERONDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_MAINDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?MANIPULATORSTATUSDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_TP_RESPONSE?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_INIT?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TIMER_INIT?TIMER
-Program Size: data=17.0 xdata=141 code=9323
-creating hex file from ".\output\PlateCuttingController"...
-".\output\PlateCuttingController" - 0 Error(s), 12 Warning(s).
-Build target 'Target 1'
-assembling STARTUP.A51...
-compiling main.c...
-compiling ra8806.c...
-compiling basefunc.c...
-compiling parameter.c...
-compiling eeprom.c...
-compiling timer.c...
-compiling position.c...
-compiling key.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?LCD_INITAL?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?ENABLE_TP?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?ENABLE_MAUNAL_TP?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TP_MANUALMODE?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SETTINGDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?POWERONDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_MAINDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?MANIPULATORSTATUSDISPLAY?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_TP_RESPONSE?RA8806
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_INIT?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TIMER_INIT?TIMER
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANUALDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANIDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 1888H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 1890H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 18B8H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANUALDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 18BDH
-Program Size: data=17.0 xdata=130 code=7697
-creating hex file from ".\output\PlateCuttingController"...
-".\output\PlateCuttingController" - 0 Error(s), 19 Warning(s).
+SOURCE\KEY.C(39): error C202: 'cistern': undefined identifier
+SOURCE\KEY.C(41): error C202: 'cistern': undefined identifier
+SOURCE\KEY.C(42): error C202: 'displayFlag': undefined identifier
+SOURCE\KEY.C(44): error C202: 'cistern': undefined identifier
+SOURCE\KEY.C(46): error C202: 'cistern': undefined identifier
+SOURCE\KEY.C(47): error C202: 'displayFlag': undefined identifier
+Target not created
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling main.c...
@@ -358,272 +145,263 @@ compiling basefunc.c...
 compiling parameter.c...
 compiling eeprom.c...
 compiling timer.c...
-compiling position.c...
+SOURCE\TIMER.C(49): error C202: 'cistern': undefined identifier
+SOURCE\TIMER.C(51): error C202: 'cistern': undefined identifier
+SOURCE\TIMER.C(52): error C202: 'cistern': undefined identifier
+SOURCE\TIMER.C(56): error C202: 'cistern': undefined identifier
+SOURCE\TIMER.C(60): error C202: 'cistern': undefined identifier
+SOURCE\TIMER.C(63): error C202: 'cistern': undefined identifier
+SOURCE\TIMER.C(65): error C202: 'displayFlag': undefined identifier
+SOURCE\TIMER.C(80): error C202: 'drivingDirect': undefined identifier
+SOURCE\TIMER.C(96): error C202: 'displayMode': undefined identifier
+SOURCE\TIMER.C(108): error C202: 'displayFlag': undefined identifier
 compiling key.c...
+SOURCE\KEY.C(39): error C202: 'cistern': undefined identifier
+SOURCE\KEY.C(41): error C202: 'cistern': undefined identifier
+SOURCE\KEY.C(42): error C202: 'displayFlag': undefined identifier
+SOURCE\KEY.C(44): error C202: 'cistern': undefined identifier
+SOURCE\KEY.C(46): error C202: 'cistern': undefined identifier
+SOURCE\KEY.C(47): error C202: 'displayFlag': undefined identifier
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_MS?BASEFUNC
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_READ?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?PARAMETER_INIT?PARAMETER
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TIMER_INIT?TIMER
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANUALDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANIDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 0610H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 0618H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 0640H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANUALDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 0645H
-Program Size: data=17.0 xdata=98 code=2022
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPREADBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPERASESECTOR?EEPROM
+Program Size: data=9.0 xdata=38 code=201
 creating hex file from ".\output\PlateCuttingController"...
-".\output\PlateCuttingController" - 0 Error(s), 11 Warning(s).
+".\output\PlateCuttingController" - 0 Error(s), 8 Warning(s).
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling main.c...
 compiling basefunc.c...
 compiling parameter.c...
 compiling eeprom.c...
-compiling timer.c...
-compiling position.c...
-compiling key.c...
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_MS?BASEFUNC
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_READ?PARAMETER
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?PARAMETER_INIT?PARAMETER
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TIMER_INIT?TIMER
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANUALDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANIDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 065FH
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 0667H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 068FH
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANUALDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 0694H
-Program Size: data=17.0 xdata=98 code=2099
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPREADBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPERASESECTOR?EEPROM
+Program Size: data=9.0 xdata=38 code=201
 creating hex file from ".\output\PlateCuttingController"...
-".\output\PlateCuttingController" - 0 Error(s), 11 Warning(s).
+".\output\PlateCuttingController" - 0 Error(s), 8 Warning(s).
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling main.c...
 compiling basefunc.c...
 compiling parameter.c...
 compiling eeprom.c...
-compiling timer.c...
-compiling position.c...
-compiling key.c...
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_MS?BASEFUNC
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_READ?PARAMETER
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?PARAMETER_INIT?PARAMETER
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TIMER_INIT?TIMER
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANUALDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANIDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 06DEH
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 06E6H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 070EH
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANUALDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 0713H
-Program Size: data=17.0 xdata=98 code=2227
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPREADBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPERASESECTOR?EEPROM
+Program Size: data=9.0 xdata=38 code=201
 creating hex file from ".\output\PlateCuttingController"...
-".\output\PlateCuttingController" - 0 Error(s), 11 Warning(s).
+".\output\PlateCuttingController" - 0 Error(s), 8 Warning(s).
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling main.c...
 compiling basefunc.c...
 compiling parameter.c...
 compiling eeprom.c...
-compiling timer.c...
-compiling position.c...
-compiling key.c...
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_MS?BASEFUNC
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_READ?PARAMETER
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?PARAMETER_INIT?PARAMETER
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TIMER_INIT?TIMER
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANUALDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANIDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 0568H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 0570H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 0598H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANUALDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 059DH
-Program Size: data=17.0 xdata=91 code=1930
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPREADBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPERASESECTOR?EEPROM
+Program Size: data=9.0 xdata=38 code=201
 creating hex file from ".\output\PlateCuttingController"...
-".\output\PlateCuttingController" - 0 Error(s), 11 Warning(s).
+".\output\PlateCuttingController" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(30): error C202: 'testPin': undefined identifier
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+Target not created
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling main.c...
 compiling basefunc.c...
 compiling parameter.c...
 compiling eeprom.c...
-compiling timer.c...
-compiling position.c...
-compiling key.c...
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_MS?BASEFUNC
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_READ?PARAMETER
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?PARAMETER_INIT?PARAMETER
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TIMER_INIT?TIMER
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANUALDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANIDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 0568H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 0570H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 0598H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANUALDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 059DH
-Program Size: data=17.0 xdata=90 code=1922
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPREADBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPERASESECTOR?EEPROM
+Program Size: data=9.0 xdata=38 code=201
 creating hex file from ".\output\PlateCuttingController"...
-".\output\PlateCuttingController" - 0 Error(s), 11 Warning(s).
+".\output\PlateCuttingController" - 0 Error(s), 8 Warning(s).
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling main.c...
 compiling basefunc.c...
 compiling parameter.c...
 compiling eeprom.c...
-compiling timer.c...
-compiling position.c...
-compiling key.c...
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY_MS?BASEFUNC
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_READ?PARAMETER
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?PARAMETER_INIT?PARAMETER
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TIMER_INIT?TIMER
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANUALDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANIDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 0568H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIOPERATIONTIMER
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 0570H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANIDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 0598H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MANUALDISPATCH
-    MODULE:  .\output\timer.obj (TIMER)
-    ADDRESS: 059DH
-Program Size: data=17.0 xdata=90 code=1919
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPREADBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPERASESECTOR?EEPROM
+Program Size: data=9.0 xdata=38 code=201
 creating hex file from ".\output\PlateCuttingController"...
-".\output\PlateCuttingController" - 0 Error(s), 11 Warning(s).
+".\output\PlateCuttingController" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_MS?BASEFUNC
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_READ?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_INIT?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPREADBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPERASESECTOR?EEPROM
+Program Size: data=9.0 xdata=38 code=201
+creating hex file from ".\output\PlateCuttingController"...
+".\output\PlateCuttingController" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_MS?BASEFUNC
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_READ?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_INIT?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPREADBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPERASESECTOR?EEPROM
+Program Size: data=9.0 xdata=38 code=211
+creating hex file from ".\output\PlateCuttingController"...
+".\output\PlateCuttingController" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_MS?BASEFUNC
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_READ?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_INIT?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPREADBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPERASESECTOR?EEPROM
+Program Size: data=9.0 xdata=38 code=213
+creating hex file from ".\output\PlateCuttingController"...
+".\output\PlateCuttingController" - 0 Error(s), 8 Warning(s).

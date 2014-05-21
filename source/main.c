@@ -16,7 +16,16 @@ sbit MotorForward  		= P1^5;  //	电机前进
 sbit MotorBack  		= P1^6;  // 电机后退
 sbit EncoderCounting	= P3^2;  // 编码器计数（绿色）
 sbit EncoderDirection	= P2^4;  // 编码器方向（白色）
-sbit testPin = 	P3^4; //T0
+sbit TestOut = 	P2^7; //T0
+
+
+//External interrupt0 service routine
+void exint0() interrupt 0           //(location at 0003H)
+{
+	TestOut = 0;
+	TestOut = 1;	
+}
+
 
 /***************************************************************************/
 // 主函数
@@ -25,13 +34,17 @@ sbit testPin = 	P3^4; //T0
 /***************************************************************************/
 void main()
 {
-	MotorForward = 1;
+	IT0 = 1;                        //set INT0 int type (1:Falling 0:Low level)
+    EX0 = 1;                        //enable INT0 interrupt
+    EA = 1;                         //open global interrupt switch
+
+	MotorForward = 0;
 	MotorBack = 1;
-	testPin = 0;
+	TestOut = 0;
 	while(1)
 	{
 		
-		testPin = ~testPin;
+		
 	}   
 }
 
