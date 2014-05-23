@@ -16,12 +16,12 @@
 #define uchar unsigned char
 #define uint  unsigned int
 
-extern void _nop_ (void);
+void _nop_ (void);
 
 /***************************************************************************/
 // º¯Êý¶¨Òå
 /***************************************************************************/
-extern void delay_us(uint us_value);
-extern void delay_ms(uint ms_value);
+void delay_us(uint us_value);
+void delay_ms(uint ms_value);
 
 #endif

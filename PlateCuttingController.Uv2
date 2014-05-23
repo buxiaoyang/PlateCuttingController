@@ -10,6 +10,7 @@ File 1,1,<.\source\main.c><main.c> 0x0
 File 1,1,<.\source\basefunc.c><basefunc.c> 0x0 
 File 1,1,<.\source\parameter.c><parameter.c> 0x0 
 File 1,1,<.\source\eeprom.c><eeprom.c> 0x0 
+File 1,1,<.\source\uart.c><uart.c> 0x0 
 
 
 Options 1,0,0  // Target 'Target 1'

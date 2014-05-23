@@ -15,6 +15,7 @@
 
 typedef unsigned char BYTE;
 typedef unsigned int WORD;
+typedef unsigned long LONG;
 
 //Start address for STC11/10xx EEPROM
 #define IAP_ADDRESS 0x0000

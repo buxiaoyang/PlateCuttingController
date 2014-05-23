@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   PARAMETER                                                             05/23/2014 19:48:27 PAGE 1   
+C51 COMPILER V7.50   PARAMETER                                                             05/23/2014 21:42:13 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE PARAMETER
@@ -62,7 +62,7 @@ line level    source
   52   1      
   53   1      }
   54          
-C51 COMPILER V7.50   PARAMETER                                                             05/23/2014 19:48:27 PAGE 2   
+C51 COMPILER V7.50   PARAMETER                                                             05/23/2014 21:42:13 PAGE 2   
 
   55          /***************************************************************************/
   56          // 参数保存到eeprom

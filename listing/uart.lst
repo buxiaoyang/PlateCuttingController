@@ -1,0 +1,145 @@
+C51 COMPILER V7.50   UART                                                                  05/23/2014 21:42:17 PAGE 1   
+
+
+C51 COMPILER V7.50, COMPILATION OF MODULE UART
+OBJECT MODULE PLACED IN .\output\uart.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE source\uart.c LARGE BROWSE INCDIR(.\include\) DEBUG OBJECTEXTEND PRINT(.\li
+                    -sting\uart.lst) OBJECT(.\output\uart.obj)
+
+line level    source
+
+   1          #include <uart.h>
+   2          #include <reg52.h>
+   3          #include <intrins.h>
+   4          
+   5          #define FOSC 11059200L      //System frequency
+   6          #define BAUD 115200         //UART baudrate
+   7          
+   8          /*Define UART parity mode*/
+   9          #define NONE_PARITY     0   //None parity
+  10          #define ODD_PARITY      1   //Odd parity
+  11          #define EVEN_PARITY     2   //Even parity
+  12          #define MARK_PARITY     3   //Mark parity
+  13          #define SPACE_PARITY    4   //Space parity
+  14          
+  15          #define PARITYBIT NONE_PARITY   //Testing even parity
+  16          
+  17          /*Declare SFR associated with the UART2 */
+  18          sfr AUXR  = 0x8e;           //Auxiliary register
+  19          sfr S2CON = 0x9a;           //UART2 control register
+  20          sfr S2BUF = 0x9b;           //UART2 data buffer
+  21          sfr BRT   = 0x9c;           //Baudrate generator
+  22          sfr IE2   = 0xaf;           //Interrupt control 2
+  23          
+  24          #define S2RI  0x01          //S2CON.0
+  25          #define S2TI  0x02          //S2CON.1
+  26          #define S2RB8 0x04          //S2CON.2
+  27          #define S2TB8 0x08          //S2CON.3
+  28          
+  29          bit busy;
+  30          
+  31          void SendData(BYTE dat);
+  32          void SendString(char *s);
+  33          
+  34          void uart_init()
+  35          {
+  36   1      #if (PARITYBIT == NONE_PARITY)
+  37   1          S2CON = 0x50;           //8-bit variable UART
+  38   1      #elif (PARITYBIT == ODD_PARITY) || (PARITYBIT == EVEN_PARITY) || (PARITYBIT == MARK_PARITY)
+                  S2CON = 0xda;           //9-bit variable UART, parity bit initial to 1
+              #elif (PARITYBIT == SPACE_PARITY)
+                  S2CON = 0xd2;           //9-bit variable UART, parity bit initial to 0
+              #endif
+  43   1      
+  44   1          BRT = -(FOSC/32/BAUD);  //Set auto-reload vaule of baudrate generator
+  45   1          AUXR = 0x14;            //Baudrate generator work in 1T mode
+  46   1          IE2 = 0x01;             //Enable UART2 interrupt
+  47   1          EA = 1;                 //Open master interrupt switch
+  48   1      
+  49   1          //SendString("STC12C5A60S2\r\nUart2 Test !\r\n");
+  50   1          //while(1);
+  51   1      }
+  52          
+  53          /*----------------------------
+  54          UART2 interrupt service routine
+C51 COMPILER V7.50   UART                                                                  05/23/2014 21:42:17 PAGE 2   
+
+  55          ----------------------------*/
+  56          void Uart2() interrupt 8 using 1
+  57          {
+  58   1          if (S2CON & S2RI)
+  59   1          {
+  60   2              S2CON &= ~S2RI;     //Clear receive interrupt flag
+  61   2              P0 = S2BUF;         //P0 show UART data
+  62   2              P2 = (S2CON & S2RB8);//P2.2 show parity bit
+  63   2          }
+  64   1          if (S2CON & S2TI)
+  65   1          {
+  66   2              S2CON &= ~S2TI;     //Clear transmit interrupt flag
+  67   2              busy = 0;           //Clear transmit busy flag
+  68   2          }
+  69   1      }
+  70          
+  71          /*----------------------------
+  72          Send a byte data to UART
+  73          Input: dat (data to be sent)
+  74          Output:None
+  75          ----------------------------*/
+  76          void SendData(BYTE dat)
+  77          {
+  78   1          while (busy);           //Wait for the completion of the previous data is sent
+  79   1          ACC = dat;              //Calculate the even parity bit P (PSW.0)
+  80   1          if (P)                  //Set the parity bit according to P
+  81   1          {
+  82   2      #if (PARITYBIT == ODD_PARITY)
+                      S2CON &= ~S2TB8;    //Set parity bit to 0
+              #elif (PARITYBIT == EVEN_PARITY)
+                      S2CON |= S2TB8;     //Set parity bit to 1
+              #endif
+  87   2          }
+  88   1          else
+  89   1          {
+  90   2      #if (PARITYBIT == ODD_PARITY)
+                      S2CON |= S2TB8;     //Set parity bit to 1
+              #elif (PARITYBIT == EVEN_PARITY)
+                      S2CON &= ~S2TB8;    //Set parity bit to 0
+              #endif
+  95   2          }
+  96   1          busy = 1;
+  97   1          S2BUF = ACC;            //Send data to UART2 buffer
+  98   1      }
+  99          
+ 100          /*----------------------------
+ 101          Send a string to UART
+ 102          Input: s (address of string)
+ 103          Output:None
+ 104          ----------------------------*/
+ 105          void SendString(char *s)
+ 106          {
+ 107   1          while (*s)              //Check the end of the string
+ 108   1          {
+ 109   2              SendData(*s++);     //Send current char and increment string ptr
+ 110   2          }
+ 111   1      }
+ 112          
+ 113          void SendWord(WORD dat)
+ 114          {
+ 115   1              SendData(dat>>8);
+ 116   1              SendData(dat);
+C51 COMPILER V7.50   UART                                                                  05/23/2014 21:42:17 PAGE 3   
+
+ 117   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    121    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----       3
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

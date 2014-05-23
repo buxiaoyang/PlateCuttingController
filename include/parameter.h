@@ -29,8 +29,8 @@ struct Board  //板材结构体
 /***************************************************************************/
 // 参数声明
 /***************************************************************************/
-extern void parameter_init();
-extern unsigned char parameter_save();
+void parameter_init();
+unsigned char parameter_save();
 
 extern enum PowerMode powerMode; //启动
 extern enum RunMode runMode; //运行模式
