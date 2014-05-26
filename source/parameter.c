@@ -16,12 +16,16 @@
 /***************************************************************************/
 // 参数定义	
 /***************************************************************************/
-enum PowerMode powerMode; //启动
-enum RunMode runMode; //运行模式
+unsigned int powerMode; //启动状态 0关闭 1启动
+unsigned int runMode; //运行模式 0手动模式 1自动模式
 struct Board parameterBoard[4];	//板材参数
 
-unsigned int parameterSignalNumPerMeter; //系统参数一：一米距离编码器的信号数
-unsigned int parameterErrorCorrectionValue ; //系统参数二：误差修正值，信号数
+unsigned int sysParm1_SignalNumPerMeter; //系统参数一：一米距离编码器的信号数
+unsigned int sysParm2_ErrorCorrectionValue; //系统参数二：误差修正值，信号数
+unsigned int sysParm3; //系统参数三
+unsigned int sysParm4; //系统参数四
+unsigned int sysParm5; //系统参数五
+unsigned int sysParm6; //系统参数六
 
 unsigned int settingBoardLength; //设定长度
 unsigned int settingBoardNumber; //设定块数

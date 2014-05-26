@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   UART                                                                  05/23/2014 21:42:17 PAGE 1   
+C51 COMPILER V7.50   UART                                                                  05/26/2014 21:41:48 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE UART
@@ -62,7 +62,7 @@ line level    source
   52          
   53          /*----------------------------
   54          UART2 interrupt service routine
-C51 COMPILER V7.50   UART                                                                  05/23/2014 21:42:17 PAGE 2   
+C51 COMPILER V7.50   UART                                                                  05/26/2014 21:41:48 PAGE 2   
 
   55          ----------------------------*/
   56          void Uart2() interrupt 8 using 1
@@ -126,7 +126,7 @@ line level    source
  114          {
  115   1              SendData(dat>>8);
  116   1              SendData(dat);
-C51 COMPILER V7.50   UART                                                                  05/23/2014 21:42:17 PAGE 3   
+C51 COMPILER V7.50   UART                                                                  05/26/2014 21:41:48 PAGE 3   
 
  117   1      }
 

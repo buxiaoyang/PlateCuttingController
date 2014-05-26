@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   MAIN                                                                  05/23/2014 21:42:08 PAGE 1   
+C51 COMPILER V7.50   MAIN                                                                  05/26/2014 21:41:42 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE MAIN
@@ -62,41 +62,39 @@ line level    source
   52          {
   53   1              exterInterInit();
   54   1              uart_init();
-C51 COMPILER V7.50   MAIN                                                                  05/23/2014 21:42:08 PAGE 2   
+C51 COMPILER V7.50   MAIN                                                                  05/26/2014 21:41:42 PAGE 2   
 
   55   1      
   56   1      
   57   1              currentlySignalNum = 0; 
   58   1              MotorForward = 0;
   59   1              MotorBack = 1;
-  60   1              parameterSignalNumPerMeter = 65535;
+  60   1              sysParm1_SignalNumPerMeter = 1000;
   61   1              while(1)
   62   1              {
-  63   2                      currentlyBoardLength = (currentlySignalNum*1000)/parameterSignalNumPerMeter;    
+  63   2                      currentlyBoardLength = (currentlySignalNum*1000)/sysParm1_SignalNumPerMeter;    
   64   2                      SendData(0x5A);
   65   2                      SendData(0xA5);
-  66   2                      SendData(0x07);
+  66   2                      SendData(0x05);
   67   2                      SendData(0x82);
   68   2                      SendData(0x00);
   69   2                      SendData(0x1F);
-  70   2                      SendData(0x00);
-  71   2                      SendData(0x00);
-  72   2                      SendData(currentlyBoardLength>>8);
-  73   2                      SendData(currentlyBoardLength);
-  74   2              }   
-  75   1      }
+  70   2                      SendData(currentlyBoardLength>>8);
+  71   2                      SendData(currentlyBoardLength);
+  72   2              }   
+  73   1      }
+  74          
+  75          
   76          
   77          
   78          
   79          
   80          
   81          
-  82          
-  83          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    244    ----
+   CODE SIZE        =    236    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

@@ -57,18 +57,16 @@ void main()
 	currentlySignalNum = 0;	
 	MotorForward = 0;
 	MotorBack = 1;
-	parameterSignalNumPerMeter = 65535;
+	sysParm1_SignalNumPerMeter = 1000;
 	while(1)
 	{
-		currentlyBoardLength = (currentlySignalNum*1000)/parameterSignalNumPerMeter;	
+		currentlyBoardLength = (currentlySignalNum*1000)/sysParm1_SignalNumPerMeter;	
 		SendData(0x5A);
 		SendData(0xA5);
-		SendData(0x07);
+		SendData(0x05);
 		SendData(0x82);
 		SendData(0x00);
 		SendData(0x1F);
-		SendData(0x00);
-		SendData(0x00);
 		SendData(currentlyBoardLength>>8);
 		SendData(currentlyBoardLength);
 	}   
