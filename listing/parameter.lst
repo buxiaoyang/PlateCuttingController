@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   PARAMETER                                                             05/26/2014 21:41:45 PAGE 1   
+C51 COMPILER V7.50   PARAMETER                                                             05/27/2014 22:55:46 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE PARAMETER
@@ -62,28 +62,29 @@ line level    source
   52          // 返回值：无   
   53          /***************************************************************************/
   54          void parameter_init()
-C51 COMPILER V7.50   PARAMETER                                                             05/26/2014 21:41:45 PAGE 2   
+C51 COMPILER V7.50   PARAMETER                                                             05/27/2014 22:55:46 PAGE 2   
 
   55          {
-  56   1      
-  57   1      }
-  58          
-  59          /***************************************************************************/
-  60          // 参数保存到eeprom
-  61          // 参数：无
-  62          // 返回值：0失败 1成功  
-  63          /***************************************************************************/
-  64          unsigned char parameter_save()
-  65          {
-  66   1              unsigned char result = 1;
-  67   1              return result;
-  68   1      }
-  69          
+  56   1              powerMode = 0;  //启动状态 0关闭 1启动
+  57   1              
+  58   1      }
+  59          
+  60          /***************************************************************************/
+  61          // 参数保存到eeprom
+  62          // 参数：无
+  63          // 返回值：0失败 1成功  
+  64          /***************************************************************************/
+  65          unsigned char parameter_save()
+  66          {
+  67   1              unsigned char result = 1;
+  68   1              return result;
+  69   1      }
   70          
+  71          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =      7    ----
+   CODE SIZE        =     14    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =     44    ----
    PDATA SIZE       =   ----    ----

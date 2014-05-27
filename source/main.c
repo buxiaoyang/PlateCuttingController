@@ -15,13 +15,6 @@
 #include <parameter.h>
 #include <uart.h>
 
-sbit MotorForward  		= P1^5;  //	电机前进
-sbit MotorBack  		= P1^6;  // 电机后退
-sbit EncoderCounting	= P3^2;  // 编码器计数（绿色）
-sbit EncoderDirection	= P2^4;  // 编码器方向（白色）
-sbit TestOut = 	P2^7; //T0
-
-
 //External interrupt0 service routine
 void exint0() interrupt 0           //(location at 0003H)
 {
@@ -55,8 +48,8 @@ void main()
 
 
 	currentlySignalNum = 0;	
-	MotorForward = 0;
-	MotorBack = 1;
+//	MotorForward = 0;
+//	MotorBack = 1;
 	sysParm1_SignalNumPerMeter = 1000;
 	while(1)
 	{

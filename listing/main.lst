@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   MAIN                                                                  05/26/2014 21:41:42 PAGE 1   
+C51 COMPILER V7.50   MAIN                                                                  05/27/2014 22:55:44 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE MAIN
@@ -25,76 +25,69 @@ line level    source
   15          #include <parameter.h>
   16          #include <uart.h>
   17          
-  18          sbit MotorForward               = P1^5;  //     电机前进
-  19          sbit MotorBack                  = P1^6;  // 电机后退
-  20          sbit EncoderCounting    = P3^2;  // 编码器计数（绿色）
-  21          sbit EncoderDirection   = P2^4;  // 编码器方向（白色）
-  22          sbit TestOut =  P2^7; //T0
-  23          
-  24          
-  25          //External interrupt0 service routine
-  26          void exint0() interrupt 0           //(location at 0003H)
-  27          {
-  28   1              if(EncoderDirection == 0)
-  29   1              {
-  30   2                      currentlySignalNum --;
-  31   2              }
-  32   1              else
-  33   1              {
-  34   2                      currentlySignalNum ++;
-  35   2              }       
-  36   1      }
-  37          
-  38          void exterInterInit()
-  39          {
-  40   1              IT0 = 1;                        //set INT0 int type (1:Falling 0:Low level)
-  41   1          EX0 = 1;                        //enable INT0 interrupt
-  42   1          EA = 1;                         //open global interrupt switch
-  43   1              
-  44   1      }
-  45          
-  46          /***************************************************************************/
-  47          // 主函数
-  48          // 参数：无
-  49          // 返回值：无   
-  50          /***************************************************************************/
-  51          void main()
-  52          {
-  53   1              exterInterInit();
-  54   1              uart_init();
-C51 COMPILER V7.50   MAIN                                                                  05/26/2014 21:41:42 PAGE 2   
+  18          //External interrupt0 service routine
+  19          void exint0() interrupt 0           //(location at 0003H)
+  20          {
+  21   1              if(EncoderDirection == 0)
+  22   1              {
+  23   2                      currentlySignalNum --;
+  24   2              }
+  25   1              else
+  26   1              {
+  27   2                      currentlySignalNum ++;
+  28   2              }       
+  29   1      }
+  30          
+  31          void exterInterInit()
+  32          {
+  33   1              IT0 = 1;                        //set INT0 int type (1:Falling 0:Low level)
+  34   1          EX0 = 1;                        //enable INT0 interrupt
+  35   1          EA = 1;                         //open global interrupt switch
+  36   1              
+  37   1      }
+  38          
+  39          /***************************************************************************/
+  40          // 主函数
+  41          // 参数：无
+  42          // 返回值：无   
+  43          /***************************************************************************/
+  44          void main()
+  45          {
+  46   1              exterInterInit();
+  47   1              uart_init();
+  48   1      
+  49   1      
+  50   1              currentlySignalNum = 0; 
+  51   1      //      MotorForward = 0;
+  52   1      //      MotorBack = 1;
+  53   1              sysParm1_SignalNumPerMeter = 1000;
+  54   1              while(1)
+C51 COMPILER V7.50   MAIN                                                                  05/27/2014 22:55:44 PAGE 2   
 
-  55   1      
-  56   1      
-  57   1              currentlySignalNum = 0; 
-  58   1              MotorForward = 0;
-  59   1              MotorBack = 1;
-  60   1              sysParm1_SignalNumPerMeter = 1000;
-  61   1              while(1)
-  62   1              {
-  63   2                      currentlyBoardLength = (currentlySignalNum*1000)/sysParm1_SignalNumPerMeter;    
-  64   2                      SendData(0x5A);
-  65   2                      SendData(0xA5);
-  66   2                      SendData(0x05);
-  67   2                      SendData(0x82);
-  68   2                      SendData(0x00);
-  69   2                      SendData(0x1F);
-  70   2                      SendData(currentlyBoardLength>>8);
-  71   2                      SendData(currentlyBoardLength);
-  72   2              }   
-  73   1      }
+  55   1              {
+  56   2                      currentlyBoardLength = (currentlySignalNum*1000)/sysParm1_SignalNumPerMeter;    
+  57   2                      SendData(0x5A);
+  58   2                      SendData(0xA5);
+  59   2                      SendData(0x05);
+  60   2                      SendData(0x82);
+  61   2                      SendData(0x00);
+  62   2                      SendData(0x1F);
+  63   2                      SendData(currentlyBoardLength>>8);
+  64   2                      SendData(currentlyBoardLength);
+  65   2              }   
+  66   1      }
+  67          
+  68          
+  69          
+  70          
+  71          
+  72          
+  73          
   74          
-  75          
-  76          
-  77          
-  78          
-  79          
-  80          
-  81          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    236    ----
+   CODE SIZE        =    232    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
