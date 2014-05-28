@@ -1,0 +1,94 @@
+C51 COMPILER V7.50   TIMER                                                                 05/28/2014 17:40:00 PAGE 1   
+
+
+C51 COMPILER V7.50, COMPILATION OF MODULE TIMER
+OBJECT MODULE PLACED IN .\output\timer.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE source\timer.c LARGE BROWSE INCDIR(.\include\) DEBUG OBJECTEXTEND PRINT(.\l
+                    -isting\timer.lst) OBJECT(.\output\timer.obj)
+
+line level    source
+
+   1          #include <timer.h>
+   2          #include <reg52.h>
+   3          #include <intrins.h>
+   4          #include <parameter.h>
+   5          #include <key.h>
+   6          
+   7          typedef unsigned char BYTE;
+   8          typedef unsigned int WORD;
+   9          
+  10          //-----------------------------------------------
+  11          
+  12          /* define constants */
+  13          #define FOSC 11059200L
+  14          #define MODE1T                      //Timer clock mode, comment this line is 12T mode, uncomment is 1T mod
+             -e
+  15          
+  16          #ifdef MODE1T
+  17          #define T1MS (65536-FOSC/1000)      //1ms timer calculation method in 1T mode
+  18          #else
+              #define T1MS (65536-FOSC/12/1000)   //1ms timer calculation method in 12T mode
+              #endif
+  21          
+  22          /* define SFR */
+  23          sfr AUXR = 0x8e;                    //Auxiliary register
+  24          
+  25          /* define variables */
+  26          WORD count;                         //1000 times counter
+  27          
+  28          //-----------------------------------------------
+  29          
+  30          /* Timer0 interrupt routine */
+  31          void tm0_isr() interrupt 1 using 1
+  32          {
+  33   1          TL0 = T1MS;                     //reload timer0 low byte
+  34   1          TH0 = T1MS >> 8;                //reload timer0 high byte
+  35   1          if (count-- == 0)               //1ms * 1000 -> 1s
+  36   1          {
+  37   2              count = 9;               //reset counter
+  38   2              TestOut = ! TestOut;   
+  39   2                      if(KeyAutoManual == 1)
+  40   2                      {
+  41   3                              runMode = 1;
+  42   3                      }
+  43   2                      else
+  44   2                      {
+  45   3                              runMode = 0;
+  46   3                      } 
+  47   2                      Key_Scan();
+  48   2          }
+  49   1      }
+  50          
+  51          //-----------------------------------------------
+  52          
+  53          /* main program */
+C51 COMPILER V7.50   TIMER                                                                 05/28/2014 17:40:00 PAGE 2   
+
+  54          void timer_init()
+  55          {
+  56   1      #ifdef MODE1T
+  57   1          AUXR = 0x80;                    //timer0 work in 1T mode
+  58   1      #endif
+  59   1          TMOD = 0x01;                    //set timer0 as mode1 (16-bit)
+  60   1          TL0 = T1MS;                     //initial timer0 low byte
+  61   1          TH0 = T1MS >> 8;                //initial timer0 high byte
+  62   1          TR0 = 1;                        //timer0 start running
+  63   1          ET0 = 1;                        //enable timer0 interrupt
+  64   1          EA = 1;                         //open global interrupt switch
+  65   1          count = 0;                      //initial counter
+  66   1      }
+  67          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     99    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      2    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

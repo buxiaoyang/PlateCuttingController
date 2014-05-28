@@ -1,0 +1,94 @@
+C51 COMPILER V7.50   KEY                                                                   05/28/2014 17:40:01 PAGE 1   
+
+
+C51 COMPILER V7.50, COMPILATION OF MODULE KEY
+OBJECT MODULE PLACED IN .\output\key.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE source\key.c LARGE BROWSE INCDIR(.\include\) DEBUG OBJECTEXTEND PRINT(.\lis
+                    -ting\key.lst) OBJECT(.\output\key.obj)
+
+line level    source
+
+   1          #include <reg52.h>
+   2          #include <intrins.h>
+   3          #include <parameter.h>
+   4          #include <key.h>
+   5          
+   6          
+   7          void Key_Scan(void);
+   8          
+   9          unsigned char Key_Scan_Steps = 0;               //0：初始状态 如果有按键按下则进入1
+  10                                                                                          //1：延迟10ms
+  11                                                                                          //2：如果按键确实按下则进入3
+  12                                                                                          //3：确定按键
+  13                                                                                          //4：如果按键释放则进入0
+  14          
+  15          void Key_Scan(void)
+  16          {
+  17   1              switch(Key_Scan_Steps)
+  18   1              {
+  19   2                      case 0:
+  20   2                              if(KeyStart == 0 || KeyStop == 0 || KeyHydClam == 0)
+  21   2                              {
+  22   3                                      Key_Scan_Steps = 1;
+  23   3                              }
+  24   2                      break;
+  25   2                      case 1:
+  26   2                              if(KeyStart == 0 || KeyStop == 0 || KeyHydClam == 0)
+  27   2                              {
+  28   3                                      Key_Scan_Steps = 2;
+  29   3                              }
+  30   2                              else
+  31   2                              {
+  32   3                                      Key_Scan_Steps = 0;
+  33   3                              }
+  34   2                      break;
+  35   2                      case 2:
+  36   2                              if(KeyStart == 0)
+  37   2                              {
+  38   3                                      if(runMode)
+  39   3                                      {
+  40   4                                              powerMode = 1;
+  41   4                                      }
+  42   3                                      //cistern[7].cisternStatus = Ready;
+  43   3                                      //displayFlag = 1;
+  44   3                              }
+  45   2                              if(KeyStop == 0)
+  46   2                              {
+  47   3                                      powerMode = 0;  
+  48   3                              }
+  49   2                              if(KeyHydClam == 0)
+  50   2                              {
+  51   3                                      //液压钳输出
+  52   3                                      if(!runMode) //手动状态
+  53   3                                      {
+  54   4                                              
+C51 COMPILER V7.50   KEY                                                                   05/28/2014 17:40:01 PAGE 2   
+
+  55   4                                      }       
+  56   3                              }
+  57   2                              Key_Scan_Steps = 3;
+  58   2                      break;
+  59   2                      case 3:
+  60   2                              if(KeyStart == 1 && KeyStop == 1 && KeyHydClam == 1)
+  61   2                              {
+  62   3                                      Key_Scan_Steps = 0;
+  63   3                              }
+  64   2                      break;
+  65   2                      default:
+  66   2                               _nop_();
+  67   2              }
+  68   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    104    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      1    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

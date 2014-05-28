@@ -25,7 +25,6 @@ unsigned int sysParm2_ErrorCorrectionValue; //系统参数二：误差修正值，信号数
 unsigned int sysParm3; //系统参数三
 unsigned int sysParm4; //系统参数四
 unsigned int sysParm5; //系统参数五
-unsigned int sysParm6; //系统参数六
 
 unsigned int settingBoardLength; //设定长度
 unsigned int settingBoardNumber; //设定块数
@@ -54,7 +53,26 @@ unsigned char parameter_read()
 void parameter_init()
 {
 	powerMode = 0;	//启动状态 0关闭 1启动
-	
+	runMode = 0;
+
+	sysParm1_SignalNumPerMeter =  1000;
+	sysParm2_ErrorCorrectionValue = 100;
+	sysParm3 = 0;
+	sysParm4 = 0;
+	sysParm5 = 0;
+	parameterBoard[0].boardLength = 0;
+	parameterBoard[0].boardNumber = 0;
+	parameterBoard[1].boardLength = 0;
+	parameterBoard[1].boardNumber = 0;
+	parameterBoard[2].boardLength = 0;
+	parameterBoard[2].boardNumber = 0;
+	parameterBoard[3].boardLength = 0;
+	parameterBoard[3].boardNumber = 0;
+	settingBoardLength = 0;
+	settingBoardNumber = 0;
+	currentlyBoardLength = 0;
+	currentlyBoardNumber = 0;
+	currentlySignalNum = 0;
 }
 
 /***************************************************************************/

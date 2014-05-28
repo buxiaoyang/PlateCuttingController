@@ -72,7 +72,6 @@ extern unsigned int sysParm2_ErrorCorrectionValue; //ÏµÍ³²ÎÊı¶ş£ºÎó²îĞŞÕıÖµ£¬ĞÅº
 extern unsigned int sysParm3; //ÏµÍ³²ÎÊıÈı
 extern unsigned int sysParm4; //ÏµÍ³²ÎÊıËÄ
 extern unsigned int sysParm5; //ÏµÍ³²ÎÊıÎå
-extern unsigned int sysParm6; //ÏµÍ³²ÎÊıÁù
 
 extern unsigned int settingBoardLength; //Éè¶¨³¤¶È
 extern unsigned int settingBoardNumber; //Éè¶¨¿éÊı

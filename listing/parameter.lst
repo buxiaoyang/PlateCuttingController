@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   PARAMETER                                                             05/27/2014 22:55:46 PAGE 1   
+C51 COMPILER V7.50   PARAMETER                                                             05/28/2014 17:39:58 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE PARAMETER
@@ -35,58 +35,76 @@ line level    source
   25          unsigned int sysParm3; //系统参数三
   26          unsigned int sysParm4; //系统参数四
   27          unsigned int sysParm5; //系统参数五
-  28          unsigned int sysParm6; //系统参数六
-  29          
-  30          unsigned int settingBoardLength; //设定长度
-  31          unsigned int settingBoardNumber; //设定块数
-  32          
-  33          unsigned int currentlyBoardLength; //已做长度
-  34          unsigned int currentlyBoardNumber; //已做块数
-  35          
-  36          unsigned long currentlySignalNum; //当前编码器信号数
-  37          
-  38          /***************************************************************************/
-  39          // 读取参数
-  40          // 参数：无
-  41          // 返回值：0失败 1成功  
-  42          /***************************************************************************/
-  43          unsigned char parameter_read()
-  44          {
-  45   1              unsigned char result = 1;
-  46   1              return result;
-  47   1      }
-  48          
-  49          /***************************************************************************/
-  50          // 参数初始化函数
-  51          // 参数：无
-  52          // 返回值：无   
-  53          /***************************************************************************/
-  54          void parameter_init()
-C51 COMPILER V7.50   PARAMETER                                                             05/27/2014 22:55:46 PAGE 2   
+  28          
+  29          unsigned int settingBoardLength; //设定长度
+  30          unsigned int settingBoardNumber; //设定块数
+  31          
+  32          unsigned int currentlyBoardLength; //已做长度
+  33          unsigned int currentlyBoardNumber; //已做块数
+  34          
+  35          unsigned long currentlySignalNum; //当前编码器信号数
+  36          
+  37          /***************************************************************************/
+  38          // 读取参数
+  39          // 参数：无
+  40          // 返回值：0失败 1成功  
+  41          /***************************************************************************/
+  42          unsigned char parameter_read()
+  43          {
+  44   1              unsigned char result = 1;
+  45   1              return result;
+  46   1      }
+  47          
+  48          /***************************************************************************/
+  49          // 参数初始化函数
+  50          // 参数：无
+  51          // 返回值：无   
+  52          /***************************************************************************/
+  53          void parameter_init()
+  54          {
+C51 COMPILER V7.50   PARAMETER                                                             05/28/2014 17:39:58 PAGE 2   
 
-  55          {
-  56   1              powerMode = 0;  //启动状态 0关闭 1启动
-  57   1              
-  58   1      }
-  59          
-  60          /***************************************************************************/
-  61          // 参数保存到eeprom
-  62          // 参数：无
-  63          // 返回值：0失败 1成功  
-  64          /***************************************************************************/
-  65          unsigned char parameter_save()
-  66          {
-  67   1              unsigned char result = 1;
-  68   1              return result;
-  69   1      }
-  70          
-  71          
+  55   1              powerMode = 0;  //启动状态 0关闭 1启动
+  56   1              runMode = 0;
+  57   1      
+  58   1              sysParm1_SignalNumPerMeter =  1000;
+  59   1              sysParm2_ErrorCorrectionValue = 100;
+  60   1              sysParm3 = 0;
+  61   1              sysParm4 = 0;
+  62   1              sysParm5 = 0;
+  63   1              parameterBoard[0].boardLength = 0;
+  64   1              parameterBoard[0].boardNumber = 0;
+  65   1              parameterBoard[1].boardLength = 0;
+  66   1              parameterBoard[1].boardNumber = 0;
+  67   1              parameterBoard[2].boardLength = 0;
+  68   1              parameterBoard[2].boardNumber = 0;
+  69   1              parameterBoard[3].boardLength = 0;
+  70   1              parameterBoard[3].boardNumber = 0;
+  71   1              settingBoardLength = 0;
+  72   1              settingBoardNumber = 0;
+  73   1              currentlyBoardLength = 0;
+  74   1              currentlyBoardNumber = 0;
+  75   1              currentlySignalNum = 0;
+  76   1      }
+  77          
+  78          /***************************************************************************/
+  79          // 参数保存到eeprom
+  80          // 参数：无
+  81          // 返回值：0失败 1成功  
+  82          /***************************************************************************/
+  83          unsigned char parameter_save()
+  84          {
+  85   1              unsigned char result = 1;
+  86   1              return result;
+  87   1      }
+  88          
+  89          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     14    ----
+   CODE SIZE        =    118    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =     44    ----
+   XDATA SIZE       =     42    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
