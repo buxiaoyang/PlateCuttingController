@@ -107,6 +107,7 @@ void main()
 			runMode = 0;
 		} 
 		Key_Scan();
+		ManiDispatch();
 	}   
 }
 
