@@ -1,7 +1,9 @@
 #ifndef 		__DISPATCH_H__
 #define 		__DISPATCH_H__
 
+extern unsigned char ManiDispatchSteps;
 
-extern void ManiDispatch(void);	
+void ManiDispatch(void);
+void SubDispatch(void);	
 
 #endif

@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   PARAMETER                                                             05/28/2014 17:39:58 PAGE 1   
+C51 COMPILER V7.50   PARAMETER                                                             05/29/2014 21:19:30 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE PARAMETER
@@ -62,7 +62,7 @@ line level    source
   52          /***************************************************************************/
   53          void parameter_init()
   54          {
-C51 COMPILER V7.50   PARAMETER                                                             05/28/2014 17:39:58 PAGE 2   
+C51 COMPILER V7.50   PARAMETER                                                             05/29/2014 21:19:30 PAGE 2   
 
   55   1              powerMode = 0;  //Æô¶¯×´Ì¬ 0¹Ø±Õ 1Æô¶¯
   56   1              runMode = 0;

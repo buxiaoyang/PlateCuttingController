@@ -2,6 +2,7 @@
 #include <intrins.h>
 #include <parameter.h>
 #include <key.h>
+#include <dispatch.h>
 
 
 void Key_Scan(void);
@@ -38,6 +39,7 @@ void Key_Scan(void)
 				if(runMode)
 				{
 					powerMode = 1;
+					ManiDispatchSteps = 0;
 				}
 			   	//cistern[7].cisternStatus = Ready;
 				//displayFlag = 1;

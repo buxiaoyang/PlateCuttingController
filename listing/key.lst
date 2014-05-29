@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   KEY                                                                   05/28/2014 17:40:01 PAGE 1   
+C51 COMPILER V7.50   KEY                                                                   05/29/2014 21:19:35 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE KEY
@@ -12,76 +12,78 @@ line level    source
    2          #include <intrins.h>
    3          #include <parameter.h>
    4          #include <key.h>
-   5          
+   5          #include <dispatch.h>
    6          
-   7          void Key_Scan(void);
-   8          
-   9          unsigned char Key_Scan_Steps = 0;               //0：初始状态 如果有按键按下则进入1
-  10                                                                                          //1：延迟10ms
-  11                                                                                          //2：如果按键确实按下则进入3
-  12                                                                                          //3：确定按键
-  13                                                                                          //4：如果按键释放则进入0
-  14          
-  15          void Key_Scan(void)
-  16          {
-  17   1              switch(Key_Scan_Steps)
-  18   1              {
-  19   2                      case 0:
-  20   2                              if(KeyStart == 0 || KeyStop == 0 || KeyHydClam == 0)
-  21   2                              {
-  22   3                                      Key_Scan_Steps = 1;
-  23   3                              }
-  24   2                      break;
-  25   2                      case 1:
-  26   2                              if(KeyStart == 0 || KeyStop == 0 || KeyHydClam == 0)
-  27   2                              {
-  28   3                                      Key_Scan_Steps = 2;
-  29   3                              }
-  30   2                              else
-  31   2                              {
-  32   3                                      Key_Scan_Steps = 0;
-  33   3                              }
-  34   2                      break;
-  35   2                      case 2:
-  36   2                              if(KeyStart == 0)
-  37   2                              {
-  38   3                                      if(runMode)
-  39   3                                      {
-  40   4                                              powerMode = 1;
-  41   4                                      }
-  42   3                                      //cistern[7].cisternStatus = Ready;
-  43   3                                      //displayFlag = 1;
-  44   3                              }
-  45   2                              if(KeyStop == 0)
-  46   2                              {
-  47   3                                      powerMode = 0;  
-  48   3                              }
-  49   2                              if(KeyHydClam == 0)
-  50   2                              {
-  51   3                                      //液压钳输出
-  52   3                                      if(!runMode) //手动状态
-  53   3                                      {
-  54   4                                              
-C51 COMPILER V7.50   KEY                                                                   05/28/2014 17:40:01 PAGE 2   
+   7          
+   8          void Key_Scan(void);
+   9          
+  10          unsigned char Key_Scan_Steps = 0;               //0：初始状态 如果有按键按下则进入1
+  11                                                                                          //1：延迟10ms
+  12                                                                                          //2：如果按键确实按下则进入3
+  13                                                                                          //3：确定按键
+  14                                                                                          //4：如果按键释放则进入0
+  15          
+  16          void Key_Scan(void)
+  17          {
+  18   1              switch(Key_Scan_Steps)
+  19   1              {
+  20   2                      case 0:
+  21   2                              if(KeyStart == 0 || KeyStop == 0 || KeyHydClam == 0)
+  22   2                              {
+  23   3                                      Key_Scan_Steps = 1;
+  24   3                              }
+  25   2                      break;
+  26   2                      case 1:
+  27   2                              if(KeyStart == 0 || KeyStop == 0 || KeyHydClam == 0)
+  28   2                              {
+  29   3                                      Key_Scan_Steps = 2;
+  30   3                              }
+  31   2                              else
+  32   2                              {
+  33   3                                      Key_Scan_Steps = 0;
+  34   3                              }
+  35   2                      break;
+  36   2                      case 2:
+  37   2                              if(KeyStart == 0)
+  38   2                              {
+  39   3                                      if(runMode)
+  40   3                                      {
+  41   4                                              powerMode = 1;
+  42   4                                              ManiDispatchSteps = 0;
+  43   4                                      }
+  44   3                                      //cistern[7].cisternStatus = Ready;
+  45   3                                      //displayFlag = 1;
+  46   3                              }
+  47   2                              if(KeyStop == 0)
+  48   2                              {
+  49   3                                      powerMode = 0;  
+  50   3                              }
+  51   2                              if(KeyHydClam == 0)
+  52   2                              {
+  53   3                                      //液压钳输出
+  54   3                                      if(!runMode) //手动状态
+C51 COMPILER V7.50   KEY                                                                   05/29/2014 21:19:35 PAGE 2   
 
-  55   4                                      }       
-  56   3                              }
-  57   2                              Key_Scan_Steps = 3;
-  58   2                      break;
-  59   2                      case 3:
-  60   2                              if(KeyStart == 1 && KeyStop == 1 && KeyHydClam == 1)
-  61   2                              {
-  62   3                                      Key_Scan_Steps = 0;
-  63   3                              }
-  64   2                      break;
-  65   2                      default:
-  66   2                               _nop_();
-  67   2              }
-  68   1      }
+  55   3                                      {
+  56   4                                              
+  57   4                                      }       
+  58   3                              }
+  59   2                              Key_Scan_Steps = 3;
+  60   2                      break;
+  61   2                      case 3:
+  62   2                              if(KeyStart == 1 && KeyStop == 1 && KeyHydClam == 1)
+  63   2                              {
+  64   3                                      Key_Scan_Steps = 0;
+  65   3                              }
+  66   2                      break;
+  67   2                      default:
+  68   2                               _nop_();
+  69   2              }
+  70   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    104    ----
+   CODE SIZE        =    109    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      1    ----
    PDATA SIZE       =   ----    ----

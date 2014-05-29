@@ -17,7 +17,7 @@ unsigned char SubDispatchSteps = 20;
 
 unsigned char currentSettingIndex = 20;
 unsigned char currentSettingBoardNum = 20;
-unsigned int temp;
+
 
 void ManiDispatch(void)
 {
@@ -25,13 +25,48 @@ void ManiDispatch(void)
 	{
 		case 0:
 			currentSettingIndex = 0;
-			if(parameterBoard[currentSettingIndex].boardLength != 0 && parameterBoard[currentSettingIndex].boardNumber != 0)
-			{
-				
-			}
+			currentSettingBoardNum =  parameterBoard[currentSettingIndex].boardNumber;
+			ManiDispatchSteps ++;
 		break;
 		case 1:
-			
+			if(parameterBoard[currentSettingIndex].boardNumber != 0 && parameterBoard[currentSettingIndex].boardLength != 0)
+			{
+				ManiDispatchSteps ++;
+			}
+			else
+			{
+				ManiDispatchSteps = 4;
+			}
+		break;
+		case 2:
+			SubDispatchSteps = 0;
+			ManiDispatchSteps ++;
+		break;
+		case 3:
+			if(SubDispatchSteps == 20)
+			{
+				currentSettingBoardNum --;
+				if(currentSettingBoardNum > 0)
+				{
+					ManiDispatchSteps = 2;
+				}
+				else
+				{
+					ManiDispatchSteps ++;
+				}
+			}
+		break;
+		case 4:
+			currentSettingIndex ++;
+			currentSettingBoardNum =  parameterBoard[currentSettingIndex].boardNumber;
+			if(currentSettingIndex < 4)
+			{
+				ManiDispatchSteps = 1;
+			}
+			else
+			{
+				ManiDispatchSteps = 20;
+			}
 		break;
 		default:
 			 _nop_();
@@ -48,6 +83,7 @@ void ManiDispatch(void)
 //20£º½áÊø×´Ì¬
 void SubDispatch(void)
 {
+	unsigned int temp;
 	switch(SubDispatchSteps)
 	{
 		case 0:	//0£º³õÊ¼×´Ì¬

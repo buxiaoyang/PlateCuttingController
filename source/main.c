@@ -108,6 +108,7 @@ void main()
 		} 
 		Key_Scan();
 		ManiDispatch();
+		SubDispatch();
 	}   
 }
 
