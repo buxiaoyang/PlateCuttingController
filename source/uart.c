@@ -190,6 +190,7 @@ void anyData()
 	if(uartBuffer[2] == 0x01)		//系统参数1
 	{
 		sysParm1_SignalNumPerMeter = dat;
+		maxSignalNum = (65535 * sysParm1_SignalNumPerMeter)/1000-2000;
 	}
 	else if(uartBuffer[2] == 0x03)	//系统参数2
 	{

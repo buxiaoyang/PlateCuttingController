@@ -80,5 +80,6 @@ extern unsigned int currentlyBoardLength; //已做长度
 extern unsigned int currentlyBoardNumber; //已做块数
 
 extern unsigned long currentlySignalNum; //当前编码器信号数
+extern unsigned long maxSignalNum;	  //最大编码器信号数
 
 #endif

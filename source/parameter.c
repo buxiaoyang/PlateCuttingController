@@ -33,6 +33,7 @@ unsigned int currentlyBoardLength; //已做长度
 unsigned int currentlyBoardNumber; //已做块数
 
 unsigned long currentlySignalNum; //当前编码器信号数
+unsigned long maxSignalNum;	  //最大编码器信号数
 
 /***************************************************************************/
 // 读取参数

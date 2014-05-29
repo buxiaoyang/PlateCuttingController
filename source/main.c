@@ -23,11 +23,17 @@ void exint0() interrupt 0           //(location at 0003H)
 {
 	if(EncoderDirection == 0)
 	{
-		currentlySignalNum --;
+		if(currentlySignalNum>0)
+		{
+			currentlySignalNum --;
+		}
 	}
 	else
-	{
-		currentlySignalNum ++;
+	{		
+		if(currentlySignalNum <= maxSignalNum)
+		{
+		   	currentlySignalNum ++;
+		}
 	}	
 }
 
@@ -87,6 +93,7 @@ void main()
 	uart_init();
 	//timer_init();
 	parameter_init();
+	maxSignalNum = (65535 * sysParm1_SignalNumPerMeter)/1000-2000;
 	while(1)
 	{
 		currentlyBoardLength = (currentlySignalNum*1000)/sysParm1_SignalNumPerMeter;	

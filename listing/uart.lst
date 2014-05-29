@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   UART                                                                  05/29/2014 21:19:32 PAGE 1   
+C51 COMPILER V7.50   UART                                                                  05/29/2014 22:32:43 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE UART
@@ -62,7 +62,7 @@ line level    source
   52   1      #if (PARITYBIT == NONE_PARITY)
   53   1          S2CON = 0x50;           //8-bit variable UART
   54   1      #elif (PARITYBIT == ODD_PARITY) || (PARITYBIT == EVEN_PARITY) || (PARITYBIT == MARK_PARITY)
-C51 COMPILER V7.50   UART                                                                  05/29/2014 21:19:32 PAGE 2   
+C51 COMPILER V7.50   UART                                                                  05/29/2014 22:32:43 PAGE 2   
 
                   S2CON = 0xda;           //9-bit variable UART, parity bit initial to 1
               #elif (PARITYBIT == SPACE_PARITY)
@@ -126,7 +126,7 @@ line level    source
  114   1          S2BUF = ACC;            //Send data to UART2 buffer
  115   1      }
  116          
-C51 COMPILER V7.50   UART                                                                  05/29/2014 21:19:32 PAGE 3   
+C51 COMPILER V7.50   UART                                                                  05/29/2014 22:32:43 PAGE 3   
 
  117          /*----------------------------
  118          Send a string to UART
@@ -190,7 +190,7 @@ line level    source
  176   2                              {
  177   3                                      anyData();
  178   3                                      receiveSteps = 0;
-C51 COMPILER V7.50   UART                                                                  05/29/2014 21:19:32 PAGE 4   
+C51 COMPILER V7.50   UART                                                                  05/29/2014 22:32:43 PAGE 4   
 
  179   3                              }
  180   2                      break;
@@ -206,89 +206,90 @@ line level    source
  190   1              if(uartBuffer[2] == 0x01)               //系统参数1
  191   1              {
  192   2                      sysParm1_SignalNumPerMeter = dat;
- 193   2              }
- 194   1              else if(uartBuffer[2] == 0x03)  //系统参数2
- 195   1              {
- 196   2                      sysParm2_ErrorCorrectionValue = dat;
- 197   2              }
- 198   1              else if(uartBuffer[2] == 0x05)  //系统参数3
- 199   1              {
- 200   2                      sysParm3 = dat;
- 201   2              }
- 202   1              else if(uartBuffer[2] == 0x07)  //系统参数4
- 203   1              {
- 204   2                      sysParm4 = dat;
- 205   2              }
- 206   1              else if(uartBuffer[2] == 0x09)  //系统参数5
- 207   1              {
- 208   2                      sysParm5 = dat; 
- 209   2              }
- 210   1              else if(uartBuffer[2] == 0x0B)  //板材参数_板长1
- 211   1              {
- 212   2                      parameterBoard[0].boardLength = dat;
- 213   2              }
- 214   1              else if(uartBuffer[2] == 0x0D)  //板材参数_块数1        
- 215   1              {
- 216   2                      parameterBoard[0].boardNumber = dat;
- 217   2              }
- 218   1              else if(uartBuffer[2] == 0x0F)  //板材参数_板长2
- 219   1              {
- 220   2                      parameterBoard[1].boardLength = dat;
- 221   2              }
- 222   1              else if(uartBuffer[2] == 0x11)  //板材参数_块数2
- 223   1              {
- 224   2                      parameterBoard[1].boardNumber = dat;
- 225   2              }
- 226   1              else if(uartBuffer[2] == 0x13)  //板材参数_板长3
- 227   1              {
- 228   2                      parameterBoard[2].boardLength = dat;
- 229   2              }
- 230   1              else if(uartBuffer[2] == 0x15)  //板材参数_块数3
- 231   1              {
- 232   2                      parameterBoard[2].boardNumber = dat;
- 233   2              }
- 234   1              else if(uartBuffer[2] == 0x17)  //板材参数_板长4
- 235   1              {
- 236   2                      parameterBoard[3].boardLength = dat;
- 237   2              }
- 238   1              else if(uartBuffer[2] == 0x19)  //板材参数_块数4
- 239   1              {
- 240   2                      parameterBoard[3].boardNumber = dat;
-C51 COMPILER V7.50   UART                                                                  05/29/2014 21:19:32 PAGE 5   
+ 193   2                      maxSignalNum = (65535 * sysParm1_SignalNumPerMeter)/1000-2000;
+ 194   2              }
+ 195   1              else if(uartBuffer[2] == 0x03)  //系统参数2
+ 196   1              {
+ 197   2                      sysParm2_ErrorCorrectionValue = dat;
+ 198   2              }
+ 199   1              else if(uartBuffer[2] == 0x05)  //系统参数3
+ 200   1              {
+ 201   2                      sysParm3 = dat;
+ 202   2              }
+ 203   1              else if(uartBuffer[2] == 0x07)  //系统参数4
+ 204   1              {
+ 205   2                      sysParm4 = dat;
+ 206   2              }
+ 207   1              else if(uartBuffer[2] == 0x09)  //系统参数5
+ 208   1              {
+ 209   2                      sysParm5 = dat; 
+ 210   2              }
+ 211   1              else if(uartBuffer[2] == 0x0B)  //板材参数_板长1
+ 212   1              {
+ 213   2                      parameterBoard[0].boardLength = dat;
+ 214   2              }
+ 215   1              else if(uartBuffer[2] == 0x0D)  //板材参数_块数1        
+ 216   1              {
+ 217   2                      parameterBoard[0].boardNumber = dat;
+ 218   2              }
+ 219   1              else if(uartBuffer[2] == 0x0F)  //板材参数_板长2
+ 220   1              {
+ 221   2                      parameterBoard[1].boardLength = dat;
+ 222   2              }
+ 223   1              else if(uartBuffer[2] == 0x11)  //板材参数_块数2
+ 224   1              {
+ 225   2                      parameterBoard[1].boardNumber = dat;
+ 226   2              }
+ 227   1              else if(uartBuffer[2] == 0x13)  //板材参数_板长3
+ 228   1              {
+ 229   2                      parameterBoard[2].boardLength = dat;
+ 230   2              }
+ 231   1              else if(uartBuffer[2] == 0x15)  //板材参数_块数3
+ 232   1              {
+ 233   2                      parameterBoard[2].boardNumber = dat;
+ 234   2              }
+ 235   1              else if(uartBuffer[2] == 0x17)  //板材参数_板长4
+ 236   1              {
+ 237   2                      parameterBoard[3].boardLength = dat;
+ 238   2              }
+ 239   1              else if(uartBuffer[2] == 0x19)  //板材参数_块数4
+ 240   1              {
+C51 COMPILER V7.50   UART                                                                  05/29/2014 22:32:43 PAGE 5   
 
- 241   2              }
- 242   1              else if(uartBuffer[2] == 0x23)  //手动操作_前进
- 243   1              {
- 244   2      
- 245   2              }
- 246   1              else if(uartBuffer[2] == 0x24)  //手动操作_后退
- 247   1              {
- 248   2                      
- 249   2              }
- 250   1              else if(uartBuffer[2] == 0x25)  //手动操作_慢进
- 251   1              {
- 252   2                      
- 253   2              }
- 254   1              else if(uartBuffer[2] == 0x26)  //手动操作_切断上
- 255   1              {
- 256   2                      
- 257   2              }
- 258   1              else if(uartBuffer[2] == 0x27)  //手动操作_切断下
- 259   1              {
- 260   2                      
- 261   2              }
- 262   1              else if(uartBuffer[2] == 0x28)  //运行画面_复位按钮
- 263   1              {
- 264   2                      
- 265   2              }
- 266   1              uartReceiveOK = 1;      
- 267   1      }
+ 241   2                      parameterBoard[3].boardNumber = dat;
+ 242   2              }
+ 243   1              else if(uartBuffer[2] == 0x23)  //手动操作_前进
+ 244   1              {
+ 245   2      
+ 246   2              }
+ 247   1              else if(uartBuffer[2] == 0x24)  //手动操作_后退
+ 248   1              {
+ 249   2                      
+ 250   2              }
+ 251   1              else if(uartBuffer[2] == 0x25)  //手动操作_慢进
+ 252   1              {
+ 253   2                      
+ 254   2              }
+ 255   1              else if(uartBuffer[2] == 0x26)  //手动操作_切断上
+ 256   1              {
+ 257   2                      
+ 258   2              }
+ 259   1              else if(uartBuffer[2] == 0x27)  //手动操作_切断下
+ 260   1              {
+ 261   2                      
+ 262   2              }
+ 263   1              else if(uartBuffer[2] == 0x28)  //运行画面_复位按钮
+ 264   1              {
+ 265   2                      
+ 266   2              }
+ 267   1              uartReceiveOK = 1;      
+ 268   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    422    ----
+   CODE SIZE        =    580    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =     18       3
+   XDATA SIZE       =     18       5
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

@@ -23,7 +23,7 @@ void ManiDispatch(void)
 {
 	switch(ManiDispatchSteps)
 	{
-		case 0:
+		case 0: 
 			currentSettingIndex = 0;
 			currentSettingBoardNum =  parameterBoard[currentSettingIndex].boardNumber;
 			ManiDispatchSteps ++;
@@ -40,6 +40,7 @@ void ManiDispatch(void)
 		break;
 		case 2:
 			SubDispatchSteps = 0;
+			currentlySignalNum = 0;
 			ManiDispatchSteps ++;
 		break;
 		case 3:
@@ -66,6 +67,7 @@ void ManiDispatch(void)
 			else
 			{
 				ManiDispatchSteps = 20;
+				powerMode = 0;
 			}
 		break;
 		default:
