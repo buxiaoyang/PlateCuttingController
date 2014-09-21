@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   MAIN                                                                  05/29/2014 22:32:40 PAGE 1   
+C51 COMPILER V7.50   MAIN                                                                  09/21/2014 22:02:29 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   52   1              SendDataToScreen(0x0005, sysParm3);
   53   1              SendDataToScreen(0x0007, sysParm4);
   54   1              SendDataToScreen(0x0009, sysParm5);
-C51 COMPILER V7.50   MAIN                                                                  05/29/2014 22:32:40 PAGE 2   
+C51 COMPILER V7.50   MAIN                                                                  09/21/2014 22:02:29 PAGE 2   
 
   55   1              SendDataToScreen(0x000B, parameterBoard[0].boardLength);
   56   1              SendDataToScreen(0x000D, parameterBoard[0].boardNumber);
@@ -126,7 +126,7 @@ line level    source
  114   3                              runMode = 0;
  115   3                      } 
  116   2                      Key_Scan();
-C51 COMPILER V7.50   MAIN                                                                  05/29/2014 22:32:40 PAGE 3   
+C51 COMPILER V7.50   MAIN                                                                  09/21/2014 22:02:29 PAGE 3   
 
  117   2                      ManiDispatch();
  118   2                      SubDispatch();

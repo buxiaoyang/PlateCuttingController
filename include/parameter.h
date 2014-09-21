@@ -21,7 +21,7 @@
 //输入
 sbit EncoderCounting		= P3^2;  	// 编码器计数（绿色）
 
-sbit EncoderDirection		= P2^4;  	// 编码器方向（白色）
+sbit EncoderDirection		= P2^0;  	// 编码器方向（白色）
 
 sbit HydClamInductorTop		= P0^0;  	// 液压剪刀上方感应器(系统在工作之前，根据液压剪刀是否在上的位置（常亮）
 										// 来判定是否可以正常工作。)

@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V5.12                                                        05/29/2014  22:32:45  PAGE 1
+BL51 BANKED LINKER/LOCATER V5.12                                                        09/21/2014  22:02:31  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V5.12, INVOKED BY:
@@ -59,7 +59,7 @@ LINK MAP OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
             CODE    0003H     0003H     ABSOLUTE     
-BL51 BANKED LINKER/LOCATER V5.12                                                      05/29/2014  22:32:45  PAGE 2
+BL51 BANKED LINKER/LOCATER V5.12                                                      09/21/2014  22:02:31  PAGE 2
 
 
             CODE    0006H     0003H     UNIT         ?PR?PARAMETER_READ?PARAMETER
@@ -119,7 +119,7 @@ SEGMENT                                  XDATA_GROUP
 
 ?PR?PARAMETER_SEND_SCREEN?MAIN         -----    -----
   +--> ?PR?_SENDDATATOSCREEN?UART
-BL51 BANKED LINKER/LOCATER V5.12                                                      05/29/2014  22:32:45  PAGE 3
+BL51 BANKED LINKER/LOCATER V5.12                                                      09/21/2014  22:02:31  PAGE 3
 
 
 
@@ -179,7 +179,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:0786H         LINE#         101
   C:0787H         LINE#         102
   C:0789H         LINE#         151
-BL51 BANKED LINKER/LOCATER V5.12                                                      05/29/2014  22:32:45  PAGE 4
+BL51 BANKED LINKER/LOCATER V5.12                                                      09/21/2014  22:02:31  PAGE 4
 
 
   C:078CH         LINE#         155
@@ -205,7 +205,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:0633H         PUBLIC        exint0
   B:00A0H.7       PUBLIC        TestOut
   D:00C8H         PUBLIC        T2CON
-  B:00A0H.4       PUBLIC        EncoderDirection
+  B:00A0H.0       PUBLIC        EncoderDirection
   D:00D0H         PUBLIC        PSW
   -------         PROC          EXINT0
   C:0633H         LINE#         22
@@ -239,7 +239,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:01EFH         LINE#         51
   C:01FEH         LINE#         52
   C:020DH         LINE#         53
-BL51 BANKED LINKER/LOCATER V5.12                                                      05/29/2014  22:32:45  PAGE 5
+BL51 BANKED LINKER/LOCATER V5.12                                                      09/21/2014  22:02:31  PAGE 5
 
 
   C:021CH         LINE#         54
@@ -299,7 +299,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:077EH         LINE#         118
   C:0781H         LINE#         119
   -------         ENDPROC       MAIN
-BL51 BANKED LINKER/LOCATER V5.12                                                      05/29/2014  22:32:45  PAGE 6
+BL51 BANKED LINKER/LOCATER V5.12                                                      09/21/2014  22:02:31  PAGE 6
 
 
   -------         ENDMOD        MAIN
@@ -359,7 +359,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   X:0022H         PUBLIC        currentlyBoardNumber
   X:0024H         PUBLIC        settingBoardLength
   C:0B46H         PUBLIC        parameter_save
-BL51 BANKED LINKER/LOCATER V5.12                                                      05/29/2014  22:32:45  PAGE 7
+BL51 BANKED LINKER/LOCATER V5.12                                                      09/21/2014  22:02:31  PAGE 7
 
 
   X:0026H         PUBLIC        maxSignalNum
@@ -419,7 +419,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:00C5H         PUBLIC        IAP_CMD
   C:0AD9H         PUBLIC        _IapReadByte
-BL51 BANKED LINKER/LOCATER V5.12                                                      05/29/2014  22:32:45  PAGE 8
+BL51 BANKED LINKER/LOCATER V5.12                                                      09/21/2014  22:02:31  PAGE 8
 
 
   C:0B29H         PUBLIC        IapIdle
@@ -479,7 +479,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   D:0005H         SYMBOL        dat
   C:0AC0H         LINE#         96
   C:0AC0H         LINE#         97
-BL51 BANKED LINKER/LOCATER V5.12                                                      05/29/2014  22:32:45  PAGE 9
+BL51 BANKED LINKER/LOCATER V5.12                                                      09/21/2014  22:02:31  PAGE 9
 
 
   C:0AC0H         LINE#         98
@@ -539,7 +539,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   D:009CH         PUBLIC        BRT
   C:0B36H         PUBLIC        _SendData
   X:003FH         PUBLIC        receiveSteps
-BL51 BANKED LINKER/LOCATER V5.12                                                      05/29/2014  22:32:45  PAGE 10
+BL51 BANKED LINKER/LOCATER V5.12                                                      09/21/2014  22:02:31  PAGE 10
 
 
   D:00D0H         PUBLIC        PSW
@@ -599,7 +599,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:0A3CH         LINE#         131
   C:0A3CH         LINE#         132
   C:0A41H         LINE#         133
-BL51 BANKED LINKER/LOCATER V5.12                                                      05/29/2014  22:32:45  PAGE 11
+BL51 BANKED LINKER/LOCATER V5.12                                                      09/21/2014  22:02:31  PAGE 11
 
 
   C:0A46H         LINE#         134
@@ -659,7 +659,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:0331H         LINE#         189
   C:0343H         LINE#         190
   C:034AH         LINE#         191
-BL51 BANKED LINKER/LOCATER V5.12                                                      05/29/2014  22:32:45  PAGE 12
+BL51 BANKED LINKER/LOCATER V5.12                                                      09/21/2014  22:02:31  PAGE 12
 
 
   C:034AH         LINE#         192
@@ -719,7 +719,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:0471H         LINE#         247
   C:0471H         LINE#         248
   C:0471H         LINE#         250
-BL51 BANKED LINKER/LOCATER V5.12                                                      05/29/2014  22:32:45  PAGE 13
+BL51 BANKED LINKER/LOCATER V5.12                                                      09/21/2014  22:02:31  PAGE 13
 
 
   C:0471H         LINE#         251
@@ -779,7 +779,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:0981H         LINE#         45
   C:0984H         LINE#         46
   C:0984H         LINE#         47
-BL51 BANKED LINKER/LOCATER V5.12                                                      05/29/2014  22:32:45  PAGE 14
+BL51 BANKED LINKER/LOCATER V5.12                                                      09/21/2014  22:02:31  PAGE 14
 
 
   C:0987H         LINE#         48
@@ -839,7 +839,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:08B5H         LINE#         39
   C:08BFH         LINE#         40
   C:08BFH         LINE#         41
-BL51 BANKED LINKER/LOCATER V5.12                                                      05/29/2014  22:32:45  PAGE 15
+BL51 BANKED LINKER/LOCATER V5.12                                                      09/21/2014  22:02:31  PAGE 15
 
 
   C:08C7H         LINE#         42
@@ -899,7 +899,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:0559H         LINE#         22
   C:0559H         LINE#         23
   C:0559H         LINE#         24
-BL51 BANKED LINKER/LOCATER V5.12                                                      05/29/2014  22:32:45  PAGE 16
+BL51 BANKED LINKER/LOCATER V5.12                                                      09/21/2014  22:02:31  PAGE 16
 
 
   C:0573H         LINE#         25
@@ -959,7 +959,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:0474H         LINE#         86
   C:0474H         LINE#         87
   C:0474H         LINE#         89
-BL51 BANKED LINKER/LOCATER V5.12                                                      05/29/2014  22:32:45  PAGE 17
+BL51 BANKED LINKER/LOCATER V5.12                                                      09/21/2014  22:02:31  PAGE 17
 
 
   C:0497H         LINE#         90
@@ -1019,7 +1019,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:0558H         LINE#         145
   -------         ENDPROC       SUBDISPATCH
   -------         ENDMOD        DISPATCH
-BL51 BANKED LINKER/LOCATER V5.12                                                      05/29/2014  22:32:45  PAGE 18
+BL51 BANKED LINKER/LOCATER V5.12                                                      09/21/2014  22:02:31  PAGE 18
 
 
 
@@ -1079,7 +1079,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_SENDSTRING?UART
 
-BL51 BANKED LINKER/LOCATER V5.12                                                      05/29/2014  22:32:45  PAGE 19
+BL51 BANKED LINKER/LOCATER V5.12                                                      09/21/2014  22:02:31  PAGE 19
 
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS

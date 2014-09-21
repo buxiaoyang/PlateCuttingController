@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   PARAMETER                                                             05/29/2014 22:32:41 PAGE 1   
+C51 COMPILER V7.50   PARAMETER                                                             09/21/2014 22:02:30 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE PARAMETER
@@ -62,7 +62,7 @@ line level    source
   52          // 返回值：无   
   53          /***************************************************************************/
   54          void parameter_init()
-C51 COMPILER V7.50   PARAMETER                                                             05/29/2014 22:32:41 PAGE 2   
+C51 COMPILER V7.50   PARAMETER                                                             09/21/2014 22:02:30 PAGE 2   
 
   55          {
   56   1              powerMode = 0;  //启动状态 0关闭 1启动
