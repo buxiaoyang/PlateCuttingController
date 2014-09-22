@@ -62,12 +62,16 @@ void parameter_init()
 	sysParm4 = 0;
 	sysParm5 = 0;
 	parameterBoard[0].boardLength = 0;
+	parameterBoard[0].boardDecLength = 0;
 	parameterBoard[0].boardNumber = 0;
 	parameterBoard[1].boardLength = 0;
+	parameterBoard[1].boardDecLength = 0;
 	parameterBoard[1].boardNumber = 0;
 	parameterBoard[2].boardLength = 0;
+	parameterBoard[2].boardDecLength = 0;
 	parameterBoard[2].boardNumber = 0;
 	parameterBoard[3].boardLength = 0;
+	parameterBoard[3].boardDecLength = 0;
 	parameterBoard[3].boardNumber = 0;
 	settingBoardLength = 0;
 	settingBoardNumber = 0;

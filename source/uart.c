@@ -240,6 +240,22 @@ void anyData()
 	{
 		parameterBoard[3].boardNumber = dat;
 	}
+	else if(uartBuffer[2] == 0x30)	//板材参数_板材递减长度1
+	{
+		parameterBoard[0].boardDecLength = dat;
+	}
+	else if(uartBuffer[2] == 0x32)	//板材参数_板材递减长度2
+	{
+		parameterBoard[1].boardDecLength = dat;
+	}
+	else if(uartBuffer[2] == 0x34)	//板材参数_板材递减长度3
+	{
+		parameterBoard[2].boardDecLength = dat;
+	}
+	else if(uartBuffer[2] == 0x36)	//板材参数_板材递减长度4
+	{
+		parameterBoard[3].boardDecLength = dat;
+	}
 	else if(uartBuffer[2] == 0x23)	//手动操作_前进
 	{
 

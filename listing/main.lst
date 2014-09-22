@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   MAIN                                                                  09/21/2014 22:02:29 PAGE 1   
+C51 COMPILER V7.50   MAIN                                                                  09/22/2014 22:11:17 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE MAIN
@@ -62,88 +62,92 @@ line level    source
   52   1              SendDataToScreen(0x0005, sysParm3);
   53   1              SendDataToScreen(0x0007, sysParm4);
   54   1              SendDataToScreen(0x0009, sysParm5);
-C51 COMPILER V7.50   MAIN                                                                  09/21/2014 22:02:29 PAGE 2   
+C51 COMPILER V7.50   MAIN                                                                  09/22/2014 22:11:17 PAGE 2   
 
   55   1              SendDataToScreen(0x000B, parameterBoard[0].boardLength);
-  56   1              SendDataToScreen(0x000D, parameterBoard[0].boardNumber);
-  57   1              SendDataToScreen(0x000F, parameterBoard[1].boardLength);
-  58   1              SendDataToScreen(0x0011, parameterBoard[1].boardNumber);
-  59   1              SendDataToScreen(0x0013, parameterBoard[2].boardLength);
-  60   1              SendDataToScreen(0x0015, parameterBoard[2].boardNumber);
-  61   1              SendDataToScreen(0x0017, parameterBoard[3].boardLength);
-  62   1              SendDataToScreen(0x0019, parameterBoard[3].boardNumber);
-  63   1              if(!powerMode && !runMode)
-  64   1              {
-  65   2                      SendDataToScreen(0x0000, 0x0000);
-  66   2              }
-  67   1              else if(!powerMode && runMode)
+  56   1              SendDataToScreen(0x0030, parameterBoard[0].boardDecLength);
+  57   1              SendDataToScreen(0x000D, parameterBoard[0].boardNumber);
+  58   1              SendDataToScreen(0x000F, parameterBoard[1].boardLength);
+  59   1              SendDataToScreen(0x0032, parameterBoard[1].boardDecLength);
+  60   1              SendDataToScreen(0x0011, parameterBoard[1].boardNumber);
+  61   1              SendDataToScreen(0x0013, parameterBoard[2].boardLength);
+  62   1              SendDataToScreen(0x0034, parameterBoard[2].boardDecLength);
+  63   1              SendDataToScreen(0x0015, parameterBoard[2].boardNumber);
+  64   1              SendDataToScreen(0x0017, parameterBoard[3].boardLength);
+  65   1              SendDataToScreen(0x0036, parameterBoard[3].boardDecLength);
+  66   1              SendDataToScreen(0x0019, parameterBoard[3].boardNumber);
+  67   1              if(!powerMode && !runMode)
   68   1              {
-  69   2                      SendDataToScreen(0x0000, 0x0001);
+  69   2                      SendDataToScreen(0x0000, 0x0000);
   70   2              }
-  71   1              else if(powerMode && !runMode)
+  71   1              else if(!powerMode && runMode)
   72   1              {
-  73   2                      SendDataToScreen(0x0000, 0x0002);
+  73   2                      SendDataToScreen(0x0000, 0x0001);
   74   2              }
-  75   1              else
+  75   1              else if(powerMode && !runMode)
   76   1              {
-  77   2                      SendDataToScreen(0x0000, 0x0003);
+  77   2                      SendDataToScreen(0x0000, 0x0002);
   78   2              }
-  79   1              SendDataToScreen(0x001B, settingBoardLength);
-  80   1              SendDataToScreen(0x001D, settingBoardNumber);
-  81   1              SendDataToScreen(0x001F, currentlyBoardLength);
-  82   1              SendDataToScreen(0x0021, currentlyBoardNumber);
-  83   1      }
-  84          
-  85          /***************************************************************************/
-  86          // 主函数
-  87          // 参数：无
-  88          // 返回值：无   
+  79   1              else
+  80   1              {
+  81   2                      SendDataToScreen(0x0000, 0x0003);
+  82   2              }
+  83   1              SendDataToScreen(0x001B, settingBoardLength);
+  84   1              SendDataToScreen(0x001D, settingBoardNumber);
+  85   1              SendDataToScreen(0x001F, currentlyBoardLength);
+  86   1              SendDataToScreen(0x0021, currentlyBoardNumber);
+  87   1      }
+  88          
   89          /***************************************************************************/
-  90          void main()
-  91          {
-  92   1              exterInterInit();
-  93   1              uart_init();
-  94   1              //timer_init();
-  95   1              parameter_init();
-  96   1              maxSignalNum = (65535 * sysParm1_SignalNumPerMeter)/1000-2000;
-  97   1              while(1)
-  98   1              {
-  99   2                      currentlyBoardLength = (currentlySignalNum*1000)/sysParm1_SignalNumPerMeter;    
- 100   2                      parameter_send_screen();
- 101   2                      //SendDataToScreen(0x001F, currentlyBoardLength);
- 102   2                      if(uartReceiveOK)
- 103   2                      {
- 104   3                              uartReceiveOK = 0;
- 105   3                              //anyData();
- 106   3                      }
- 107   2                      TestOut = ! TestOut;   
- 108   2                      if(KeyAutoManual == 1)
- 109   2                      {
- 110   3                              runMode = 1;
- 111   3                      }
- 112   2                      else
+  90          // 主函数
+  91          // 参数：无
+  92          // 返回值：无   
+  93          /***************************************************************************/
+  94          void main()
+  95          {
+  96   1              exterInterInit();
+  97   1              uart_init();
+  98   1              //timer_init();
+  99   1              parameter_init();
+ 100   1              maxSignalNum = (65535 * sysParm1_SignalNumPerMeter)/1000-2000;
+ 101   1              while(1)
+ 102   1              {
+ 103   2                      currentlyBoardLength = (currentlySignalNum*1000)/sysParm1_SignalNumPerMeter;    
+ 104   2                      parameter_send_screen();
+ 105   2                      //SendDataToScreen(0x001F, currentlyBoardLength);
+ 106   2                      if(uartReceiveOK)
+ 107   2                      {
+ 108   3                              uartReceiveOK = 0;
+ 109   3                              //anyData();
+ 110   3                      }
+ 111   2                      TestOut = ! TestOut;   
+ 112   2                      if(KeyAutoManual == 1)
  113   2                      {
- 114   3                              runMode = 0;
- 115   3                      } 
- 116   2                      Key_Scan();
-C51 COMPILER V7.50   MAIN                                                                  09/21/2014 22:02:29 PAGE 3   
+ 114   3                              runMode = 1;
+ 115   3                      }
+ 116   2                      else
+C51 COMPILER V7.50   MAIN                                                                  09/22/2014 22:11:17 PAGE 3   
 
- 117   2                      ManiDispatch();
- 118   2                      SubDispatch();
- 119   2              }   
- 120   1      }
- 121          
- 122          
- 123          
- 124          
+ 117   2                      {
+ 118   3                              runMode = 0;
+ 119   3                      } 
+ 120   2                      Key_Scan();
+ 121   2                      ManiDispatch();
+ 122   2                      SubDispatch();
+ 123   2              }   
+ 124   1      }
  125          
  126          
  127          
  128          
+ 129          
+ 130          
+ 131          
+ 132          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    680    ----
+   CODE SIZE        =    740    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

@@ -53,6 +53,7 @@ sbit TestOut		  		= P2^7;  //	测试输出
 struct Board  //板材结构体
 {
 	unsigned int boardLength;   //板材长度
+	unsigned int boardDecLength;   //板材递减长度
 	unsigned int boardNumber;	//板材数量
 };
 

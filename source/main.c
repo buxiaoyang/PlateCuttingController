@@ -53,12 +53,16 @@ void parameter_send_screen()
 	SendDataToScreen(0x0007, sysParm4);
 	SendDataToScreen(0x0009, sysParm5);
 	SendDataToScreen(0x000B, parameterBoard[0].boardLength);
+	SendDataToScreen(0x0030, parameterBoard[0].boardDecLength);
 	SendDataToScreen(0x000D, parameterBoard[0].boardNumber);
 	SendDataToScreen(0x000F, parameterBoard[1].boardLength);
+	SendDataToScreen(0x0032, parameterBoard[1].boardDecLength);
 	SendDataToScreen(0x0011, parameterBoard[1].boardNumber);
 	SendDataToScreen(0x0013, parameterBoard[2].boardLength);
+	SendDataToScreen(0x0034, parameterBoard[2].boardDecLength);
 	SendDataToScreen(0x0015, parameterBoard[2].boardNumber);
 	SendDataToScreen(0x0017, parameterBoard[3].boardLength);
+	SendDataToScreen(0x0036, parameterBoard[3].boardDecLength);
 	SendDataToScreen(0x0019, parameterBoard[3].boardNumber);
 	if(!powerMode && !runMode)
 	{
