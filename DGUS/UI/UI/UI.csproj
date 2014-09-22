@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{145CDB78-2EF1-416E-800C-A85C4A7F50FD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UI</RootNamespace>
+    <AssemblyName>UI</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Copy of Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Copy of Form1.Designer.cs">
+      <DependentUpon>Copy of Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="金属\板材参数_按钮效果.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="金属\板材参数_按钮效果.Designer.cs">
+      <DependentUpon>板材参数_按钮效果.cs</DependentUpon>
+    </Compile>
+    <Compile Include="金属\运行画面_图标.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="金属\运行画面_图标.Designer.cs">
+      <DependentUpon>运行画面_图标.cs</DependentUpon>
+    </Compile>
+    <Compile Include="金属\数字键盘_按钮效果.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="金属\数字键盘_按钮效果.Designer.cs">
+      <DependentUpon>数字键盘_按钮效果.cs</DependentUpon>
+    </Compile>
+    <Compile Include="金属\手动操作_按钮效果.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="金属\手动操作_按钮效果.Designer.cs">
+      <DependentUpon>手动操作_按钮效果.cs</DependentUpon>
+    </Compile>
+    <Compile Include="金属\系统参数_按钮效果.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="金属\系统参数_按钮效果.Designer.cs">
+      <DependentUpon>系统参数_按钮效果.cs</DependentUpon>
+    </Compile>
+    <Compile Include="金属\主菜单.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="金属\主菜单.Designer.cs">
+      <DependentUpon>主菜单.cs</DependentUpon>
+    </Compile>
+    <Compile Include="金属\板材参数.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="金属\板材参数.Designer.cs">
+      <DependentUpon>板材参数.cs</DependentUpon>
+    </Compile>
+    <Compile Include="金属\运行画面.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="金属\运行画面.Designer.cs">
+      <DependentUpon>运行画面.cs</DependentUpon>
+    </Compile>
+    <Compile Include="金属\主菜单_按钮效果.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="金属\主菜单_按钮效果.Designer.cs">
+      <DependentUpon>主菜单_按钮效果.cs</DependentUpon>
+    </Compile>
+    <Compile Include="金属\手动操作.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="金属\手动操作.Designer.cs">
+      <DependentUpon>手动操作.cs</DependentUpon>
+    </Compile>
+    <Compile Include="金属\数字键盘.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="金属\数字键盘.Designer.cs">
+      <DependentUpon>数字键盘.cs</DependentUpon>
+    </Compile>
+    <Compile Include="金属\系统参数.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="金属\系统参数.Designer.cs">
+      <DependentUpon>系统参数.cs</DependentUpon>
+    </Compile>
+    <Compile Include="金属\运行画面_按钮效果.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="金属\运行画面_按钮效果.Designer.cs">
+      <DependentUpon>运行画面_按钮效果.cs</DependentUpon>
+    </Compile>
+    <Compile Include="普通\手动操作.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="普通\手动操作.Designer.cs">
+      <DependentUpon>手动操作.cs</DependentUpon>
+    </Compile>
+    <Compile Include="普通\运行画面.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="普通\运行画面.Designer.cs">
+      <DependentUpon>运行画面.cs</DependentUpon>
+    </Compile>
+    <Compile Include="普通\板材参数.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="普通\板材参数.Designer.cs">
+      <DependentUpon>板材参数.cs</DependentUpon>
+    </Compile>
+    <Compile Include="普通\系统参数.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="普通\系统参数.Designer.cs">
+      <DependentUpon>系统参数.cs</DependentUpon>
+    </Compile>
+    <Compile Include="普通\主菜单.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="普通\主菜单.Designer.cs">
+      <DependentUpon>主菜单.cs</DependentUpon>
+    </Compile>
+    <Compile Include="普通\数字键盘.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="普通\数字键盘.Designer.cs">
+      <DependentUpon>数字键盘.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Copy of Form1.resx">
+      <DependentUpon>Copy of Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="金属\板材参数_按钮效果.resx">
+      <DependentUpon>板材参数_按钮效果.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="金属\运行画面_图标.resx">
+      <DependentUpon>运行画面_图标.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="金属\数字键盘_按钮效果.resx">
+      <DependentUpon>数字键盘_按钮效果.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="金属\手动操作_按钮效果.resx">
+      <DependentUpon>手动操作_按钮效果.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="金属\系统参数_按钮效果.resx">
+      <DependentUpon>系统参数_按钮效果.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="金属\主菜单.resx">
+      <DependentUpon>主菜单.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="金属\板材参数.resx">
+      <DependentUpon>板材参数.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="金属\运行画面.resx">
+      <DependentUpon>运行画面.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="金属\主菜单_按钮效果.resx">
+      <DependentUpon>主菜单_按钮效果.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="金属\手动操作.resx">
+      <DependentUpon>手动操作.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="金属\数字键盘.resx">
+      <DependentUpon>数字键盘.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="金属\系统参数.resx">
+      <DependentUpon>系统参数.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="金属\运行画面_按钮效果.resx">
+      <DependentUpon>运行画面_按钮效果.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="普通\手动操作.resx">
+      <DependentUpon>手动操作.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="普通\运行画面.resx">
+      <DependentUpon>运行画面.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="普通\板材参数.resx">
+      <DependentUpon>板材参数.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="普通\系统参数.resx">
+      <DependentUpon>系统参数.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="普通\主菜单.resx">
+      <DependentUpon>主菜单.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="普通\数字键盘.resx">
+      <DependentUpon>数字键盘.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\金属背景.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\素材天下sucaitianxia.com-pic495.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\素材天下sucaitianxia.com-pic4951.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\素材天下sucaitianxia.com-pic4952.bmp" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
