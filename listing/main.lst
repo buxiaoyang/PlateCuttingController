@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   MAIN                                                                  09/22/2014 22:11:17 PAGE 1   
+C51 COMPILER V7.50   MAIN                                                                  09/23/2014 22:06:01 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   52   1              SendDataToScreen(0x0005, sysParm3);
   53   1              SendDataToScreen(0x0007, sysParm4);
   54   1              SendDataToScreen(0x0009, sysParm5);
-C51 COMPILER V7.50   MAIN                                                                  09/22/2014 22:11:17 PAGE 2   
+C51 COMPILER V7.50   MAIN                                                                  09/23/2014 22:06:01 PAGE 2   
 
   55   1              SendDataToScreen(0x000B, parameterBoard[0].boardLength);
   56   1              SendDataToScreen(0x0030, parameterBoard[0].boardDecLength);
@@ -92,51 +92,51 @@ line level    source
   80   1              {
   81   2                      SendDataToScreen(0x0000, 0x0003);
   82   2              }
-  83   1              SendDataToScreen(0x001B, settingBoardLength);
-  84   1              SendDataToScreen(0x001D, settingBoardNumber);
-  85   1              SendDataToScreen(0x001F, currentlyBoardLength);
-  86   1              SendDataToScreen(0x0021, currentlyBoardNumber);
-  87   1      }
-  88          
-  89          /***************************************************************************/
-  90          // 主函数
-  91          // 参数：无
-  92          // 返回值：无   
-  93          /***************************************************************************/
-  94          void main()
-  95          {
-  96   1              exterInterInit();
-  97   1              uart_init();
-  98   1              //timer_init();
-  99   1              parameter_init();
- 100   1              maxSignalNum = (65535 * sysParm1_SignalNumPerMeter)/1000-2000;
- 101   1              while(1)
- 102   1              {
- 103   2                      currentlyBoardLength = (currentlySignalNum*1000)/sysParm1_SignalNumPerMeter;    
- 104   2                      parameter_send_screen();
- 105   2                      //SendDataToScreen(0x001F, currentlyBoardLength);
- 106   2                      if(uartReceiveOK)
- 107   2                      {
- 108   3                              uartReceiveOK = 0;
- 109   3                              //anyData();
- 110   3                      }
- 111   2                      TestOut = ! TestOut;   
- 112   2                      if(KeyAutoManual == 1)
- 113   2                      {
- 114   3                              runMode = 1;
- 115   3                      }
- 116   2                      else
-C51 COMPILER V7.50   MAIN                                                                  09/22/2014 22:11:17 PAGE 3   
+  83   1              SendDataToScreen(0x0038, HydClamStatus);
+  84   1              SendDataToScreen(0x001B, settingBoardLength);
+  85   1              SendDataToScreen(0x001D, settingBoardNumber);
+  86   1              SendDataToScreen(0x001F, currentlyBoardLength);
+  87   1              SendDataToScreen(0x0021, currentlyBoardNumber);
+  88   1      }
+  89          
+  90          /***************************************************************************/
+  91          // 主函数
+  92          // 参数：无
+  93          // 返回值：无   
+  94          /***************************************************************************/
+  95          void main()
+  96          {
+  97   1              exterInterInit();
+  98   1              uart_init();
+  99   1              //timer_init();
+ 100   1              parameter_init();
+ 101   1              maxSignalNum = (65535 * sysParm1_SignalNumPerMeter)/1000-2000;
+ 102   1              while(1)
+ 103   1              {
+ 104   2                      currentlyBoardLength = (currentlySignalNum*1000)/sysParm1_SignalNumPerMeter;    
+ 105   2                      parameter_send_screen();
+ 106   2                      //SendDataToScreen(0x001F, currentlyBoardLength);
+ 107   2                      if(uartReceiveOK)
+ 108   2                      {
+ 109   3                              uartReceiveOK = 0;
+ 110   3                              //anyData();
+ 111   3                      }
+ 112   2                      TestOut = ! TestOut;   
+ 113   2                      if(KeyAutoManual == 1)
+ 114   2                      {
+ 115   3                              runMode = 1;
+ 116   3                      }
+C51 COMPILER V7.50   MAIN                                                                  09/23/2014 22:06:01 PAGE 3   
 
- 117   2                      {
- 118   3                              runMode = 0;
- 119   3                      } 
- 120   2                      Key_Scan();
- 121   2                      ManiDispatch();
- 122   2                      SubDispatch();
- 123   2              }   
- 124   1      }
- 125          
+ 117   2                      else
+ 118   2                      {
+ 119   3                              runMode = 0;
+ 120   3                      } 
+ 121   2                      Key_Scan();
+ 122   2                      ManiDispatch();
+ 123   2                      SubDispatch();
+ 124   2              }   
+ 125   1      }
  126          
  127          
  128          
@@ -144,10 +144,11 @@ line level    source
  130          
  131          
  132          
+ 133          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    740    ----
+   CODE SIZE        =    755    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

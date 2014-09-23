@@ -4,7 +4,7 @@
 <h1>µVision3 Build Log</h1>
 <h2>Project:</h2>
 C:\ShareXP\GitHub\PlateCuttingController\trunk\PlateCuttingController.uv2
-Project File Date:  08/05/2014
+Project File Date:  09/23/2014
 
 <h2>Output:</h2>
 Build target 'Target 1'
@@ -36,7 +36,7 @@ linking...
     SEGMENT: ?PR?_SENDSTRING?UART
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?TIMER_INIT?TIMER
-Program Size: data=17.2 xdata=88 code=2971
+Program Size: data=17.2 xdata=90 code=3041
 creating hex file from ".\output\PlateCuttingController"...
 ".\output\PlateCuttingController" - 0 Error(s), 9 Warning(s).
 Build target 'Target 1'
@@ -68,7 +68,7 @@ linking...
     SEGMENT: ?PR?_SENDSTRING?UART
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?TIMER_INIT?TIMER
-Program Size: data=17.2 xdata=88 code=3031
+Program Size: data=17.2 xdata=90 code=3095
 creating hex file from ".\output\PlateCuttingController"...
 ".\output\PlateCuttingController" - 0 Error(s), 9 Warning(s).
 Build target 'Target 1'
@@ -100,102 +100,6 @@ linking...
     SEGMENT: ?PR?_SENDSTRING?UART
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?TIMER_INIT?TIMER
-Program Size: data=17.2 xdata=88 code=3031
-creating hex file from ".\output\PlateCuttingController"...
-".\output\PlateCuttingController" - 0 Error(s), 9 Warning(s).
-Build target 'Target 1'
-assembling STARTUP.A51...
-compiling main.c...
-compiling basefunc.c...
-compiling parameter.c...
-compiling eeprom.c...
-compiling uart.c...
-compiling timer.c...
-compiling key.c...
-compiling dispatch.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_DELAY_MS?BASEFUNC
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_READ?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_DELAY?EEPROM
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_IAPREADBYTE?EEPROM
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_IAPERASESECTOR?EEPROM
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SENDSTRING?UART
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TIMER_INIT?TIMER
-Program Size: data=17.2 xdata=88 code=3039
-creating hex file from ".\output\PlateCuttingController"...
-".\output\PlateCuttingController" - 0 Error(s), 9 Warning(s).
-Build target 'Target 1'
-assembling STARTUP.A51...
-compiling main.c...
-compiling basefunc.c...
-compiling parameter.c...
-compiling eeprom.c...
-compiling uart.c...
-compiling timer.c...
-compiling key.c...
-compiling dispatch.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_DELAY_MS?BASEFUNC
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_READ?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_DELAY?EEPROM
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_IAPREADBYTE?EEPROM
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_IAPERASESECTOR?EEPROM
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SENDSTRING?UART
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TIMER_INIT?TIMER
-Program Size: data=17.2 xdata=88 code=3039
-creating hex file from ".\output\PlateCuttingController"...
-".\output\PlateCuttingController" - 0 Error(s), 9 Warning(s).
-Build target 'Target 1'
-assembling STARTUP.A51...
-compiling main.c...
-compiling basefunc.c...
-compiling parameter.c...
-compiling eeprom.c...
-compiling uart.c...
-compiling timer.c...
-compiling key.c...
-compiling dispatch.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_DELAY_MS?BASEFUNC
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_READ?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_DELAY?EEPROM
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_IAPREADBYTE?EEPROM
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_IAPERASESECTOR?EEPROM
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SENDSTRING?UART
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?TIMER_INIT?TIMER
-Program Size: data=17.2 xdata=88 code=3039
+Program Size: data=17.2 xdata=90 code=3095
 creating hex file from ".\output\PlateCuttingController"...
 ".\output\PlateCuttingController" - 0 Error(s), 9 Warning(s).

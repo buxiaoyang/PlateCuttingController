@@ -80,6 +80,7 @@ void parameter_send_screen()
 	{
 		SendDataToScreen(0x0000, 0x0003);
 	}
+	SendDataToScreen(0x0038, HydClamStatus);
 	SendDataToScreen(0x001B, settingBoardLength);
 	SendDataToScreen(0x001D, settingBoardNumber);
 	SendDataToScreen(0x001F, currentlyBoardLength);

@@ -18,6 +18,9 @@
 /***************************************************************************/
 unsigned int powerMode; //启动状态 0关闭 1启动
 unsigned int runMode; //运行模式 0手动模式 1自动模式
+
+unsigned int HydClamStatus; //液压剪刀状态 0：关闭  1：打开
+
 struct Board parameterBoard[4];	//板材参数
 
 unsigned int sysParm1_SignalNumPerMeter; //系统参数一：一米距离编码器的信号数
@@ -55,7 +58,7 @@ void parameter_init()
 {
 	powerMode = 0;	//启动状态 0关闭 1启动
 	runMode = 0;
-
+	HydClamStatus = 0;
 	sysParm1_SignalNumPerMeter =  1000;
 	sysParm2_ErrorCorrectionValue = 100;
 	sysParm3 = 0;

@@ -256,6 +256,17 @@ void anyData()
 	{
 		parameterBoard[3].boardDecLength = dat;
 	}
+	else if(uartBuffer[2] == 0x38)	//液压剪刀状态
+	{
+		if(HydClamStatus == 1)
+		{
+			HydClamStatus = 0;
+		}
+		else
+		{
+			HydClamStatus = 1;
+		}
+	}
 	else if(uartBuffer[2] == 0x23)	//手动操作_前进
 	{
 

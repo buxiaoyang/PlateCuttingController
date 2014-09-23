@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   KEY                                                                   09/22/2014 22:11:19 PAGE 1   
+C51 COMPILER V7.50   KEY                                                                   09/23/2014 22:06:10 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE KEY
@@ -62,7 +62,7 @@ line level    source
   52   2                              {
   53   3                                      //ÒºÑ¹Ç¯Êä³ö
   54   3                                      if(!runMode) //ÊÖ¶¯×´Ì¬
-C51 COMPILER V7.50   KEY                                                                   09/22/2014 22:11:19 PAGE 2   
+C51 COMPILER V7.50   KEY                                                                   09/23/2014 22:06:10 PAGE 2   
 
   55   3                                      {
   56   4                                              

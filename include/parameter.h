@@ -66,6 +66,7 @@ unsigned char parameter_save();
 
 extern unsigned int powerMode; //启动
 extern unsigned int runMode; //运行模式
+extern unsigned int HydClamStatus; //液压剪刀状态 0：关闭  1：打开
 extern struct Board parameterBoard[4];	//板材参数
 
 extern unsigned int sysParm1_SignalNumPerMeter; //系统参数一：一米距离编码器的信号数
