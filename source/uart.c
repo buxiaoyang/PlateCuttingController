@@ -29,7 +29,8 @@ sfr IE2   = 0xaf;           //Interrupt control 2
 #define S2TB8 0x08          //S2CON.3
 
 bit busy;
-bit uartReceiveOK = 0;
+bit freshDiaplay = 0;
+bit saveSetting = 0;
 
 BYTE uartBuffer[15] = {0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff};
 
@@ -58,7 +59,7 @@ void uart_init()
 #endif
 
     BRT = -(FOSC/32/BAUD);  //Set auto-reload vaule of baudrate generator
-    AUXR = 0x14;            //Baudrate generator work in 1T mode
+    AUXR |= 0x14;            //Baudrate generator work in 1T mode
     IE2 = 0x01;             //Enable UART2 interrupt
     EA = 1;                 //Open master interrupt switch
 
@@ -191,10 +192,12 @@ void anyData()
 	{
 		sysParm1_SignalNumPerMeter = dat;
 		maxSignalNum = (65535 * sysParm1_SignalNumPerMeter)/1000-2000;
+		saveSetting = 1;
 	}
 	else if(uartBuffer[2] == 0x03)	//系统参数2
 	{
 		sysParm2_ErrorCorrectionValue = dat;
+		saveSetting = 1;
 	}
 	else if(uartBuffer[2] == 0x05) 	//系统参数3
 	{
@@ -291,5 +294,5 @@ void anyData()
 	{
 		
 	}
-	uartReceiveOK = 1;	
+	freshDiaplay = 1;	
 }

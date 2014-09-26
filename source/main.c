@@ -34,7 +34,8 @@ void exint0() interrupt 0           //(location at 0003H)
 		{
 		   	currentlySignalNum ++;
 		}
-	}	
+	}
+	freshDiaplay = 1;	
 }
 
 void exterInterInit()
@@ -96,32 +97,23 @@ void main()
 {
 	exterInterInit();
 	uart_init();
-	//timer_init();
+	timer_init();
 	parameter_init();
 	maxSignalNum = (65535 * sysParm1_SignalNumPerMeter)/1000-2000;
 	while(1)
 	{
-		currentlyBoardLength = (currentlySignalNum*1000)/sysParm1_SignalNumPerMeter;	
-		parameter_send_screen();
-		//SendDataToScreen(0x001F, currentlyBoardLength);
-		if(uartReceiveOK)
+		currentlyBoardLength = (currentlySignalNum*1000)/(sysParm1_SignalNumPerMeter-sysParm2_ErrorCorrectionValue);
+		if(freshDiaplay)
 		{
-			uartReceiveOK = 0;
-			//anyData();
+			freshDiaplay = 0;
+			parameter_send_screen();
 		}
-		/*
-		TestOut = ! TestOut;   
-		if(KeyAutoManual == 1)
+		if(saveSetting)
 		{
-			runMode = 1;
+			parameter_save();
+			saveSetting = 0;
 		}
-		else
-		{
-			runMode = 0;
-		} 
-		Key_Scan();
-		ManiDispatch();
-		SubDispatch();
+		//TestOut = ! TestOut;		
 	}   
 }
 

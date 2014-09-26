@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   TIMER                                                                 09/23/2014 22:06:09 PAGE 1   
+C51 COMPILER V7.50   TIMER                                                                 09/26/2014 21:13:18 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE TIMER
@@ -13,75 +13,78 @@ line level    source
    3          #include <intrins.h>
    4          #include <parameter.h>
    5          #include <key.h>
-   6          
-   7          typedef unsigned char BYTE;
-   8          typedef unsigned int WORD;
-   9          
-  10          //-----------------------------------------------
-  11          
-  12          /* define constants */
-  13          #define FOSC 11059200L
-  14          #define MODE1T                      //Timer clock mode, comment this line is 12T mode, uncomment is 1T mod
+   6          #include <dispatch.h>
+   7          
+   8          typedef unsigned char BYTE;
+   9          typedef unsigned int WORD;
+  10          
+  11          //-----------------------------------------------
+  12          
+  13          /* define constants */
+  14          #define FOSC 11059200L
+  15          #define MODE1T                      //Timer clock mode, comment this line is 12T mode, uncomment is 1T mod
              -e
-  15          
-  16          #ifdef MODE1T
-  17          #define T1MS (65536-FOSC/1000)      //1ms timer calculation method in 1T mode
-  18          #else
+  16          
+  17          #ifdef MODE1T
+  18          #define T1MS (65536-FOSC/1000)      //1ms timer calculation method in 1T mode
+  19          #else
               #define T1MS (65536-FOSC/12/1000)   //1ms timer calculation method in 12T mode
               #endif
-  21          
-  22          /* define SFR */
-  23          sfr AUXR = 0x8e;                    //Auxiliary register
-  24          
-  25          /* define variables */
-  26          WORD count;                         //1000 times counter
-  27          
-  28          //-----------------------------------------------
-  29          
-  30          /* Timer0 interrupt routine */
-  31          void tm0_isr() interrupt 1 using 1
-  32          {
-  33   1          TL0 = T1MS;                     //reload timer0 low byte
-  34   1          TH0 = T1MS >> 8;                //reload timer0 high byte
-  35   1          if (count-- == 0)               //1ms * 1000 -> 1s
-  36   1          {
-  37   2              count = 9;               //reset counter
-  38   2              TestOut = ! TestOut;   
-  39   2                      if(KeyAutoManual == 1)
-  40   2                      {
-  41   3                              runMode = 1;
-  42   3                      }
-  43   2                      else
-  44   2                      {
-  45   3                              runMode = 0;
-  46   3                      } 
-  47   2                      Key_Scan();
-  48   2          }
-  49   1      }
-  50          
-  51          //-----------------------------------------------
-  52          
-  53          /* main program */
-C51 COMPILER V7.50   TIMER                                                                 09/23/2014 22:06:09 PAGE 2   
+  22          
+  23          /* define SFR */
+  24          sfr AUXR = 0x8e;                    //Auxiliary register
+  25          
+  26          /* define variables */
+  27          WORD count;                         //1000 times counter
+  28          
+  29          //-----------------------------------------------
+  30          
+  31          /* Timer0 interrupt routine */
+  32          void tm0_isr() interrupt 1 using 1
+  33          {
+  34   1          TL0 = T1MS;                     //reload timer0 low byte
+  35   1          TH0 = T1MS >> 8;                //reload timer0 high byte
+  36   1          if (count-- == 0)               //1ms * 1000 -> 1s
+  37   1          {
+  38   2              count = 9;               //reset counter
+  39   2              //TestOut = ! TestOut;   
+  40   2                      if(KeyAutoManual == 1)
+  41   2                      {
+  42   3                              runMode = 1;
+  43   3                      }
+  44   2                      else
+  45   2                      {
+  46   3                              runMode = 0;
+  47   3                      } 
+  48   2                      Key_Scan();
+  49   2                      ManiDispatch();
+  50   2                      SubDispatch();
+  51   2          }
+  52   1      }
+  53          
+C51 COMPILER V7.50   TIMER                                                                 09/26/2014 21:13:18 PAGE 2   
 
-  54          void timer_init()
-  55          {
-  56   1      #ifdef MODE1T
-  57   1          AUXR = 0x80;                    //timer0 work in 1T mode
-  58   1      #endif
-  59   1          TMOD = 0x01;                    //set timer0 as mode1 (16-bit)
-  60   1          TL0 = T1MS;                     //initial timer0 low byte
-  61   1          TH0 = T1MS >> 8;                //initial timer0 high byte
-  62   1          TR0 = 1;                        //timer0 start running
-  63   1          ET0 = 1;                        //enable timer0 interrupt
-  64   1          EA = 1;                         //open global interrupt switch
-  65   1          count = 0;                      //initial counter
-  66   1      }
-  67          
+  54          //-----------------------------------------------
+  55          
+  56          /* main program */
+  57          void timer_init()
+  58          {
+  59   1      #ifdef MODE1T
+  60   1          AUXR |= 0x80;                    //timer0 work in 1T mode
+  61   1      #endif
+  62   1          TMOD = 0x01;                    //set timer0 as mode1 (16-bit)
+  63   1          TL0 = T1MS;                     //initial timer0 low byte
+  64   1          TH0 = T1MS >> 8;                //initial timer0 high byte
+  65   1          TR0 = 1;                        //timer0 start running
+  66   1          ET0 = 1;                        //enable timer0 interrupt
+  67   1          EA = 1;                         //open global interrupt switch
+  68   1          count = 0;                      //initial counter
+  69   1      }
+  70          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     99    ----
+   CODE SIZE        =    103    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      2    ----
    PDATA SIZE       =   ----    ----

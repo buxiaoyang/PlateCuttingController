@@ -12,6 +12,7 @@
 
 #include <parameter.h>
 #include <eeprom.h>
+#include <basefunc.h>
 
 /***************************************************************************/
 // 参数定义	
@@ -46,7 +47,16 @@ unsigned long maxSignalNum;	  //最大编码器信号数
 unsigned char parameter_read()
 {
 	unsigned char result = 1;
-	return result;
+	if(IapReadByte(IAP_ADDRESS+200) == 0xEE)
+	{
+		sysParm1_SignalNumPerMeter = ((IapReadByte(IAP_ADDRESS+0) << 8) | IapReadByte(IAP_ADDRESS+1));
+		sysParm2_ErrorCorrectionValue = ((IapReadByte(IAP_ADDRESS+2) << 8) | IapReadByte(IAP_ADDRESS+3));		
+	}
+	else
+	{
+	   	result = 0;
+	}
+	return result;	
 }
 
 /***************************************************************************/
@@ -59,8 +69,11 @@ void parameter_init()
 	powerMode = 0;	//启动状态 0关闭 1启动
 	runMode = 0;
 	HydClamStatus = 0;
-	sysParm1_SignalNumPerMeter =  1000;
-	sysParm2_ErrorCorrectionValue = 100;
+	if(!parameter_read())
+	{
+		sysParm1_SignalNumPerMeter =  1000;
+		sysParm2_ErrorCorrectionValue = 100;
+	}
 	sysParm3 = 0;
 	sysParm4 = 0;
 	sysParm5 = 0;
@@ -91,6 +104,27 @@ void parameter_init()
 unsigned char parameter_save()
 {
 	unsigned char result = 1;
+    delay_ms(10);                      //Delay
+	IapEraseSector(IAP_ADDRESS); //擦除EEPROM
+   	IapProgramByte(IAP_ADDRESS+0, (BYTE)(sysParm1_SignalNumPerMeter>>8));
+	IapProgramByte(IAP_ADDRESS+1, (BYTE)sysParm1_SignalNumPerMeter);
+	IapProgramByte(IAP_ADDRESS+2, (BYTE)(sysParm2_ErrorCorrectionValue>>8));
+	IapProgramByte(IAP_ADDRESS+3, (BYTE)sysParm2_ErrorCorrectionValue);
+	/*
+	IapProgramByte(IAP_ADDRESS+4, (BYTE)(motorStepAngle>>8));
+	IapProgramByte(IAP_ADDRESS+5, (BYTE)motorStepAngle);
+	IapProgramByte(IAP_ADDRESS+6, (BYTE)(screwPitch>>8));
+	IapProgramByte(IAP_ADDRESS+7, (BYTE)screwPitch);
+	IapProgramByte(IAP_ADDRESS+8, (BYTE)(motorReducGearRatio>>8));
+	IapProgramByte(IAP_ADDRESS+9, (BYTE)motorReducGearRatio);
+	IapProgramByte(IAP_ADDRESS+10, (BYTE)(ballScrew>>8));
+	IapProgramByte(IAP_ADDRESS+11, (BYTE)ballScrew);
+	IapProgramByte(IAP_ADDRESS+12, (BYTE)(motorRotationAngle>>8));
+	IapProgramByte(IAP_ADDRESS+13, (BYTE)motorRotationAngle);
+	
+	//refreshDisplay = 0;
+	*/
+	IapProgramByte(IAP_ADDRESS+200, 0xEE); //写入标志位
 	return result;
 }
 

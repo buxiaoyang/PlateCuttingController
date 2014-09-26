@@ -3,6 +3,7 @@
 #include <intrins.h>
 #include <parameter.h>
 #include <key.h>
+#include <dispatch.h>
 
 typedef unsigned char BYTE;
 typedef unsigned int WORD;
@@ -35,7 +36,7 @@ void tm0_isr() interrupt 1 using 1
     if (count-- == 0)               //1ms * 1000 -> 1s
     {
         count = 9;               //reset counter
-        TestOut = ! TestOut;   
+        //TestOut = ! TestOut;   
 		if(KeyAutoManual == 1)
 		{
 			runMode = 1;
@@ -45,6 +46,8 @@ void tm0_isr() interrupt 1 using 1
 			runMode = 0;
 		} 
 		Key_Scan();
+		ManiDispatch();
+		SubDispatch();
     }
 }
 
@@ -54,7 +57,7 @@ void tm0_isr() interrupt 1 using 1
 void timer_init()
 {
 #ifdef MODE1T
-    AUXR = 0x80;                    //timer0 work in 1T mode
+    AUXR |= 0x80;                    //timer0 work in 1T mode
 #endif
     TMOD = 0x01;                    //set timer0 as mode1 (16-bit)
     TL0 = T1MS;                     //initial timer0 low byte

@@ -7,7 +7,8 @@ typedef unsigned char BYTE;
 typedef unsigned int WORD;
 typedef unsigned long LONG;
 
-extern bit uartReceiveOK;
+extern bit freshDiaplay;
+extern bit saveSetting;
 
 void uart_init();
 void SendData(BYTE dat);
