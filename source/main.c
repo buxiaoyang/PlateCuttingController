@@ -109,6 +109,7 @@ void main()
 			uartReceiveOK = 0;
 			//anyData();
 		}
+		/*
 		TestOut = ! TestOut;   
 		if(KeyAutoManual == 1)
 		{
