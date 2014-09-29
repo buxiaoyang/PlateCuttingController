@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   KEY                                                                   09/29/2014 21:36:32 PAGE 1   
+C51 COMPILER V7.50   KEY                                                                   09/29/2014 22:58:23 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE KEY
@@ -62,31 +62,32 @@ line level    source
   52   3                              }
   53   2                              if(KeyHydClam == 0)
   54   2                              {
-C51 COMPILER V7.50   KEY                                                                   09/29/2014 21:36:32 PAGE 2   
+C51 COMPILER V7.50   KEY                                                                   09/29/2014 22:58:23 PAGE 2   
 
   55   3                                      //ÒºÑ¹Ç¯Êä³ö
-  56   3                                      if(!runMode) //ÊÖ¶¯×´Ì¬
+  56   3                                      if(runMode && SubDispatchSteps == 22) //×Ô¶¯×´Ì¬£¬²¢ÇÒ´¦ÓÚÒºÑ¹Ç¯µÈ´ý×´Ì¬
   57   3                                      {
-  58   4                                              
-  59   4                                      }
-  60   3                                      freshDiaplay = 1;       
-  61   3                              }
-  62   2                              Key_Scan_Steps = 3;
-  63   2                      break;
-  64   2                      case 3:
-  65   2                              if(KeyStart == 1 && KeyStop == 1 && KeyHydClam == 1)
-  66   2                              {
-  67   3                                      Key_Scan_Steps = 0;
-  68   3                              }
-  69   2                      break;
-  70   2                      default:
-  71   2                               _nop_();
-  72   2              }
-  73   1      }
+  58   4                                              HydClamDown = 0;
+  59   4                                              SubDispatchSteps = 4;
+  60   4                                      }
+  61   3                                      freshDiaplay = 1;       
+  62   3                              }
+  63   2                              Key_Scan_Steps = 3;
+  64   2                      break;
+  65   2                      case 3:
+  66   2                              if(KeyStart == 1 && KeyStop == 1 && KeyHydClam == 1)
+  67   2                              {
+  68   3                                      Key_Scan_Steps = 0;
+  69   3                              }
+  70   2                      break;
+  71   2                      default:
+  72   2                               _nop_();
+  73   2              }
+  74   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    118    ----
+   CODE SIZE        =    140    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      1    ----
    PDATA SIZE       =   ----    ----

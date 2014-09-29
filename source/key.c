@@ -53,9 +53,10 @@ void Key_Scan(void)
 			if(KeyHydClam == 0)
 			{
 				//液压钳输出
-				if(!runMode) //手动状态
+				if(runMode && SubDispatchSteps == 22) //自动状态，并且处于液压钳等待状态
 				{
-					
+					HydClamDown = 0;
+					SubDispatchSteps = 4;
 				}
 				freshDiaplay = 1;	
 			}

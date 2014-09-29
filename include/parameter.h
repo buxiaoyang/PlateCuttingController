@@ -38,13 +38,14 @@ sbit KeyStop				= P0^4;  	// 停止按钮
 
 sbit KeyHydClam				= P0^5;  	// 液压剪刀按钮，只有下手动状态下才有效。
 
+
 //输出
 sbit MotorForwardFast  		= P1^5;  //	电机前进快速
 sbit MotorBackFast  		= P1^6;  // 电机后退快速
 sbit MotorForwardSlow  		= P1^0;  //	电机前进慢速
 sbit MotorBackSlow  		= P1^1;  //	电机后退慢速
-sbit HydClamOut  			= P1^4;  //	液压剪刀输出
-sbit HydClamStop  			= P2^5;  //	液压剪刀关闭
+sbit HydClamDown  			= P1^4;  //	液压剪刀输出(向下)
+sbit HydClamUp  			= P2^5;  //	液压剪刀关闭（向上）
 sbit HydMonitorOut  		= P1^7;  //	液压电机输出
 sbit SystemAlarm	  		= P2^4;  //	系统报警指示灯
 sbit TestOut		  		= P2^7;  //	测试输出

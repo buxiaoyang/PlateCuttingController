@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   TIMER                                                                 09/29/2014 21:36:32 PAGE 1   
+C51 COMPILER V7.50   TIMER                                                                 09/29/2014 22:58:23 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE TIMER
@@ -62,7 +62,7 @@ line level    source
   51   2                      /////////////////////////////// 
   52   2                      count = 9;               //reset counter
   53   2          }
-C51 COMPILER V7.50   TIMER                                                                 09/29/2014 21:36:32 PAGE 2   
+C51 COMPILER V7.50   TIMER                                                                 09/29/2014 22:58:23 PAGE 2   
 
   54   1      }
   55          
