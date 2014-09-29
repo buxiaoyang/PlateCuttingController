@@ -5,3 +5,5 @@ C:\Users\bux\Projects\Visual Studio 2010\UI\UI\obj\x86\Debug\UI.Properties.Resou
 C:\Users\bux\Projects\Visual Studio 2010\UI\UI\obj\x86\Debug\UI.csproj.GenerateResource.Cache
 C:\Users\bux\Projects\Visual Studio 2010\UI\UI\obj\x86\Debug\UI.exe
 C:\Users\bux\Projects\Visual Studio 2010\UI\UI\obj\x86\Debug\UI.pdb
+C:\Users\bux\Projects\GitHub\PlateCuttingController\trunk\DGUS\UI\UI\obj\x86\Debug\UI.exe
+C:\Users\bux\Projects\GitHub\PlateCuttingController\trunk\DGUS\UI\UI\obj\x86\Debug\UI.pdb
