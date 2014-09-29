@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   DISPATCH                                                              09/29/2014 22:58:23 PAGE 1   
+C51 COMPILER V7.50   DISPATCH                                                              09/29/2014 22:59:56 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE DISPATCH
@@ -62,7 +62,7 @@ line level    source
   50   2                              if(SubDispatchSteps == 20)
   51   2                              {
   52   3                                      currentSettingBoardNum --;
-C51 COMPILER V7.50   DISPATCH                                                              09/29/2014 22:58:23 PAGE 2   
+C51 COMPILER V7.50   DISPATCH                                                              09/29/2014 22:59:56 PAGE 2   
 
   53   3                                      currentlyBoardNumber ++;
   54   3                                      if(currentSettingBoardNum > 0)
@@ -126,7 +126,7 @@ line level    source
  112   3                                      MotorForwardFast = 0;
  113   3                                      SubDispatchSteps ++;    
  114   3                              }       
-C51 COMPILER V7.50   DISPATCH                                                              09/29/2014 22:58:23 PAGE 3   
+C51 COMPILER V7.50   DISPATCH                                                              09/29/2014 22:59:56 PAGE 3   
 
  115   2                      break;
  116   2                      case 2: //2：到达设置长度八分之七，电机变为慢速
@@ -190,7 +190,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    XDATA SIZE       =      4       4
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
-C51 COMPILER V7.50   DISPATCH                                                              09/29/2014 22:58:23 PAGE 4   
+C51 COMPILER V7.50   DISPATCH                                                              09/29/2014 22:59:56 PAGE 4   
 
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----

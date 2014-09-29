@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   UART                                                                  09/29/2014 22:58:22 PAGE 1   
+C51 COMPILER V7.50   UART                                                                  09/29/2014 22:59:55 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE UART
@@ -62,7 +62,7 @@ line level    source
   52          {
   53   1      #if (PARITYBIT == NONE_PARITY)
   54   1          S2CON = 0x50;           //8-bit variable UART
-C51 COMPILER V7.50   UART                                                                  09/29/2014 22:58:22 PAGE 2   
+C51 COMPILER V7.50   UART                                                                  09/29/2014 22:59:55 PAGE 2   
 
   55   1      #elif (PARITYBIT == ODD_PARITY) || (PARITYBIT == EVEN_PARITY) || (PARITYBIT == MARK_PARITY)
                   S2CON = 0xda;           //9-bit variable UART, parity bit initial to 1
@@ -126,7 +126,7 @@ line level    source
  114   1          busy = 1;
  115   1          S2BUF = ACC;            //Send data to UART2 buffer
  116   1      }
-C51 COMPILER V7.50   UART                                                                  09/29/2014 22:58:22 PAGE 3   
+C51 COMPILER V7.50   UART                                                                  09/29/2014 22:59:55 PAGE 3   
 
  117          
  118          /*----------------------------
@@ -190,7 +190,7 @@ line level    source
  176   2                              if(dataIndex >= dataLength)
  177   2                              {
  178   3                                      anyData();
-C51 COMPILER V7.50   UART                                                                  09/29/2014 22:58:22 PAGE 4   
+C51 COMPILER V7.50   UART                                                                  09/29/2014 22:59:55 PAGE 4   
 
  179   3                                      receiveSteps = 0;
  180   3                              }
@@ -254,7 +254,7 @@ line level    source
  238   1              else if(uartBuffer[2] == 0x17)  //板材参数_板长4
  239   1              {
  240   2                      parameterBoard[3].boardLength = dat;
-C51 COMPILER V7.50   UART                                                                  09/29/2014 22:58:22 PAGE 5   
+C51 COMPILER V7.50   UART                                                                  09/29/2014 22:59:55 PAGE 5   
 
  241   2              }
  242   1              else if(uartBuffer[2] == 0x19)  //板材参数_块数4
@@ -318,7 +318,7 @@ line level    source
  300   2                      
  301   2              }
  302   1              else if(uartBuffer[2] == 0x27)  //手动操作_切断下
-C51 COMPILER V7.50   UART                                                                  09/29/2014 22:58:22 PAGE 6   
+C51 COMPILER V7.50   UART                                                                  09/29/2014 22:59:55 PAGE 6   
 
  303   1              {
  304   2                      
