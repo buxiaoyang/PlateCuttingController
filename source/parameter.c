@@ -21,6 +21,7 @@ unsigned int powerMode; //启动状态 0关闭 1启动
 unsigned int runMode; //运行模式 0手动模式 1自动模式
 
 unsigned int HydClamStatus; //液压剪刀状态 0：关闭  1：打开
+unsigned int HydMonitorStatus; //液压电机状态 0：关闭  1：打开
 
 struct Board parameterBoard[4];	//板材参数
 
@@ -35,6 +36,8 @@ unsigned int settingBoardNumber; //设定块数
 
 unsigned int currentlyBoardLength; //已做长度
 unsigned int currentlyBoardNumber; //已做块数
+
+unsigned int errorCorrectionBoardLength; //修正的板子误差长度
 
 unsigned long currentlySignalNum; //当前编码器信号数
 unsigned long maxSignalNum;	  //最大编码器信号数
@@ -69,6 +72,7 @@ void parameter_init()
 	powerMode = 0;	//启动状态 0关闭 1启动
 	runMode = 0;
 	HydClamStatus = 0;
+	HydMonitorStatus = 0;
 	if(!parameter_read())
 	{
 		sysParm1_SignalNumPerMeter =  1000;

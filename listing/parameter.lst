@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   PARAMETER                                                             09/26/2014 21:13:17 PAGE 1   
+C51 COMPILER V7.50   PARAMETER                                                             09/29/2014 21:36:30 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE PARAMETER
@@ -31,124 +31,128 @@ line level    source
   21          unsigned int runMode; //运行模式 0手动模式 1自动模式
   22          
   23          unsigned int HydClamStatus; //液压剪刀状态 0：关闭  1：打开
-  24          
-  25          struct Board parameterBoard[4]; //板材参数
-  26          
-  27          unsigned int sysParm1_SignalNumPerMeter; //系统参数一：一米距离编码器的信号数
-  28          unsigned int sysParm2_ErrorCorrectionValue; //系统参数二：误差修正值，信号数
-  29          unsigned int sysParm3; //系统参数三
-  30          unsigned int sysParm4; //系统参数四
-  31          unsigned int sysParm5; //系统参数五
-  32          
-  33          unsigned int settingBoardLength; //设定长度
-  34          unsigned int settingBoardNumber; //设定块数
-  35          
-  36          unsigned int currentlyBoardLength; //已做长度
-  37          unsigned int currentlyBoardNumber; //已做块数
-  38          
-  39          unsigned long currentlySignalNum; //当前编码器信号数
-  40          unsigned long maxSignalNum;       //最大编码器信号数
+  24          unsigned int HydMonitorStatus; //液压电机状态 0：关闭  1：打开
+  25          
+  26          struct Board parameterBoard[4]; //板材参数
+  27          
+  28          unsigned int sysParm1_SignalNumPerMeter; //系统参数一：一米距离编码器的信号数
+  29          unsigned int sysParm2_ErrorCorrectionValue; //系统参数二：误差修正值，信号数
+  30          unsigned int sysParm3; //系统参数三
+  31          unsigned int sysParm4; //系统参数四
+  32          unsigned int sysParm5; //系统参数五
+  33          
+  34          unsigned int settingBoardLength; //设定长度
+  35          unsigned int settingBoardNumber; //设定块数
+  36          
+  37          unsigned int currentlyBoardLength; //已做长度
+  38          unsigned int currentlyBoardNumber; //已做块数
+  39          
+  40          unsigned int errorCorrectionBoardLength; //修正的板子误差长度
   41          
-  42          /***************************************************************************/
-  43          // 读取参数
-  44          // 参数：无
-  45          // 返回值：0失败 1成功  
-  46          /***************************************************************************/
-  47          unsigned char parameter_read()
-  48          {
-  49   1              unsigned char result = 1;
-  50   1              if(IapReadByte(IAP_ADDRESS+200) == 0xEE)
-  51   1              {
-  52   2                      sysParm1_SignalNumPerMeter = ((IapReadByte(IAP_ADDRESS+0) << 8) | IapReadByte(IAP_ADDRESS+1));
-  53   2                      sysParm2_ErrorCorrectionValue = ((IapReadByte(IAP_ADDRESS+2) << 8) | IapReadByte(IAP_ADDRESS+3));               
-  54   2              }
-C51 COMPILER V7.50   PARAMETER                                                             09/26/2014 21:13:17 PAGE 2   
+  42          unsigned long currentlySignalNum; //当前编码器信号数
+  43          unsigned long maxSignalNum;       //最大编码器信号数
+  44          
+  45          /***************************************************************************/
+  46          // 读取参数
+  47          // 参数：无
+  48          // 返回值：0失败 1成功  
+  49          /***************************************************************************/
+  50          unsigned char parameter_read()
+  51          {
+  52   1              unsigned char result = 1;
+  53   1              if(IapReadByte(IAP_ADDRESS+200) == 0xEE)
+  54   1              {
+C51 COMPILER V7.50   PARAMETER                                                             09/29/2014 21:36:30 PAGE 2   
 
-  55   1              else
-  56   1              {
-  57   2                      result = 0;
-  58   2              }
-  59   1              return result;  
-  60   1      }
-  61          
-  62          /***************************************************************************/
-  63          // 参数初始化函数
-  64          // 参数：无
-  65          // 返回值：无   
-  66          /***************************************************************************/
-  67          void parameter_init()
-  68          {
-  69   1              powerMode = 0;  //启动状态 0关闭 1启动
-  70   1              runMode = 0;
-  71   1              HydClamStatus = 0;
-  72   1              if(!parameter_read())
-  73   1              {
-  74   2                      sysParm1_SignalNumPerMeter =  1000;
-  75   2                      sysParm2_ErrorCorrectionValue = 100;
-  76   2              }
-  77   1              sysParm3 = 0;
-  78   1              sysParm4 = 0;
-  79   1              sysParm5 = 0;
-  80   1              parameterBoard[0].boardLength = 0;
-  81   1              parameterBoard[0].boardDecLength = 0;
-  82   1              parameterBoard[0].boardNumber = 0;
-  83   1              parameterBoard[1].boardLength = 0;
-  84   1              parameterBoard[1].boardDecLength = 0;
-  85   1              parameterBoard[1].boardNumber = 0;
-  86   1              parameterBoard[2].boardLength = 0;
-  87   1              parameterBoard[2].boardDecLength = 0;
-  88   1              parameterBoard[2].boardNumber = 0;
-  89   1              parameterBoard[3].boardLength = 0;
-  90   1              parameterBoard[3].boardDecLength = 0;
-  91   1              parameterBoard[3].boardNumber = 0;
-  92   1              settingBoardLength = 0;
-  93   1              settingBoardNumber = 0;
-  94   1              currentlyBoardLength = 0;
-  95   1              currentlyBoardNumber = 0;
-  96   1              currentlySignalNum = 0;
-  97   1      }
-  98          
-  99          /***************************************************************************/
- 100          // 参数保存到eeprom
- 101          // 参数：无
- 102          // 返回值：0失败 1成功  
+  55   2                      sysParm1_SignalNumPerMeter = ((IapReadByte(IAP_ADDRESS+0) << 8) | IapReadByte(IAP_ADDRESS+1));
+  56   2                      sysParm2_ErrorCorrectionValue = ((IapReadByte(IAP_ADDRESS+2) << 8) | IapReadByte(IAP_ADDRESS+3));               
+  57   2              }
+  58   1              else
+  59   1              {
+  60   2                      result = 0;
+  61   2              }
+  62   1              return result;  
+  63   1      }
+  64          
+  65          /***************************************************************************/
+  66          // 参数初始化函数
+  67          // 参数：无
+  68          // 返回值：无   
+  69          /***************************************************************************/
+  70          void parameter_init()
+  71          {
+  72   1              powerMode = 0;  //启动状态 0关闭 1启动
+  73   1              runMode = 0;
+  74   1              HydClamStatus = 0;
+  75   1              HydMonitorStatus = 0;
+  76   1              if(!parameter_read())
+  77   1              {
+  78   2                      sysParm1_SignalNumPerMeter =  1000;
+  79   2                      sysParm2_ErrorCorrectionValue = 100;
+  80   2              }
+  81   1              sysParm3 = 0;
+  82   1              sysParm4 = 0;
+  83   1              sysParm5 = 0;
+  84   1              parameterBoard[0].boardLength = 0;
+  85   1              parameterBoard[0].boardDecLength = 0;
+  86   1              parameterBoard[0].boardNumber = 0;
+  87   1              parameterBoard[1].boardLength = 0;
+  88   1              parameterBoard[1].boardDecLength = 0;
+  89   1              parameterBoard[1].boardNumber = 0;
+  90   1              parameterBoard[2].boardLength = 0;
+  91   1              parameterBoard[2].boardDecLength = 0;
+  92   1              parameterBoard[2].boardNumber = 0;
+  93   1              parameterBoard[3].boardLength = 0;
+  94   1              parameterBoard[3].boardDecLength = 0;
+  95   1              parameterBoard[3].boardNumber = 0;
+  96   1              settingBoardLength = 0;
+  97   1              settingBoardNumber = 0;
+  98   1              currentlyBoardLength = 0;
+  99   1              currentlyBoardNumber = 0;
+ 100   1              currentlySignalNum = 0;
+ 101   1      }
+ 102          
  103          /***************************************************************************/
- 104          unsigned char parameter_save()
- 105          {
- 106   1              unsigned char result = 1;
- 107   1          delay_ms(10);                      //Delay
- 108   1              IapEraseSector(IAP_ADDRESS); //擦除EEPROM
- 109   1              IapProgramByte(IAP_ADDRESS+0, (BYTE)(sysParm1_SignalNumPerMeter>>8));
- 110   1              IapProgramByte(IAP_ADDRESS+1, (BYTE)sysParm1_SignalNumPerMeter);
- 111   1              IapProgramByte(IAP_ADDRESS+2, (BYTE)(sysParm2_ErrorCorrectionValue>>8));
- 112   1              IapProgramByte(IAP_ADDRESS+3, (BYTE)sysParm2_ErrorCorrectionValue);
- 113   1              /*
- 114   1              IapProgramByte(IAP_ADDRESS+4, (BYTE)(motorStepAngle>>8));
- 115   1              IapProgramByte(IAP_ADDRESS+5, (BYTE)motorStepAngle);
- 116   1              IapProgramByte(IAP_ADDRESS+6, (BYTE)(screwPitch>>8));
-C51 COMPILER V7.50   PARAMETER                                                             09/26/2014 21:13:17 PAGE 3   
+ 104          // 参数保存到eeprom
+ 105          // 参数：无
+ 106          // 返回值：0失败 1成功  
+ 107          /***************************************************************************/
+ 108          unsigned char parameter_save()
+ 109          {
+ 110   1              unsigned char result = 1;
+ 111   1          delay_ms(10);                      //Delay
+ 112   1              IapEraseSector(IAP_ADDRESS); //擦除EEPROM
+ 113   1              IapProgramByte(IAP_ADDRESS+0, (BYTE)(sysParm1_SignalNumPerMeter>>8));
+ 114   1              IapProgramByte(IAP_ADDRESS+1, (BYTE)sysParm1_SignalNumPerMeter);
+ 115   1              IapProgramByte(IAP_ADDRESS+2, (BYTE)(sysParm2_ErrorCorrectionValue>>8));
+ 116   1              IapProgramByte(IAP_ADDRESS+3, (BYTE)sysParm2_ErrorCorrectionValue);
+C51 COMPILER V7.50   PARAMETER                                                             09/29/2014 21:36:30 PAGE 3   
 
- 117   1              IapProgramByte(IAP_ADDRESS+7, (BYTE)screwPitch);
- 118   1              IapProgramByte(IAP_ADDRESS+8, (BYTE)(motorReducGearRatio>>8));
- 119   1              IapProgramByte(IAP_ADDRESS+9, (BYTE)motorReducGearRatio);
- 120   1              IapProgramByte(IAP_ADDRESS+10, (BYTE)(ballScrew>>8));
- 121   1              IapProgramByte(IAP_ADDRESS+11, (BYTE)ballScrew);
- 122   1              IapProgramByte(IAP_ADDRESS+12, (BYTE)(motorRotationAngle>>8));
- 123   1              IapProgramByte(IAP_ADDRESS+13, (BYTE)motorRotationAngle);
- 124   1              
- 125   1              //refreshDisplay = 0;
- 126   1              */
- 127   1              IapProgramByte(IAP_ADDRESS+200, 0xEE); //写入标志位
- 128   1              return result;
- 129   1      }
- 130          
- 131          
+ 117   1              /*
+ 118   1              IapProgramByte(IAP_ADDRESS+4, (BYTE)(motorStepAngle>>8));
+ 119   1              IapProgramByte(IAP_ADDRESS+5, (BYTE)motorStepAngle);
+ 120   1              IapProgramByte(IAP_ADDRESS+6, (BYTE)(screwPitch>>8));
+ 121   1              IapProgramByte(IAP_ADDRESS+7, (BYTE)screwPitch);
+ 122   1              IapProgramByte(IAP_ADDRESS+8, (BYTE)(motorReducGearRatio>>8));
+ 123   1              IapProgramByte(IAP_ADDRESS+9, (BYTE)motorReducGearRatio);
+ 124   1              IapProgramByte(IAP_ADDRESS+10, (BYTE)(ballScrew>>8));
+ 125   1              IapProgramByte(IAP_ADDRESS+11, (BYTE)ballScrew);
+ 126   1              IapProgramByte(IAP_ADDRESS+12, (BYTE)(motorRotationAngle>>8));
+ 127   1              IapProgramByte(IAP_ADDRESS+13, (BYTE)motorRotationAngle);
+ 128   1              
+ 129   1              //refreshDisplay = 0;
+ 130   1              */
+ 131   1              IapProgramByte(IAP_ADDRESS+200, 0xEE); //写入标志位
+ 132   1              return result;
+ 133   1      }
+ 134          
+ 135          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    331    ----
+   CODE SIZE        =    337    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =     56       2
+   XDATA SIZE       =     60       2
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

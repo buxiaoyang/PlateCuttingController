@@ -4,9 +4,7 @@
 #include <parameter.h>
 #include <key.h>
 #include <dispatch.h>
-
-typedef unsigned char BYTE;
-typedef unsigned int WORD;
+#include <uart.h>
 
 //-----------------------------------------------
 
@@ -35,19 +33,23 @@ void tm0_isr() interrupt 1 using 1
     TH0 = T1MS >> 8;                //reload timer0 high byte
     if (count-- == 0)               //1ms * 1000 -> 1s
     {
-        count = 9;               //reset counter
-        //TestOut = ! TestOut;   
+        TestOut = !TestOut;  
+		/////////////////////////////// 
 		if(KeyAutoManual == 1)
 		{
 			runMode = 1;
+			freshDiaplay = 1;
 		}
 		else
 		{
 			runMode = 0;
+			freshDiaplay = 1;
 		} 
 		Key_Scan();
 		ManiDispatch();
-		SubDispatch();
+		SubDispatch();	
+		/////////////////////////////// 
+		count = 9;               //reset counter
     }
 }
 
@@ -65,6 +67,6 @@ void timer_init()
     TR0 = 1;                        //timer0 start running
     ET0 = 1;                        //enable timer0 interrupt
     EA = 1;                         //open global interrupt switch
-    count = 0;                      //initial counter
+    count = 9;                      //initial counter
 }
 

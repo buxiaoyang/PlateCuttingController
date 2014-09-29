@@ -44,6 +44,9 @@ sbit MotorBackFast  		= P1^6;  // 电机后退快速
 sbit MotorForwardSlow  		= P1^0;  //	电机前进慢速
 sbit MotorBackSlow  		= P1^1;  //	电机后退慢速
 sbit HydClamOut  			= P1^4;  //	液压剪刀输出
+sbit HydClamStop  			= P2^5;  //	液压剪刀关闭
+sbit HydMonitorOut  		= P1^7;  //	液压电机输出
+sbit SystemAlarm	  		= P2^4;  //	系统报警指示灯
 sbit TestOut		  		= P2^7;  //	测试输出
 
 
@@ -67,6 +70,7 @@ unsigned char parameter_save();
 extern unsigned int powerMode; //启动
 extern unsigned int runMode; //运行模式
 extern unsigned int HydClamStatus; //液压剪刀状态 0：关闭  1：打开
+extern unsigned int HydMonitorStatus; //液压电机状态 0：关闭  1：打开
 extern struct Board parameterBoard[4];	//板材参数
 
 extern unsigned int sysParm1_SignalNumPerMeter; //系统参数一：一米距离编码器的信号数
@@ -80,6 +84,8 @@ extern unsigned int settingBoardNumber; //设定块数
 
 extern unsigned int currentlyBoardLength; //已做长度
 extern unsigned int currentlyBoardNumber; //已做块数
+
+extern unsigned int errorCorrectionBoardLength; //修正的板子误差长度
 
 extern unsigned long currentlySignalNum; //当前编码器信号数
 extern unsigned long maxSignalNum;	  //最大编码器信号数

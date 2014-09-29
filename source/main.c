@@ -82,6 +82,7 @@ void parameter_send_screen()
 		SendDataToScreen(0x0000, 0x0003);
 	}
 	SendDataToScreen(0x0038, HydClamStatus);
+	SendDataToScreen(0x003A, HydMonitorStatus);
 	SendDataToScreen(0x001B, settingBoardLength);
 	SendDataToScreen(0x001D, settingBoardNumber);
 	SendDataToScreen(0x001F, currentlyBoardLength);
@@ -100,9 +101,10 @@ void main()
 	timer_init();
 	parameter_init();
 	maxSignalNum = (65535 * sysParm1_SignalNumPerMeter)/1000-2000;
+	errorCorrectionBoardLength =  (sysParm2_ErrorCorrectionValue*1000)/sysParm1_SignalNumPerMeter;
 	while(1)
 	{
-		currentlyBoardLength = (currentlySignalNum*1000)/(sysParm1_SignalNumPerMeter-sysParm2_ErrorCorrectionValue);
+		currentlyBoardLength = (currentlySignalNum*1000)/sysParm1_SignalNumPerMeter;
 		if(freshDiaplay)
 		{
 			freshDiaplay = 0;
@@ -113,7 +115,7 @@ void main()
 			parameter_save();
 			saveSetting = 0;
 		}
-		//TestOut = ! TestOut;		
+		//TestOut = ! TestOut;			
 	}   
 }
 

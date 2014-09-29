@@ -270,6 +270,19 @@ void anyData()
 			HydClamStatus = 1;
 		}
 	}
+	else if(uartBuffer[2] == 0x3A)	//液压电机状态
+	{
+		if(HydMonitorStatus == 1)
+		{
+			HydMonitorStatus = 0;
+			HydMonitorOut = 1;
+		}
+		else
+		{
+			HydMonitorStatus = 1;
+			HydMonitorOut = 0;
+		}
+	}
 	else if(uartBuffer[2] == 0x23)	//手动操作_前进
 	{
 

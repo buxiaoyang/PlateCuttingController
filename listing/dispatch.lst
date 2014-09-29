@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   DISPATCH                                                              09/26/2014 21:13:18 PAGE 1   
+C51 COMPILER V7.50   DISPATCH                                                              09/29/2014 21:36:32 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE DISPATCH
@@ -62,7 +62,7 @@ line level    source
   51   3                                      {
   52   4                                              ManiDispatchSteps = 2;
   53   4                                      }
-C51 COMPILER V7.50   DISPATCH                                                              09/26/2014 21:13:18 PAGE 2   
+C51 COMPILER V7.50   DISPATCH                                                              09/29/2014 21:36:32 PAGE 2   
 
   54   3                                      else
   55   3                                      {
@@ -126,7 +126,7 @@ line level    source
  112   3                                      MotorForwardSlow = 0;
  113   3                                      MotorForwardFast = 1;
  114   3                                      SubDispatchSteps ++;    
-C51 COMPILER V7.50   DISPATCH                                                              09/26/2014 21:13:18 PAGE 3   
+C51 COMPILER V7.50   DISPATCH                                                              09/29/2014 21:36:32 PAGE 3   
 
  115   3                              }       
  116   2                      break;

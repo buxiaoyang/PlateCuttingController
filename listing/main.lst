@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   MAIN                                                                  09/26/2014 21:13:15 PAGE 1   
+C51 COMPILER V7.50   MAIN                                                                  09/29/2014 21:36:29 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   52   1              SendDataToScreen(0x0003, sysParm2_ErrorCorrectionValue);
   53   1              SendDataToScreen(0x0005, sysParm3);
   54   1              SendDataToScreen(0x0007, sysParm4);
-C51 COMPILER V7.50   MAIN                                                                  09/26/2014 21:13:15 PAGE 2   
+C51 COMPILER V7.50   MAIN                                                                  09/29/2014 21:36:29 PAGE 2   
 
   55   1              SendDataToScreen(0x0009, sysParm5);
   56   1              SendDataToScreen(0x000B, parameterBoard[0].boardLength);
@@ -94,55 +94,56 @@ line level    source
   82   2                      SendDataToScreen(0x0000, 0x0003);
   83   2              }
   84   1              SendDataToScreen(0x0038, HydClamStatus);
-  85   1              SendDataToScreen(0x001B, settingBoardLength);
-  86   1              SendDataToScreen(0x001D, settingBoardNumber);
-  87   1              SendDataToScreen(0x001F, currentlyBoardLength);
-  88   1              SendDataToScreen(0x0021, currentlyBoardNumber);
-  89   1      }
-  90          
-  91          /***************************************************************************/
-  92          // 主函数
-  93          // 参数：无
-  94          // 返回值：无   
-  95          /***************************************************************************/
-  96          void main()
-  97          {
-  98   1              exterInterInit();
-  99   1              uart_init();
- 100   1              timer_init();
- 101   1              parameter_init();
- 102   1              maxSignalNum = (65535 * sysParm1_SignalNumPerMeter)/1000-2000;
- 103   1              while(1)
- 104   1              {
- 105   2                      currentlyBoardLength = (currentlySignalNum*1000)/(sysParm1_SignalNumPerMeter-sysParm2_ErrorCorrectionVal
-             -ue);
- 106   2                      if(freshDiaplay)
- 107   2                      {
- 108   3                              freshDiaplay = 0;
- 109   3                              parameter_send_screen();
- 110   3                      }
- 111   2                      if(saveSetting)
- 112   2                      {
- 113   3                              parameter_save();
- 114   3                              saveSetting = 0;
- 115   3                      }
-C51 COMPILER V7.50   MAIN                                                                  09/26/2014 21:13:15 PAGE 3   
+  85   1              SendDataToScreen(0x003A, HydMonitorStatus);
+  86   1              SendDataToScreen(0x001B, settingBoardLength);
+  87   1              SendDataToScreen(0x001D, settingBoardNumber);
+  88   1              SendDataToScreen(0x001F, currentlyBoardLength);
+  89   1              SendDataToScreen(0x0021, currentlyBoardNumber);
+  90   1      }
+  91          
+  92          /***************************************************************************/
+  93          // 主函数
+  94          // 参数：无
+  95          // 返回值：无   
+  96          /***************************************************************************/
+  97          void main()
+  98          {
+  99   1              exterInterInit();
+ 100   1              uart_init();
+ 101   1              timer_init();
+ 102   1              parameter_init();
+ 103   1              maxSignalNum = (65535 * sysParm1_SignalNumPerMeter)/1000-2000;
+ 104   1              errorCorrectionBoardLength =  (sysParm2_ErrorCorrectionValue*1000)/sysParm1_SignalNumPerMeter;
+ 105   1              while(1)
+ 106   1              {
+ 107   2                      currentlyBoardLength = (currentlySignalNum*1000)/sysParm1_SignalNumPerMeter;
+ 108   2                      if(freshDiaplay)
+ 109   2                      {
+ 110   3                              freshDiaplay = 0;
+ 111   3                              parameter_send_screen();
+ 112   3                      }
+ 113   2                      if(saveSetting)
+ 114   2                      {
+ 115   3                              parameter_save();
+ 116   3                              saveSetting = 0;
+C51 COMPILER V7.50   MAIN                                                                  09/29/2014 21:36:29 PAGE 3   
 
- 116   2                      //TestOut = ! TestOut;          
- 117   2              }   
- 118   1      }
- 119          
- 120          
+ 117   3                      }
+ 118   2                      //TestOut = ! TestOut;                  
+ 119   2              }   
+ 120   1      }
  121          
  122          
  123          
  124          
  125          
  126          
+ 127          
+ 128          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    750    ----
+   CODE SIZE        =    786    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

@@ -3,7 +3,7 @@
 #include <parameter.h>
 #include <key.h>
 #include <dispatch.h>
-
+#include <uart.h>
 
 void Key_Scan(void);
 
@@ -40,13 +40,15 @@ void Key_Scan(void)
 				{
 					powerMode = 1;
 					ManiDispatchSteps = 0;
+					freshDiaplay = 1;
 				}
 			   	//cistern[7].cisternStatus = Ready;
 				//displayFlag = 1;
 			}
 			if(KeyStop == 0)
 			{
-				powerMode = 0;	
+				powerMode = 0;
+				freshDiaplay = 1;	
 			}
 			if(KeyHydClam == 0)
 			{
@@ -54,7 +56,8 @@ void Key_Scan(void)
 				if(!runMode) //ÊÖ¶¯×´Ì¬
 				{
 					
-				}	
+				}
+				freshDiaplay = 1;	
 			}
 			Key_Scan_Steps = 3;
 		break;
