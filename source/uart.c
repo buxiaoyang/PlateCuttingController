@@ -32,6 +32,8 @@ bit busy;
 bit freshDiaplay = 0;
 bit saveSetting = 0;
 
+BYTE manualOperation = 0; //1, 前进  2，后退 3，慢进  4，切断上  5，切断下
+
 BYTE uartBuffer[15] = {0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff};
 
 BYTE receiveSteps = 0; 	// 0: 没有数据接收
@@ -285,23 +287,38 @@ void anyData()
 	}
 	else if(uartBuffer[2] == 0x23)	//手动操作_前进
 	{
-
+		if(!runMode)
+		{
+			manualOperation = 1;
+		}
 	}
 	else if(uartBuffer[2] == 0x24)	//手动操作_后退
 	{
-		
+		if(!runMode)
+		{
+			manualOperation = 2;
+		}
 	}
 	else if(uartBuffer[2] == 0x25)	//手动操作_慢进
 	{
-		
+		if(!runMode)
+		{
+			manualOperation = 3;
+		}
 	}
 	else if(uartBuffer[2] == 0x26)	//手动操作_切断上
 	{
-		
+		if(!runMode)
+		{
+			manualOperation = 4;
+		}
 	}
 	else if(uartBuffer[2] == 0x27)	//手动操作_切断下
 	{
-		
+		if(!runMode)
+		{
+			manualOperation = 5;
+		}
 	}
 	else if(uartBuffer[2] == 0x28)	//运行画面_复位按钮
 	{

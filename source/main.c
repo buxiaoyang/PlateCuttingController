@@ -115,6 +115,36 @@ void main()
 			parameter_save();
 			saveSetting = 0;
 		}
+		//手动操作
+		if(manualOperation == 1) //1, 前进 
+		{
+			MotorForwardSlow = 0;
+			delay_ms(7000);
+			MotorForwardSlow = 1;
+			manualOperation = 0;	
+		}
+		else if(manualOperation == 2) //2，后退 
+		{
+			MotorBackSlow = 0;
+			delay_ms(7000);
+			MotorBackSlow = 1;
+			manualOperation = 0;	
+		}
+		else if(manualOperation == 3) //3，慢进 
+		{
+			MotorForwardSlow = 0;
+			delay_ms(7000);
+			MotorForwardSlow = 1;
+			manualOperation = 0;	
+		}
+		else if(manualOperation == 4) //4，切断上 
+		{
+		
+		}
+		else if(manualOperation == 5) //5，切断下
+		{
+		
+		}
 		//TestOut = ! TestOut;			
 	}   
 }

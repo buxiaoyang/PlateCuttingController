@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   DISPATCH                                                              09/30/2014 21:40:34 PAGE 1   
+C51 COMPILER V7.50   DISPATCH                                                              09/30/2014 22:20:47 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE DISPATCH
@@ -62,7 +62,7 @@ line level    source
   50   2                              ManiDispatchSteps ++;
   51   2                      break;
   52   2                      case 3:
-C51 COMPILER V7.50   DISPATCH                                                              09/30/2014 21:40:34 PAGE 2   
+C51 COMPILER V7.50   DISPATCH                                                              09/30/2014 22:20:47 PAGE 2   
 
   53   2                              if(SubDispatchSteps == 20)
   54   2                              {
@@ -126,7 +126,7 @@ line level    source
  112   2                      break;
  113   2                      case 1: //1：板子到达设置长度八分之一，电机前进快
  114   2                              MotorForwardSlow = 0;
-C51 COMPILER V7.50   DISPATCH                                                              09/30/2014 21:40:34 PAGE 3   
+C51 COMPILER V7.50   DISPATCH                                                              09/30/2014 22:20:47 PAGE 3   
 
  115   2                              MotorForwardFast = 1;
  116   2                              temp = settingBoardLength-errorCorrectionBoardLength;
@@ -190,7 +190,7 @@ line level    source
  174   3                                      SubDispatchSteps ++;    
  175   3                              }       
  176   2                      break;
-C51 COMPILER V7.50   DISPATCH                                                              09/30/2014 21:40:34 PAGE 4   
+C51 COMPILER V7.50   DISPATCH                                                              09/30/2014 22:20:47 PAGE 4   
 
  177   2                      case 5: //5：剪刀上方感应器感应到，关闭剪刀向上
  178   2                              HydClamUp = 0;

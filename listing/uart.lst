@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   UART                                                                  09/30/2014 21:40:29 PAGE 1   
+C51 COMPILER V7.50   UART                                                                  09/30/2014 22:20:46 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE UART
@@ -42,307 +42,324 @@ line level    source
   32          bit freshDiaplay = 0;
   33          bit saveSetting = 0;
   34          
-  35          BYTE uartBuffer[15] = {0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff};
+  35          BYTE manualOperation = 0; //1, 前进  2，后退 3，慢进  4，切断上  5，切断下
   36          
-  37          BYTE receiveSteps = 0;  // 0: 没有数据接收
-  38                                                          // 1: 接收到5A
-  39                                                          // 2：接收到A5
-  40                                                          // 3：接收到数据长度
-  41                                                          // 4: 接收数据
-  42                                                          // 5：确定指令动作
-  43          BYTE dataIndex = 0;
-  44          BYTE dataLength = 0;
-  45            
-  46          void SendData(BYTE dat);
-  47          void SendString(char *s);
-  48          void ReceiveData(BYTE dat);
-  49          void anyData();
-  50          
-  51          void uart_init()
-  52          {
-  53   1      #if (PARITYBIT == NONE_PARITY)
-  54   1          S2CON = 0x50;           //8-bit variable UART
-C51 COMPILER V7.50   UART                                                                  09/30/2014 21:40:29 PAGE 2   
+  37          BYTE uartBuffer[15] = {0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff};
+  38          
+  39          BYTE receiveSteps = 0;  // 0: 没有数据接收
+  40                                                          // 1: 接收到5A
+  41                                                          // 2：接收到A5
+  42                                                          // 3：接收到数据长度
+  43                                                          // 4: 接收数据
+  44                                                          // 5：确定指令动作
+  45          BYTE dataIndex = 0;
+  46          BYTE dataLength = 0;
+  47            
+  48          void SendData(BYTE dat);
+  49          void SendString(char *s);
+  50          void ReceiveData(BYTE dat);
+  51          void anyData();
+  52          
+  53          void uart_init()
+  54          {
+C51 COMPILER V7.50   UART                                                                  09/30/2014 22:20:46 PAGE 2   
 
-  55   1      #elif (PARITYBIT == ODD_PARITY) || (PARITYBIT == EVEN_PARITY) || (PARITYBIT == MARK_PARITY)
+  55   1      #if (PARITYBIT == NONE_PARITY)
+  56   1          S2CON = 0x50;           //8-bit variable UART
+  57   1      #elif (PARITYBIT == ODD_PARITY) || (PARITYBIT == EVEN_PARITY) || (PARITYBIT == MARK_PARITY)
                   S2CON = 0xda;           //9-bit variable UART, parity bit initial to 1
               #elif (PARITYBIT == SPACE_PARITY)
                   S2CON = 0xd2;           //9-bit variable UART, parity bit initial to 0
               #endif
-  60   1      
-  61   1          BRT = -(FOSC/32/BAUD);  //Set auto-reload vaule of baudrate generator
-  62   1          AUXR |= 0x14;            //Baudrate generator work in 1T mode
-  63   1          IE2 = 0x01;             //Enable UART2 interrupt
-  64   1          EA = 1;                 //Open master interrupt switch
-  65   1      
-  66   1          //SendString("STC12C5A60S2\r\nUart2 Test !\r\n");
-  67   1          //while(1);
-  68   1      }
-  69          
-  70          /*----------------------------
-  71          UART2 interrupt service routine
-  72          ----------------------------*/
-  73          void Uart2() interrupt 8 using 1
-  74          {
-  75   1          if (S2CON & S2RI)
-  76   1          {
-  77   2              S2CON &= ~S2RI;     //Clear receive interrupt flag
-  78   2              ReceiveData(S2BUF);
-  79   2                      //P0 = S2BUF;         //P0 show UART data
-  80   2              //P2 = (S2CON & S2RB8);//P2.2 show parity bit
-  81   2          }
-  82   1          if (S2CON & S2TI)
-  83   1          {
-  84   2              S2CON &= ~S2TI;     //Clear transmit interrupt flag
-  85   2              busy = 0;           //Clear transmit busy flag
-  86   2          }
-  87   1      }
-  88          
-  89          /*----------------------------
-  90          Send a byte data to UART
-  91          Input: dat (data to be sent)
-  92          Output:None
-  93          ----------------------------*/
-  94          void SendData(BYTE dat)
-  95          {
-  96   1          while (busy);           //Wait for the completion of the previous data is sent
-  97   1          ACC = dat;              //Calculate the even parity bit P (PSW.0)
-  98   1          if (P)                  //Set the parity bit according to P
-  99   1          {
- 100   2      #if (PARITYBIT == ODD_PARITY)
+  62   1      
+  63   1          BRT = -(FOSC/32/BAUD);  //Set auto-reload vaule of baudrate generator
+  64   1          AUXR |= 0x14;            //Baudrate generator work in 1T mode
+  65   1          IE2 = 0x01;             //Enable UART2 interrupt
+  66   1          EA = 1;                 //Open master interrupt switch
+  67   1      
+  68   1          //SendString("STC12C5A60S2\r\nUart2 Test !\r\n");
+  69   1          //while(1);
+  70   1      }
+  71          
+  72          /*----------------------------
+  73          UART2 interrupt service routine
+  74          ----------------------------*/
+  75          void Uart2() interrupt 8 using 1
+  76          {
+  77   1          if (S2CON & S2RI)
+  78   1          {
+  79   2              S2CON &= ~S2RI;     //Clear receive interrupt flag
+  80   2              ReceiveData(S2BUF);
+  81   2                      //P0 = S2BUF;         //P0 show UART data
+  82   2              //P2 = (S2CON & S2RB8);//P2.2 show parity bit
+  83   2          }
+  84   1          if (S2CON & S2TI)
+  85   1          {
+  86   2              S2CON &= ~S2TI;     //Clear transmit interrupt flag
+  87   2              busy = 0;           //Clear transmit busy flag
+  88   2          }
+  89   1      }
+  90          
+  91          /*----------------------------
+  92          Send a byte data to UART
+  93          Input: dat (data to be sent)
+  94          Output:None
+  95          ----------------------------*/
+  96          void SendData(BYTE dat)
+  97          {
+  98   1          while (busy);           //Wait for the completion of the previous data is sent
+  99   1          ACC = dat;              //Calculate the even parity bit P (PSW.0)
+ 100   1          if (P)                  //Set the parity bit according to P
+ 101   1          {
+ 102   2      #if (PARITYBIT == ODD_PARITY)
                       S2CON &= ~S2TB8;    //Set parity bit to 0
               #elif (PARITYBIT == EVEN_PARITY)
                       S2CON |= S2TB8;     //Set parity bit to 1
               #endif
- 105   2          }
- 106   1          else
- 107   1          {
- 108   2      #if (PARITYBIT == ODD_PARITY)
+ 107   2          }
+ 108   1          else
+ 109   1          {
+ 110   2      #if (PARITYBIT == ODD_PARITY)
                       S2CON |= S2TB8;     //Set parity bit to 1
               #elif (PARITYBIT == EVEN_PARITY)
                       S2CON &= ~S2TB8;    //Set parity bit to 0
               #endif
- 113   2          }
- 114   1          busy = 1;
- 115   1          S2BUF = ACC;            //Send data to UART2 buffer
- 116   1      }
-C51 COMPILER V7.50   UART                                                                  09/30/2014 21:40:29 PAGE 3   
+ 115   2          }
+ 116   1          busy = 1;
+C51 COMPILER V7.50   UART                                                                  09/30/2014 22:20:46 PAGE 3   
 
- 117          
- 118          /*----------------------------
- 119          Send a string to UART
- 120          Input: s (address of string)
- 121          Output:None
- 122          ----------------------------*/
- 123          void SendString(char *s)
- 124          {
- 125   1          while (*s)              //Check the end of the string
- 126   1          {
- 127   2              SendData(*s++);     //Send current char and increment string ptr
- 128   2          }
- 129   1      }
- 130          
- 131          void SendDataToScreen(WORD address, WORD dat)
- 132          {
- 133   1              SendData(0x5A);
- 134   1              SendData(0xA5);
- 135   1              SendData(0x05);
- 136   1              SendData(0x82);
- 137   1              SendData(address>>8);
- 138   1              SendData(address);
- 139   1              SendData(dat>>8);
- 140   1              SendData(dat);
- 141   1      }
- 142          
- 143          void ReceiveData(BYTE dat)
- 144          {
- 145   1              // 0: 接收到5A
- 146   1              // 1：接收到A5
- 147   1              // 2：接收到数据长度
- 148   1              // 3: 接收数据
- 149   1              // 4：确定指令动作
- 150   1              switch(receiveSteps)
- 151   1              {
- 152   2                      case 0:
- 153   2                              if(dat == 0x5A)
- 154   2                              {
- 155   3                                      receiveSteps ++;
- 156   3                              }
- 157   2                      break;
- 158   2                      case 1:
- 159   2                              if(dat == 0xA5)
- 160   2                              {
- 161   3                                      receiveSteps ++;
- 162   3                              }
- 163   2                              else
- 164   2                              {
- 165   3                                      receiveSteps = 0;
- 166   3                              }
- 167   2                      break;
- 168   2                      case 2:
- 169   2                              dataLength = dat;
- 170   2                              dataIndex = 0;
- 171   2                              receiveSteps ++;
- 172   2                      break;
- 173   2                      case 3:
- 174   2                              uartBuffer[dataIndex] = dat;
- 175   2                              dataIndex ++;
- 176   2                              if(dataIndex >= dataLength)
- 177   2                              {
- 178   3                                      anyData();
-C51 COMPILER V7.50   UART                                                                  09/30/2014 21:40:29 PAGE 4   
+ 117   1          S2BUF = ACC;            //Send data to UART2 buffer
+ 118   1      }
+ 119          
+ 120          /*----------------------------
+ 121          Send a string to UART
+ 122          Input: s (address of string)
+ 123          Output:None
+ 124          ----------------------------*/
+ 125          void SendString(char *s)
+ 126          {
+ 127   1          while (*s)              //Check the end of the string
+ 128   1          {
+ 129   2              SendData(*s++);     //Send current char and increment string ptr
+ 130   2          }
+ 131   1      }
+ 132          
+ 133          void SendDataToScreen(WORD address, WORD dat)
+ 134          {
+ 135   1              SendData(0x5A);
+ 136   1              SendData(0xA5);
+ 137   1              SendData(0x05);
+ 138   1              SendData(0x82);
+ 139   1              SendData(address>>8);
+ 140   1              SendData(address);
+ 141   1              SendData(dat>>8);
+ 142   1              SendData(dat);
+ 143   1      }
+ 144          
+ 145          void ReceiveData(BYTE dat)
+ 146          {
+ 147   1              // 0: 接收到5A
+ 148   1              // 1：接收到A5
+ 149   1              // 2：接收到数据长度
+ 150   1              // 3: 接收数据
+ 151   1              // 4：确定指令动作
+ 152   1              switch(receiveSteps)
+ 153   1              {
+ 154   2                      case 0:
+ 155   2                              if(dat == 0x5A)
+ 156   2                              {
+ 157   3                                      receiveSteps ++;
+ 158   3                              }
+ 159   2                      break;
+ 160   2                      case 1:
+ 161   2                              if(dat == 0xA5)
+ 162   2                              {
+ 163   3                                      receiveSteps ++;
+ 164   3                              }
+ 165   2                              else
+ 166   2                              {
+ 167   3                                      receiveSteps = 0;
+ 168   3                              }
+ 169   2                      break;
+ 170   2                      case 2:
+ 171   2                              dataLength = dat;
+ 172   2                              dataIndex = 0;
+ 173   2                              receiveSteps ++;
+ 174   2                      break;
+ 175   2                      case 3:
+ 176   2                              uartBuffer[dataIndex] = dat;
+ 177   2                              dataIndex ++;
+ 178   2                              if(dataIndex >= dataLength)
+C51 COMPILER V7.50   UART                                                                  09/30/2014 22:20:46 PAGE 4   
 
- 179   3                                      receiveSteps = 0;
- 180   3                              }
- 181   2                      break;
- 182   2                      default:
- 183   2                              _nop_();
- 184   2                              receiveSteps = 0;
- 185   2              }
- 186   1      }
- 187          
- 188          void anyData()
- 189          {
- 190   1              WORD dat = ((uartBuffer[4]<<8) | uartBuffer[5]);
- 191   1              if(uartBuffer[2] == 0x01)               //系统参数1
- 192   1              {
- 193   2                      sysParm1_SignalNumPerMeter = dat;
- 194   2                      maxSignalNum = (65535 * sysParm1_SignalNumPerMeter)/1000-2000;
- 195   2                      saveSetting = 1;
- 196   2              }
- 197   1              else if(uartBuffer[2] == 0x03)  //系统参数2
- 198   1              {
- 199   2                      sysParm2_ErrorCorrectionValue = dat;
- 200   2                      saveSetting = 1;
- 201   2              }
- 202   1              else if(uartBuffer[2] == 0x05)  //系统参数3
- 203   1              {
- 204   2                      sysParm3 = dat;
- 205   2              }
- 206   1              else if(uartBuffer[2] == 0x07)  //系统参数4
- 207   1              {
- 208   2                      sysParm4 = dat;
- 209   2              }
- 210   1              else if(uartBuffer[2] == 0x09)  //系统参数5
- 211   1              {
- 212   2                      sysParm5 = dat; 
- 213   2              }
- 214   1              else if(uartBuffer[2] == 0x0B)  //板材参数_板长1
- 215   1              {
- 216   2                      parameterBoard[0].boardLength = dat;
- 217   2              }
- 218   1              else if(uartBuffer[2] == 0x0D)  //板材参数_块数1        
- 219   1              {
- 220   2                      parameterBoard[0].boardNumber = dat;
- 221   2              }
- 222   1              else if(uartBuffer[2] == 0x0F)  //板材参数_板长2
- 223   1              {
- 224   2                      parameterBoard[1].boardLength = dat;
- 225   2              }
- 226   1              else if(uartBuffer[2] == 0x11)  //板材参数_块数2
- 227   1              {
- 228   2                      parameterBoard[1].boardNumber = dat;
- 229   2              }
- 230   1              else if(uartBuffer[2] == 0x13)  //板材参数_板长3
- 231   1              {
- 232   2                      parameterBoard[2].boardLength = dat;
- 233   2              }
- 234   1              else if(uartBuffer[2] == 0x15)  //板材参数_块数3
- 235   1              {
- 236   2                      parameterBoard[2].boardNumber = dat;
- 237   2              }
- 238   1              else if(uartBuffer[2] == 0x17)  //板材参数_板长4
- 239   1              {
- 240   2                      parameterBoard[3].boardLength = dat;
-C51 COMPILER V7.50   UART                                                                  09/30/2014 21:40:29 PAGE 5   
+ 179   2                              {
+ 180   3                                      anyData();
+ 181   3                                      receiveSteps = 0;
+ 182   3                              }
+ 183   2                      break;
+ 184   2                      default:
+ 185   2                              _nop_();
+ 186   2                              receiveSteps = 0;
+ 187   2              }
+ 188   1      }
+ 189          
+ 190          void anyData()
+ 191          {
+ 192   1              WORD dat = ((uartBuffer[4]<<8) | uartBuffer[5]);
+ 193   1              if(uartBuffer[2] == 0x01)               //系统参数1
+ 194   1              {
+ 195   2                      sysParm1_SignalNumPerMeter = dat;
+ 196   2                      maxSignalNum = (65535 * sysParm1_SignalNumPerMeter)/1000-2000;
+ 197   2                      saveSetting = 1;
+ 198   2              }
+ 199   1              else if(uartBuffer[2] == 0x03)  //系统参数2
+ 200   1              {
+ 201   2                      sysParm2_ErrorCorrectionValue = dat;
+ 202   2                      saveSetting = 1;
+ 203   2              }
+ 204   1              else if(uartBuffer[2] == 0x05)  //系统参数3
+ 205   1              {
+ 206   2                      sysParm3 = dat;
+ 207   2              }
+ 208   1              else if(uartBuffer[2] == 0x07)  //系统参数4
+ 209   1              {
+ 210   2                      sysParm4 = dat;
+ 211   2              }
+ 212   1              else if(uartBuffer[2] == 0x09)  //系统参数5
+ 213   1              {
+ 214   2                      sysParm5 = dat; 
+ 215   2              }
+ 216   1              else if(uartBuffer[2] == 0x0B)  //板材参数_板长1
+ 217   1              {
+ 218   2                      parameterBoard[0].boardLength = dat;
+ 219   2              }
+ 220   1              else if(uartBuffer[2] == 0x0D)  //板材参数_块数1        
+ 221   1              {
+ 222   2                      parameterBoard[0].boardNumber = dat;
+ 223   2              }
+ 224   1              else if(uartBuffer[2] == 0x0F)  //板材参数_板长2
+ 225   1              {
+ 226   2                      parameterBoard[1].boardLength = dat;
+ 227   2              }
+ 228   1              else if(uartBuffer[2] == 0x11)  //板材参数_块数2
+ 229   1              {
+ 230   2                      parameterBoard[1].boardNumber = dat;
+ 231   2              }
+ 232   1              else if(uartBuffer[2] == 0x13)  //板材参数_板长3
+ 233   1              {
+ 234   2                      parameterBoard[2].boardLength = dat;
+ 235   2              }
+ 236   1              else if(uartBuffer[2] == 0x15)  //板材参数_块数3
+ 237   1              {
+ 238   2                      parameterBoard[2].boardNumber = dat;
+ 239   2              }
+ 240   1              else if(uartBuffer[2] == 0x17)  //板材参数_板长4
+C51 COMPILER V7.50   UART                                                                  09/30/2014 22:20:46 PAGE 5   
 
- 241   2              }
- 242   1              else if(uartBuffer[2] == 0x19)  //板材参数_块数4
- 243   1              {
- 244   2                      parameterBoard[3].boardNumber = dat;
- 245   2              }
- 246   1              else if(uartBuffer[2] == 0x30)  //板材参数_板材递减长度1
- 247   1              {
- 248   2                      parameterBoard[0].boardDecLength = dat;
- 249   2              }
- 250   1              else if(uartBuffer[2] == 0x32)  //板材参数_板材递减长度2
- 251   1              {
- 252   2                      parameterBoard[1].boardDecLength = dat;
- 253   2              }
- 254   1              else if(uartBuffer[2] == 0x34)  //板材参数_板材递减长度3
- 255   1              {
- 256   2                      parameterBoard[2].boardDecLength = dat;
- 257   2              }
- 258   1              else if(uartBuffer[2] == 0x36)  //板材参数_板材递减长度4
- 259   1              {
- 260   2                      parameterBoard[3].boardDecLength = dat;
- 261   2              }
- 262   1              else if(uartBuffer[2] == 0x38)  //液压剪刀状态
- 263   1              {
- 264   2                      if(HydClamStatus == 1)
- 265   2                      {
- 266   3                              HydClamStatus = 0;
- 267   3                      }
- 268   2                      else
- 269   2                      {
- 270   3                              HydClamStatus = 1;
- 271   3                      }
- 272   2              }
- 273   1              else if(uartBuffer[2] == 0x3A)  //液压电机状态
- 274   1              {
- 275   2                      if(HydMonitorStatus == 1)
- 276   2                      {
- 277   3                              HydMonitorStatus = 0;
- 278   3                              HydMonitorOut = 1;
- 279   3                      }
- 280   2                      else
- 281   2                      {
- 282   3                              HydMonitorStatus = 1;
- 283   3                              HydMonitorOut = 0;
- 284   3                      }
- 285   2              }
- 286   1              else if(uartBuffer[2] == 0x23)  //手动操作_前进
- 287   1              {
- 288   2      
- 289   2              }
- 290   1              else if(uartBuffer[2] == 0x24)  //手动操作_后退
- 291   1              {
- 292   2                      
- 293   2              }
- 294   1              else if(uartBuffer[2] == 0x25)  //手动操作_慢进
- 295   1              {
- 296   2                      
- 297   2              }
- 298   1              else if(uartBuffer[2] == 0x26)  //手动操作_切断上
- 299   1              {
- 300   2                      
+ 241   1              {
+ 242   2                      parameterBoard[3].boardLength = dat;
+ 243   2              }
+ 244   1              else if(uartBuffer[2] == 0x19)  //板材参数_块数4
+ 245   1              {
+ 246   2                      parameterBoard[3].boardNumber = dat;
+ 247   2              }
+ 248   1              else if(uartBuffer[2] == 0x30)  //板材参数_板材递减长度1
+ 249   1              {
+ 250   2                      parameterBoard[0].boardDecLength = dat;
+ 251   2              }
+ 252   1              else if(uartBuffer[2] == 0x32)  //板材参数_板材递减长度2
+ 253   1              {
+ 254   2                      parameterBoard[1].boardDecLength = dat;
+ 255   2              }
+ 256   1              else if(uartBuffer[2] == 0x34)  //板材参数_板材递减长度3
+ 257   1              {
+ 258   2                      parameterBoard[2].boardDecLength = dat;
+ 259   2              }
+ 260   1              else if(uartBuffer[2] == 0x36)  //板材参数_板材递减长度4
+ 261   1              {
+ 262   2                      parameterBoard[3].boardDecLength = dat;
+ 263   2              }
+ 264   1              else if(uartBuffer[2] == 0x38)  //液压剪刀状态
+ 265   1              {
+ 266   2                      if(HydClamStatus == 1)
+ 267   2                      {
+ 268   3                              HydClamStatus = 0;
+ 269   3                      }
+ 270   2                      else
+ 271   2                      {
+ 272   3                              HydClamStatus = 1;
+ 273   3                      }
+ 274   2              }
+ 275   1              else if(uartBuffer[2] == 0x3A)  //液压电机状态
+ 276   1              {
+ 277   2                      if(HydMonitorStatus == 1)
+ 278   2                      {
+ 279   3                              HydMonitorStatus = 0;
+ 280   3                              HydMonitorOut = 1;
+ 281   3                      }
+ 282   2                      else
+ 283   2                      {
+ 284   3                              HydMonitorStatus = 1;
+ 285   3                              HydMonitorOut = 0;
+ 286   3                      }
+ 287   2              }
+ 288   1              else if(uartBuffer[2] == 0x23)  //手动操作_前进
+ 289   1              {
+ 290   2                      if(!runMode)
+ 291   2                      {
+ 292   3                              manualOperation = 1;
+ 293   3                      }
+ 294   2              }
+ 295   1              else if(uartBuffer[2] == 0x24)  //手动操作_后退
+ 296   1              {
+ 297   2                      if(!runMode)
+ 298   2                      {
+ 299   3                              manualOperation = 2;
+ 300   3                      }
  301   2              }
- 302   1              else if(uartBuffer[2] == 0x27)  //手动操作_切断下
-C51 COMPILER V7.50   UART                                                                  09/30/2014 21:40:29 PAGE 6   
+ 302   1              else if(uartBuffer[2] == 0x25)  //手动操作_慢进
+C51 COMPILER V7.50   UART                                                                  09/30/2014 22:20:46 PAGE 6   
 
  303   1              {
- 304   2                      
- 305   2              }
- 306   1              else if(uartBuffer[2] == 0x28)  //运行画面_复位按钮
- 307   1              {
- 308   2                      ManiDispatchSteps = 20;
- 309   2                      SubDispatchSteps = 20;
- 310   2                      powerMode = 0;
- 311   2                      settingBoardLength = 0;
- 312   2                      settingBoardNumber = 0;
- 313   2                      currentlySignalNum = 0;
- 314   2                      currentlyBoardNumber = 0;
- 315   2                      ManiDispatchStepsBak = 0;
- 316   2                      SubDispatchStepsBak = 20;
- 317   2              }
- 318   1              freshDiaplay = 1;       
- 319   1      }
+ 304   2                      if(!runMode)
+ 305   2                      {
+ 306   3                              manualOperation = 3;
+ 307   3                      }
+ 308   2              }
+ 309   1              else if(uartBuffer[2] == 0x26)  //手动操作_切断上
+ 310   1              {
+ 311   2                      if(!runMode)
+ 312   2                      {
+ 313   3                              manualOperation = 4;
+ 314   3                      }
+ 315   2              }
+ 316   1              else if(uartBuffer[2] == 0x27)  //手动操作_切断下
+ 317   1              {
+ 318   2                      if(!runMode)
+ 319   2                      {
+ 320   3                              manualOperation = 5;
+ 321   3                      }
+ 322   2              }
+ 323   1              else if(uartBuffer[2] == 0x28)  //运行画面_复位按钮
+ 324   1              {
+ 325   2                      ManiDispatchSteps = 20;
+ 326   2                      SubDispatchSteps = 20;
+ 327   2                      powerMode = 0;
+ 328   2                      settingBoardLength = 0;
+ 329   2                      settingBoardNumber = 0;
+ 330   2                      currentlySignalNum = 0;
+ 331   2                      currentlyBoardNumber = 0;
+ 332   2                      ManiDispatchStepsBak = 0;
+ 333   2                      SubDispatchStepsBak = 20;
+ 334   2              }
+ 335   1              freshDiaplay = 1;       
+ 336   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    825    ----
+   CODE SIZE        =    928    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =     18       5
+   XDATA SIZE       =     19       5
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
