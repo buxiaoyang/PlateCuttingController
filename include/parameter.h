@@ -31,9 +31,6 @@ sbit HydClamInductorBottom	= P0^1;  	// 液压剪刀下方感应器
 sbit KeyStart				= P0^2;  	// 启动按钮，启动按钮只有在自动状态下才有效，启动之后，电机开始输出，
 										// 单片机开始接收编码器信号。
 
-sbit KeyAutoManual			= P0^3;  	// 手动状态下，启动按钮、系统停止按钮无效，编码器接收信号无效。
-										// 自动状态下 ，液压剪刀按钮无效。（高电平自动，低电平手动）
-
 sbit KeyStop				= P0^4;  	// 停止按钮
 
 sbit KeyHydClam				= P0^5;  	// 液压剪刀按钮，只有下手动状态下才有效。
@@ -68,8 +65,7 @@ struct Board  //板材结构体
 void parameter_init();
 unsigned char parameter_save();
 
-extern unsigned int powerMode; //启动状态 0关闭 1启动 2报警 
-extern unsigned int runMode; //运行模式 0手动模式 1自动模式
+extern unsigned int powerMode; //运行状态 0关闭 1启动 2报警 
 extern unsigned int HydClamStatus; //液压剪刀状态 0：关闭  1：打开
 extern unsigned int HydMonitorStatus; //液压电机状态 0：关闭  1：打开
 extern struct Board parameterBoard[4];	//板材参数

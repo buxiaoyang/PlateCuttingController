@@ -36,17 +36,14 @@ void Key_Scan(void)
 		case 2:
 			if(KeyStart == 0)
 			{
-				if(runMode)
-				{
-					powerMode = 1;
-					//恢复自动模式继续工作
-					/////////
-					//ManiDispatchSteps = 0;
-					ManiDispatchSteps = ManiDispatchStepsBak;
-					SubDispatchSteps = SubDispatchStepsBak;
-					timerCountOperation = 0;
-					freshDiaplay = 1;
-				}
+				powerMode = 1;
+				//恢复自动模式继续工作
+				/////////
+				//ManiDispatchSteps = 0;
+				ManiDispatchSteps = ManiDispatchStepsBak;
+				SubDispatchSteps = SubDispatchStepsBak;
+				timerCountOperation = 0;
+				freshDiaplay = 1;
 			}
 			if(KeyStop == 0)
 			{
@@ -76,7 +73,7 @@ void Key_Scan(void)
 			if(KeyHydClam == 0)
 			{
 				//液压钳输出
-				if(runMode && SubDispatchSteps == 22 && HydClamInductorTop == 0) //自动状态，并且处于液压钳等待状态
+				if(SubDispatchSteps == 22 && HydClamInductorTop == 0) //自动状态，并且处于液压钳等待状态
 				{
 					HydClamDown = 0;
 					timerCountOperation = 0;

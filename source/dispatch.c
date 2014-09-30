@@ -2,6 +2,7 @@
 #include <parameter.h>
 #include <intrins.h>
 #include <dispatch.h>
+#include <uart.h>
 
 unsigned char ManiDispatchSteps = 20;
 unsigned char ManiDispatchStepsBak = 0;
@@ -48,6 +49,7 @@ void ManiDispatch(void)
 			SubDispatchSteps = 0;
 			currentlySignalNum = 0;
 			ManiDispatchSteps ++;
+			freshDiaplay = 1;
 		break;
 		case 3:
 			if(SubDispatchSteps == 20)
@@ -81,6 +83,7 @@ void ManiDispatch(void)
 				settingBoardNumber = 0;
 				currentlySignalNum = 0;
 				currentlyBoardNumber = 0;
+				freshDiaplay = 1;
 			}		
 		break;
 		default:
@@ -166,6 +169,7 @@ void SubDispatch(void)
 				SubDispatchSteps = 20;
 				SystemAlarm = 0;
 				powerMode = 2;
+				freshDiaplay = 1;
 			}
 			if(HydClamInductorBottom == 0)
 			{
@@ -184,11 +188,13 @@ void SubDispatch(void)
 				SubDispatchSteps = 20;
 				SystemAlarm = 0;
 				powerMode = 2;
+				freshDiaplay = 1;
 			}
 			if(HydClamInductorTop == 0)
 			{
 				HydClamUp = 1;
-				SubDispatchSteps = 20;	
+				SubDispatchSteps = 20;
+				currentlySignalNum = 0;	
 			}	
 		break;
 		case 20:

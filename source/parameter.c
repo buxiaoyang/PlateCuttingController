@@ -17,8 +17,7 @@
 /***************************************************************************/
 // 参数定义	
 /***************************************************************************/
-unsigned int powerMode; //启动状态 0关闭 1启动
-unsigned int runMode; //运行模式 0手动模式 1自动模式
+unsigned int powerMode; //运行模式 0关闭 1启动 2报警
 
 unsigned int HydClamStatus; //液压剪刀状态 0：关闭  1：打开
 unsigned int HydMonitorStatus; //液压电机状态 0：关闭  1：打开
@@ -69,8 +68,7 @@ unsigned char parameter_read()
 /***************************************************************************/
 void parameter_init()
 {
-	powerMode = 0;	//启动状态 0关闭 1启动
-	runMode = 0;
+	powerMode = 0;	//启动状态 0关闭 1启动 2报警
 	HydClamStatus = 0;
 	HydMonitorStatus = 0;
 	if(!parameter_read())

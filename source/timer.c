@@ -36,25 +36,6 @@ void tm0_isr() interrupt 1 using 1
 		timerCountOperation ++;
         TestOut = !TestOut;  
 		/////////////////////////////// 
-		if(KeyAutoManual == 1)
-		{
-			runMode = 1;
-			freshDiaplay = 1;
-		}
-		else
-		{
-			//切到手动模式和复位效果一样
-			ManiDispatchSteps = 20;
-			SubDispatchSteps = 20;
-			settingBoardLength = 0;
-			settingBoardNumber = 0;
-			currentlySignalNum = 0;
-			currentlyBoardNumber = 0;
-			ManiDispatchStepsBak = 0;
-			SubDispatchStepsBak = 20;
-			runMode = 0;
-			powerMode = 0;
-		} 
 		Key_Scan();
 		ManiDispatch();
 		SubDispatch();	

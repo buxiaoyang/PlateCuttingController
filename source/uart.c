@@ -287,35 +287,35 @@ void anyData()
 	}
 	else if(uartBuffer[2] == 0x23)	//手动操作_前进
 	{
-		if(!runMode)
+		if(powerMode == 0)
 		{
 			manualOperation = 1;
 		}
 	}
 	else if(uartBuffer[2] == 0x24)	//手动操作_后退
 	{
-		if(!runMode)
+		if(powerMode == 0)
 		{
 			manualOperation = 2;
 		}
 	}
 	else if(uartBuffer[2] == 0x25)	//手动操作_慢进
 	{
-		if(!runMode)
+		if(powerMode == 0)
 		{
 			manualOperation = 3;
 		}
 	}
 	else if(uartBuffer[2] == 0x26)	//手动操作_切断上
 	{
-		if(!runMode)
+		if(powerMode == 0)
 		{
 			manualOperation = 4;
 		}
 	}
 	else if(uartBuffer[2] == 0x27)	//手动操作_切断下
 	{
-		if(!runMode)
+		if(powerMode == 0)
 		{
 			manualOperation = 5;
 		}

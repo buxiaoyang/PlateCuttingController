@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   TIMER                                                                 09/30/2014 22:20:47 PAGE 1   
+C51 COMPILER V7.50   TIMER                                                                 09/30/2014 23:00:15 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE TIMER
@@ -47,56 +47,37 @@ line level    source
   36   2                      timerCountOperation ++;
   37   2              TestOut = !TestOut;  
   38   2                      /////////////////////////////// 
-  39   2                      if(KeyAutoManual == 1)
-  40   2                      {
-  41   3                              runMode = 1;
-  42   3                              freshDiaplay = 1;
-  43   3                      }
-  44   2                      else
-  45   2                      {
-  46   3                              //切到手动模式和复位效果一样
-  47   3                              ManiDispatchSteps = 20;
-  48   3                              SubDispatchSteps = 20;
-  49   3                              settingBoardLength = 0;
-  50   3                              settingBoardNumber = 0;
-  51   3                              currentlySignalNum = 0;
-  52   3                              currentlyBoardNumber = 0;
-  53   3                              ManiDispatchStepsBak = 0;
-C51 COMPILER V7.50   TIMER                                                                 09/30/2014 22:20:47 PAGE 2   
+  39   2                      Key_Scan();
+  40   2                      ManiDispatch();
+  41   2                      SubDispatch();  
+  42   2                      /////////////////////////////// 
+  43   2                      count10ms = 9;               //reset counter
+  44   2          }
+  45   1      }
+  46          
+  47          //-----------------------------------------------
+  48          
+  49          /* main program */
+  50          void timer_init()
+  51          {
+  52   1      #ifdef MODE1T
+  53   1          AUXR |= 0x80;                    //timer0 work in 1T mode
+C51 COMPILER V7.50   TIMER                                                                 09/30/2014 23:00:15 PAGE 2   
 
-  54   3                              SubDispatchStepsBak = 20;
-  55   3                              runMode = 0;
-  56   3                              powerMode = 0;
-  57   3                      } 
-  58   2                      Key_Scan();
-  59   2                      ManiDispatch();
-  60   2                      SubDispatch();  
-  61   2                      /////////////////////////////// 
-  62   2                      count10ms = 9;               //reset counter
-  63   2          }
-  64   1      }
-  65          
-  66          //-----------------------------------------------
-  67          
-  68          /* main program */
-  69          void timer_init()
-  70          {
-  71   1      #ifdef MODE1T
-  72   1          AUXR |= 0x80;                    //timer0 work in 1T mode
-  73   1      #endif
-  74   1          TMOD = 0x01;                    //set timer0 as mode1 (16-bit)
-  75   1          TL0 = T1MS;                     //initial timer0 low byte
-  76   1          TH0 = T1MS >> 8;                //initial timer0 high byte
-  77   1          TR0 = 1;                        //timer0 start running
-  78   1          ET0 = 1;                        //enable timer0 interrupt
-  79   1          EA = 1;                         //open global interrupt switch
-  80   1          count10ms = 9;                      //initial counter
-  81   1      }
-  82          
+  54   1      #endif
+  55   1          TMOD = 0x01;                    //set timer0 as mode1 (16-bit)
+  56   1          TL0 = T1MS;                     //initial timer0 low byte
+  57   1          TH0 = T1MS >> 8;                //initial timer0 high byte
+  58   1          TR0 = 1;                        //timer0 start running
+  59   1          ET0 = 1;                        //enable timer0 interrupt
+  60   1          EA = 1;                         //open global interrupt switch
+  61   1          count10ms = 9;                      //initial counter
+  62   1      }
+  63          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    174    ----
+   CODE SIZE        =     96    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      1    ----
    PDATA SIZE       =   ----    ----

@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   MAIN                                                                  09/30/2014 22:20:45 PAGE 1   
+C51 COMPILER V7.50   MAIN                                                                  09/30/2014 23:00:14 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   52   1              SendDataToScreen(0x0003, sysParm2_ErrorCorrectionValue);
   53   1              SendDataToScreen(0x0005, sysParm3);
   54   1              SendDataToScreen(0x0007, sysParm4);
-C51 COMPILER V7.50   MAIN                                                                  09/30/2014 22:20:45 PAGE 2   
+C51 COMPILER V7.50   MAIN                                                                  09/30/2014 23:00:14 PAGE 2   
 
   55   1              SendDataToScreen(0x0009, sysParm5);
   56   1              SendDataToScreen(0x000B, parameterBoard[0].boardLength);
@@ -77,103 +77,89 @@ line level    source
   65   1              SendDataToScreen(0x0017, parameterBoard[3].boardLength);
   66   1              SendDataToScreen(0x0036, parameterBoard[3].boardDecLength);
   67   1              SendDataToScreen(0x0019, parameterBoard[3].boardNumber);
-  68   1              if(!powerMode && !runMode)
-  69   1              {
-  70   2                      SendDataToScreen(0x0000, 0x0000);
-  71   2              }
-  72   1              else if(!powerMode && runMode)
-  73   1              {
-  74   2                      SendDataToScreen(0x0000, 0x0001);
-  75   2              }
-  76   1              else if(powerMode && !runMode)
-  77   1              {
-  78   2                      SendDataToScreen(0x0000, 0x0002);
-  79   2              }
-  80   1              else
-  81   1              {
-  82   2                      SendDataToScreen(0x0000, 0x0003);
-  83   2              }
-  84   1              SendDataToScreen(0x0038, HydClamStatus);
-  85   1              SendDataToScreen(0x003A, HydMonitorStatus);
-  86   1              SendDataToScreen(0x001B, settingBoardLength);
-  87   1              SendDataToScreen(0x001D, settingBoardNumber);
-  88   1              SendDataToScreen(0x001F, currentlyBoardLength);
-  89   1              SendDataToScreen(0x0021, currentlyBoardNumber);
-  90   1      }
-  91          
-  92          /***************************************************************************/
-  93          // 主函数
-  94          // 参数：无
-  95          // 返回值：无   
-  96          /***************************************************************************/
-  97          void main()
-  98          {
-  99   1              exterInterInit();
- 100   1              uart_init();
- 101   1              timer_init();
- 102   1              parameter_init();
- 103   1              maxSignalNum = (65535 * sysParm1_SignalNumPerMeter)/1000-2000;
- 104   1              errorCorrectionBoardLength =  (sysParm2_ErrorCorrectionValue*1000)/sysParm1_SignalNumPerMeter;
- 105   1              while(1)
- 106   1              {
- 107   2                      currentlyBoardLength = (currentlySignalNum*1000)/sysParm1_SignalNumPerMeter;
- 108   2                      if(freshDiaplay)
- 109   2                      {
- 110   3                              freshDiaplay = 0;
- 111   3                              parameter_send_screen();
- 112   3                      }
- 113   2                      if(saveSetting)
- 114   2                      {
- 115   3                              parameter_save();
- 116   3                              saveSetting = 0;
-C51 COMPILER V7.50   MAIN                                                                  09/30/2014 22:20:45 PAGE 3   
+  68   1              SendDataToScreen(0x0000, powerMode);
+  69   1              SendDataToScreen(0x0038, HydClamStatus);
+  70   1              SendDataToScreen(0x003A, HydMonitorStatus);
+  71   1              SendDataToScreen(0x001B, settingBoardLength);
+  72   1              SendDataToScreen(0x001D, settingBoardNumber);
+  73   1              SendDataToScreen(0x001F, currentlyBoardLength);
+  74   1              SendDataToScreen(0x0021, currentlyBoardNumber);
+  75   1      }
+  76          
+  77          /***************************************************************************/
+  78          // 主函数
+  79          // 参数：无
+  80          // 返回值：无   
+  81          /***************************************************************************/
+  82          void main()
+  83          {
+  84   1              exterInterInit();
+  85   1              uart_init();
+  86   1              timer_init();
+  87   1              parameter_init();
+  88   1              maxSignalNum = (65535 * sysParm1_SignalNumPerMeter)/1000-2000;
+  89   1              errorCorrectionBoardLength =  (sysParm2_ErrorCorrectionValue*1000)/sysParm1_SignalNumPerMeter;
+  90   1              freshDiaplay = 1;
+  91   1              while(1)
+  92   1              {
+  93   2                      currentlyBoardLength = (currentlySignalNum*1000)/sysParm1_SignalNumPerMeter;
+  94   2                      if(freshDiaplay)
+  95   2                      {
+  96   3                              freshDiaplay = 0;
+  97   3                              parameter_send_screen();
+  98   3                      }
+  99   2                      if(saveSetting)
+ 100   2                      {
+ 101   3                              parameter_save();
+ 102   3                              saveSetting = 0;
+ 103   3                      }
+ 104   2                      //手动操作
+ 105   2                      if(manualOperation == 1) //1, 前进 
+ 106   2                      {
+ 107   3                              MotorForwardSlow = 0;
+ 108   3                              delay_ms(7000);
+ 109   3                              MotorForwardSlow = 1;
+ 110   3                              manualOperation = 0;    
+ 111   3                      }
+ 112   2                      else if(manualOperation == 2) //2，后退 
+ 113   2                      {
+ 114   3                              MotorBackSlow = 0;
+ 115   3                              delay_ms(7000);
+ 116   3                              MotorBackSlow = 1;
+C51 COMPILER V7.50   MAIN                                                                  09/30/2014 23:00:14 PAGE 3   
 
- 117   3                      }
- 118   2                      //手动操作
- 119   2                      if(manualOperation == 1) //1, 前进 
+ 117   3                              manualOperation = 0;    
+ 118   3                      }
+ 119   2                      else if(manualOperation == 3) //3，慢进 
  120   2                      {
  121   3                              MotorForwardSlow = 0;
  122   3                              delay_ms(7000);
  123   3                              MotorForwardSlow = 1;
  124   3                              manualOperation = 0;    
  125   3                      }
- 126   2                      else if(manualOperation == 2) //2，后退 
+ 126   2                      else if(manualOperation == 4) //4，切断上 
  127   2                      {
- 128   3                              MotorBackSlow = 0;
- 129   3                              delay_ms(7000);
- 130   3                              MotorBackSlow = 1;
- 131   3                              manualOperation = 0;    
- 132   3                      }
- 133   2                      else if(manualOperation == 3) //3，慢进 
- 134   2                      {
- 135   3                              MotorForwardSlow = 0;
- 136   3                              delay_ms(7000);
- 137   3                              MotorForwardSlow = 1;
- 138   3                              manualOperation = 0;    
- 139   3                      }
- 140   2                      else if(manualOperation == 4) //4，切断上 
- 141   2                      {
- 142   3                      
- 143   3                      }
- 144   2                      else if(manualOperation == 5) //5，切断下
- 145   2                      {
- 146   3                      
- 147   3                      }
- 148   2                      //TestOut = ! TestOut;                  
- 149   2              }   
- 150   1      }
- 151          
- 152          
- 153          
- 154          
- 155          
- 156          
- 157          
- 158          
+ 128   3                      
+ 129   3                      }
+ 130   2                      else if(manualOperation == 5) //5，切断下
+ 131   2                      {
+ 132   3                      
+ 133   3                      }
+ 134   2                      //TestOut = ! TestOut;                  
+ 135   2              }   
+ 136   1      }
+ 137          
+ 138          
+ 139          
+ 140          
+ 141          
+ 142          
+ 143          
+ 144          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    856    ----
+   CODE SIZE        =    790    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

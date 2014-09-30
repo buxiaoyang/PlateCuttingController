@@ -65,22 +65,7 @@ void parameter_send_screen()
 	SendDataToScreen(0x0017, parameterBoard[3].boardLength);
 	SendDataToScreen(0x0036, parameterBoard[3].boardDecLength);
 	SendDataToScreen(0x0019, parameterBoard[3].boardNumber);
-	if(!powerMode && !runMode)
-	{
-	   	SendDataToScreen(0x0000, 0x0000);
-	}
-	else if(!powerMode && runMode)
-	{
-	   	SendDataToScreen(0x0000, 0x0001);
-	}
-	else if(powerMode && !runMode)
-	{
-		SendDataToScreen(0x0000, 0x0002);
-	}
-	else
-	{
-		SendDataToScreen(0x0000, 0x0003);
-	}
+	SendDataToScreen(0x0000, powerMode);
 	SendDataToScreen(0x0038, HydClamStatus);
 	SendDataToScreen(0x003A, HydMonitorStatus);
 	SendDataToScreen(0x001B, settingBoardLength);
@@ -102,6 +87,7 @@ void main()
 	parameter_init();
 	maxSignalNum = (65535 * sysParm1_SignalNumPerMeter)/1000-2000;
 	errorCorrectionBoardLength =  (sysParm2_ErrorCorrectionValue*1000)/sysParm1_SignalNumPerMeter;
+	freshDiaplay = 1;
 	while(1)
 	{
 		currentlyBoardLength = (currentlySignalNum*1000)/sysParm1_SignalNumPerMeter;
