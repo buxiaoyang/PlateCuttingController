@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   MAIN                                                                  09/30/2014 23:00:14 PAGE 1   
+C51 COMPILER V7.50   MAIN                                                                  09/30/2014 23:23:55 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   52   1              SendDataToScreen(0x0003, sysParm2_ErrorCorrectionValue);
   53   1              SendDataToScreen(0x0005, sysParm3);
   54   1              SendDataToScreen(0x0007, sysParm4);
-C51 COMPILER V7.50   MAIN                                                                  09/30/2014 23:00:14 PAGE 2   
+C51 COMPILER V7.50   MAIN                                                                  09/30/2014 23:23:55 PAGE 2   
 
   55   1              SendDataToScreen(0x0009, sysParm5);
   56   1              SendDataToScreen(0x000B, parameterBoard[0].boardLength);
@@ -126,7 +126,7 @@ line level    source
  114   3                              MotorBackSlow = 0;
  115   3                              delay_ms(7000);
  116   3                              MotorBackSlow = 1;
-C51 COMPILER V7.50   MAIN                                                                  09/30/2014 23:00:14 PAGE 3   
+C51 COMPILER V7.50   MAIN                                                                  09/30/2014 23:23:55 PAGE 3   
 
  117   3                              manualOperation = 0;    
  118   3                      }

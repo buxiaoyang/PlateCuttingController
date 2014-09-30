@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   DISPATCH                                                              09/30/2014 23:00:16 PAGE 1   
+C51 COMPILER V7.50   DISPATCH                                                              09/30/2014 23:24:06 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE DISPATCH
@@ -62,7 +62,7 @@ line level    source
   50   2                              currentlySignalNum = 0;
   51   2                              ManiDispatchSteps ++;
   52   2                              freshDiaplay = 1;
-C51 COMPILER V7.50   DISPATCH                                                              09/30/2014 23:00:16 PAGE 2   
+C51 COMPILER V7.50   DISPATCH                                                              09/30/2014 23:24:06 PAGE 2   
 
   53   2                      break;
   54   2                      case 3:
@@ -126,7 +126,7 @@ line level    source
  112   2                              HydClamDown = 1;
  113   2                              HydClamUp = 1;
  114   2                              SubDispatchSteps ++;
-C51 COMPILER V7.50   DISPATCH                                                              09/30/2014 23:00:16 PAGE 3   
+C51 COMPILER V7.50   DISPATCH                                                              09/30/2014 23:24:06 PAGE 3   
 
  115   2                      break;
  116   2                      case 1: //1：板子到达设置长度八分之一，电机前进快
@@ -190,7 +190,7 @@ line level    source
  174   2                              if(HydClamInductorBottom == 0)
  175   2                              {
  176   3                                      HydClamDown = 1;
-C51 COMPILER V7.50   DISPATCH                                                              09/30/2014 23:00:16 PAGE 4   
+C51 COMPILER V7.50   DISPATCH                                                              09/30/2014 23:24:06 PAGE 4   
 
  177   3                                      HydClamUp = 0;
  178   3                                      SubDispatchSteps ++;    
