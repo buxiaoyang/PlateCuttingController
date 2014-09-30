@@ -39,23 +39,47 @@ void Key_Scan(void)
 				if(runMode)
 				{
 					powerMode = 1;
-					ManiDispatchSteps = 0;
+					//恢复自动模式继续工作
+					/////////
+					//ManiDispatchSteps = 0;
+					ManiDispatchSteps = ManiDispatchStepsBak;
+					SubDispatchSteps = SubDispatchStepsBak;
+					timerCountOperation = 0;
 					freshDiaplay = 1;
 				}
-			   	//cistern[7].cisternStatus = Ready;
-				//displayFlag = 1;
 			}
 			if(KeyStop == 0)
 			{
-				powerMode = 0;
-				freshDiaplay = 1;	
+				if(powerMode == 1)
+				{
+					//进入停机模式
+					ManiDispatchStepsBak = 	ManiDispatchSteps;
+					SubDispatchStepsBak = SubDispatchSteps;
+					ManiDispatchSteps = 20;
+					SubDispatchSteps = 20;
+					////////
+					powerMode = 0;
+					freshDiaplay = 1;
+				}
+				else if(powerMode == 2)
+				{
+					//恢复自动模式继续工作
+					ManiDispatchSteps = ManiDispatchStepsBak;
+					SubDispatchSteps = SubDispatchStepsBak;
+					//////
+					powerMode = 1;
+					SystemAlarm = 1;
+					timerCountOperation = 0;
+					freshDiaplay = 1;
+				}	
 			}
 			if(KeyHydClam == 0)
 			{
 				//液压钳输出
-				if(runMode && SubDispatchSteps == 22) //自动状态，并且处于液压钳等待状态
+				if(runMode && SubDispatchSteps == 22 && HydClamInductorTop == 0) //自动状态，并且处于液压钳等待状态
 				{
 					HydClamDown = 0;
+					timerCountOperation = 0;
 					SubDispatchSteps = 4;
 				}
 				freshDiaplay = 1;	

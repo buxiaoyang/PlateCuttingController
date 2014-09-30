@@ -68,8 +68,8 @@ struct Board  //板材结构体
 void parameter_init();
 unsigned char parameter_save();
 
-extern unsigned int powerMode; //启动
-extern unsigned int runMode; //运行模式
+extern unsigned int powerMode; //启动状态 0关闭 1启动 2报警 
+extern unsigned int runMode; //运行模式 0手动模式 1自动模式
 extern unsigned int HydClamStatus; //液压剪刀状态 0：关闭  1：打开
 extern unsigned int HydMonitorStatus; //液压电机状态 0：关闭  1：打开
 extern struct Board parameterBoard[4];	//板材参数

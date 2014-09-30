@@ -22,7 +22,7 @@
 sfr AUXR = 0x8e;                    //Auxiliary register
 
 /* define variables */
-WORD count;                         //1000 times counter
+unsigned char count10ms;
 
 //-----------------------------------------------
 
@@ -31,8 +31,9 @@ void tm0_isr() interrupt 1 using 1
 {
     TL0 = T1MS;                     //reload timer0 low byte
     TH0 = T1MS >> 8;                //reload timer0 high byte
-    if (count-- == 0)               //1ms * 1000 -> 1s
+    if (count10ms-- == 0)               //1ms * 1000 -> 1s
     {
+		timerCountOperation ++;
         TestOut = !TestOut;  
 		/////////////////////////////// 
 		if(KeyAutoManual == 1)
@@ -42,14 +43,19 @@ void tm0_isr() interrupt 1 using 1
 		}
 		else
 		{
+			ManiDispatchStepsBak = 	ManiDispatchSteps;
+			SubDispatchStepsBak = SubDispatchSteps;
+			ManiDispatchSteps = 20;
+			SubDispatchSteps = 20;
 			runMode = 0;
+			powerMode = 0;
 			freshDiaplay = 1;
 		} 
 		Key_Scan();
 		ManiDispatch();
 		SubDispatch();	
 		/////////////////////////////// 
-		count = 9;               //reset counter
+		count10ms = 9;               //reset counter
     }
 }
 
@@ -67,6 +73,6 @@ void timer_init()
     TR0 = 1;                        //timer0 start running
     ET0 = 1;                        //enable timer0 interrupt
     EA = 1;                         //open global interrupt switch
-    count = 9;                      //initial counter
+    count10ms = 9;                      //initial counter
 }
 

@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   TIMER                                                                 09/29/2014 22:59:56 PAGE 1   
+C51 COMPILER V7.50   TIMER                                                                 09/30/2014 21:40:31 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE TIMER
@@ -33,7 +33,7 @@ line level    source
   22          sfr AUXR = 0x8e;                    //Auxiliary register
   23          
   24          /* define variables */
-  25          WORD count;                         //1000 times counter
+  25          unsigned char count10ms;
   26          
   27          //-----------------------------------------------
   28          
@@ -42,53 +42,59 @@ line level    source
   31          {
   32   1          TL0 = T1MS;                     //reload timer0 low byte
   33   1          TH0 = T1MS >> 8;                //reload timer0 high byte
-  34   1          if (count-- == 0)               //1ms * 1000 -> 1s
+  34   1          if (count10ms-- == 0)               //1ms * 1000 -> 1s
   35   1          {
-  36   2              TestOut = !TestOut;  
-  37   2                      /////////////////////////////// 
-  38   2                      if(KeyAutoManual == 1)
-  39   2                      {
-  40   3                              runMode = 1;
-  41   3                              freshDiaplay = 1;
-  42   3                      }
-  43   2                      else
-  44   2                      {
-  45   3                              runMode = 0;
-  46   3                              freshDiaplay = 1;
-  47   3                      } 
-  48   2                      Key_Scan();
-  49   2                      ManiDispatch();
-  50   2                      SubDispatch();  
-  51   2                      /////////////////////////////// 
-  52   2                      count = 9;               //reset counter
-  53   2          }
-C51 COMPILER V7.50   TIMER                                                                 09/29/2014 22:59:56 PAGE 2   
+  36   2                      timerCountOperation ++;
+  37   2              TestOut = !TestOut;  
+  38   2                      /////////////////////////////// 
+  39   2                      if(KeyAutoManual == 1)
+  40   2                      {
+  41   3                              runMode = 1;
+  42   3                              freshDiaplay = 1;
+  43   3                      }
+  44   2                      else
+  45   2                      {
+  46   3                              ManiDispatchStepsBak =  ManiDispatchSteps;
+  47   3                              SubDispatchStepsBak = SubDispatchSteps;
+  48   3                              ManiDispatchSteps = 20;
+  49   3                              SubDispatchSteps = 20;
+  50   3                              runMode = 0;
+  51   3                              powerMode = 0;
+  52   3                              freshDiaplay = 1;
+  53   3                      } 
+C51 COMPILER V7.50   TIMER                                                                 09/30/2014 21:40:31 PAGE 2   
 
-  54   1      }
-  55          
-  56          //-----------------------------------------------
-  57          
-  58          /* main program */
-  59          void timer_init()
-  60          {
-  61   1      #ifdef MODE1T
-  62   1          AUXR |= 0x80;                    //timer0 work in 1T mode
-  63   1      #endif
-  64   1          TMOD = 0x01;                    //set timer0 as mode1 (16-bit)
-  65   1          TL0 = T1MS;                     //initial timer0 low byte
-  66   1          TH0 = T1MS >> 8;                //initial timer0 high byte
-  67   1          TR0 = 1;                        //timer0 start running
-  68   1          ET0 = 1;                        //enable timer0 interrupt
-  69   1          EA = 1;                         //open global interrupt switch
-  70   1          count = 9;                      //initial counter
-  71   1      }
-  72          
+  54   2                      Key_Scan();
+  55   2                      ManiDispatch();
+  56   2                      SubDispatch();  
+  57   2                      /////////////////////////////// 
+  58   2                      count10ms = 9;               //reset counter
+  59   2          }
+  60   1      }
+  61          
+  62          //-----------------------------------------------
+  63          
+  64          /* main program */
+  65          void timer_init()
+  66          {
+  67   1      #ifdef MODE1T
+  68   1          AUXR |= 0x80;                    //timer0 work in 1T mode
+  69   1      #endif
+  70   1          TMOD = 0x01;                    //set timer0 as mode1 (16-bit)
+  71   1          TL0 = T1MS;                     //initial timer0 low byte
+  72   1          TH0 = T1MS >> 8;                //initial timer0 high byte
+  73   1          TR0 = 1;                        //timer0 start running
+  74   1          ET0 = 1;                        //enable timer0 interrupt
+  75   1          EA = 1;                         //open global interrupt switch
+  76   1          count10ms = 9;                      //initial counter
+  77   1      }
+  78          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    109    ----
+   CODE SIZE        =    149    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =      2    ----
+   XDATA SIZE       =      1    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

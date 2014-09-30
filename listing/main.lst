@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   MAIN                                                                  09/29/2014 22:59:54 PAGE 1   
+C51 COMPILER V7.50   MAIN                                                                  09/30/2014 21:40:25 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   52   1              SendDataToScreen(0x0003, sysParm2_ErrorCorrectionValue);
   53   1              SendDataToScreen(0x0005, sysParm3);
   54   1              SendDataToScreen(0x0007, sysParm4);
-C51 COMPILER V7.50   MAIN                                                                  09/29/2014 22:59:54 PAGE 2   
+C51 COMPILER V7.50   MAIN                                                                  09/30/2014 21:40:25 PAGE 2   
 
   55   1              SendDataToScreen(0x0009, sysParm5);
   56   1              SendDataToScreen(0x000B, parameterBoard[0].boardLength);
@@ -126,7 +126,7 @@ line level    source
  114   2                      {
  115   3                              parameter_save();
  116   3                              saveSetting = 0;
-C51 COMPILER V7.50   MAIN                                                                  09/29/2014 22:59:54 PAGE 3   
+C51 COMPILER V7.50   MAIN                                                                  09/30/2014 21:40:25 PAGE 3   
 
  117   3                      }
  118   2                      //TestOut = ! TestOut;                  

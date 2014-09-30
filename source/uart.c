@@ -2,7 +2,7 @@
 #include <reg52.h>
 #include <intrins.h>
 #include <parameter.h>
-
+#include <dispatch.h>
 
 #define FOSC 11059200L      //System frequency
 #define BAUD 115200         //UART baudrate
@@ -305,7 +305,15 @@ void anyData()
 	}
 	else if(uartBuffer[2] == 0x28)	//运行画面_复位按钮
 	{
-		
+		ManiDispatchSteps = 20;
+		SubDispatchSteps = 20;
+		powerMode = 0;
+		settingBoardLength = 0;
+		settingBoardNumber = 0;
+		currentlySignalNum = 0;
+		currentlyBoardNumber = 0;
+		ManiDispatchStepsBak = 0;
+		SubDispatchStepsBak = 20;
 	}
 	freshDiaplay = 1;	
 }
