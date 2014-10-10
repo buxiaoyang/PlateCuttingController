@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   DISPATCH                                                              09/30/2014 23:24:06 PAGE 1   
+C51 COMPILER V7.50   DISPATCH                                                              10/10/2014 20:44:24 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE DISPATCH
@@ -33,209 +33,302 @@ line level    source
   23          
   24          unsigned int timerCountOperation = 0;
   25          
-  26          void ManiDispatch(void)
-  27          {
-  28   1              switch(ManiDispatchSteps)
-  29   1              {
-  30   2                      case 0: 
-  31   2                              currentSettingIndex = 0;
-  32   2                              currentSettingBoardNum =  parameterBoard[currentSettingIndex].boardNumber;
-  33   2                              currentlyBoardNumber = 0;
-  34   2                              settingBoardNumber = currentSettingBoardNum;
-  35   2                              ManiDispatchSteps ++;
-  36   2                      break;
-  37   2                      case 1:
-  38   2                              if(parameterBoard[currentSettingIndex].boardNumber != 0 && parameterBoard[currentSettingIndex].boardLen
+  26          
+  27          unsigned char ManualDispatchSteps = 20;
+  28          unsigned int ManualTimerCount = 0;
+  29          
+  30          void ManualDispatch(void)
+  31          {
+  32   1              switch(ManualDispatchSteps)
+  33   1              {
+  34   2                      case 0:  //前进开始
+  35   2                              MotorForwardSlow = 0;
+  36   2                              ManualTimerCount = 0;
+  37   2                              ManualDispatchSteps ++;
+  38   2                      break;
+  39   2                      case 1:  //前进结束
+  40   2                              if(ManualTimerCount > 10)
+  41   2                              {
+  42   3                                      MotorForwardSlow = 1;
+  43   3                                      ManualDispatchSteps = 20;
+  44   3                              }
+  45   2                      break;
+  46   2                      case 2:  //后退开始
+  47   2                              MotorBackSlow = 0;
+  48   2                              ManualTimerCount = 0;
+  49   2                              ManualDispatchSteps ++;
+  50   2                      break;
+  51   2                      case 3:  //后退结束
+  52   2                              if(ManualTimerCount > 10)
+  53   2                              {
+  54   3                                      MotorBackSlow = 1;
+C51 COMPILER V7.50   DISPATCH                                                              10/10/2014 20:44:24 PAGE 2   
+
+  55   3                                      ManualDispatchSteps = 20;
+  56   3                              }
+  57   2                      break;
+  58   2                      case 4:  //慢进开始
+  59   2                              MotorForwardSlow = 0;
+  60   2                              ManualTimerCount = 0;
+  61   2                              ManualDispatchSteps ++;
+  62   2                      break;
+  63   2                      case 5:  //慢进结束
+  64   2                              if(ManualTimerCount > 10)
+  65   2                              {
+  66   3                                      MotorForwardSlow = 1;
+  67   3                                      ManualDispatchSteps = 20;
+  68   3                              }
+  69   2                      break;
+  70   2                      case 6:  //切断上开始
+  71   2                              HydClamUp = 0;
+  72   2                              ManualDispatchSteps ++;
+  73   2                      break;
+  74   2                      case 7:  //切断上结束
+  75   2                              if(HydClamInductorTop == 0)
+  76   2                              {
+  77   3                                      HydClamUp = 1;
+  78   3                                      ManualDispatchSteps = 20;
+  79   3                              }
+  80   2                      break;
+  81   2                      case 8:  //切断下开始
+  82   2                              HydClamDown = 0;
+  83   2                              ManualDispatchSteps ++;
+  84   2                      break;
+  85   2                      case 9:  //切断下结束
+  86   2                              if(HydClamInductorBottom == 0)
+  87   2                              {
+  88   3                                      HydClamDown = 1;
+  89   3                                      ManualDispatchSteps = 20;
+  90   3                              }
+  91   2                      break;
+  92   2                      default:
+  93   2                               _nop_();       
+  94   2              }       
+  95   1      }
+  96          
+  97          void ManiDispatch(void)
+  98          {
+  99   1              switch(ManiDispatchSteps)
+ 100   1              {
+ 101   2                      case 0: 
+ 102   2                              currentSettingIndex = 0;
+ 103   2                              currentSettingBoardNum =  parameterBoard[currentSettingIndex].boardNumber;
+ 104   2                              currentlyBoardNumber = 0;
+ 105   2                              settingBoardNumber = currentSettingBoardNum;
+ 106   2                              ManiDispatchSteps ++;
+ 107   2                      break;
+ 108   2                      case 1:
+ 109   2                              if(parameterBoard[currentSettingIndex].boardNumber != 0 && parameterBoard[currentSettingIndex].boardLen
              -gth != 0)
-  39   2                              {
-  40   3                                      ManiDispatchSteps ++;
-  41   3                              }
-  42   2                              else
-  43   2                              {
-  44   3                                      ManiDispatchSteps = 4;
-  45   3                              }
-  46   2                      break;
-  47   2                      case 2:
-  48   2                              settingBoardLength =  parameterBoard[currentSettingIndex].boardLength - (currentlyBoardNumber*parameter
+ 110   2                              {
+ 111   3                                      ManiDispatchSteps ++;
+ 112   3                              }
+ 113   2                              else
+ 114   2                              {
+ 115   3                                      ManiDispatchSteps = 4;
+C51 COMPILER V7.50   DISPATCH                                                              10/10/2014 20:44:24 PAGE 3   
+
+ 116   3                              }
+ 117   2                      break;
+ 118   2                      case 2:
+ 119   2                              settingBoardLength =  parameterBoard[currentSettingIndex].boardLength - (currentlyBoardNumber*parameter
              -Board[currentSettingIndex].boardDecLength);
-  49   2                              SubDispatchSteps = 0;
-  50   2                              currentlySignalNum = 0;
-  51   2                              ManiDispatchSteps ++;
-  52   2                              freshDiaplay = 1;
-C51 COMPILER V7.50   DISPATCH                                                              09/30/2014 23:24:06 PAGE 2   
-
-  53   2                      break;
-  54   2                      case 3:
-  55   2                              if(SubDispatchSteps == 20)
-  56   2                              {
-  57   3                                      currentSettingBoardNum --;
-  58   3                                      currentlyBoardNumber ++;
-  59   3                                      if(currentSettingBoardNum > 0)
-  60   3                                      {
-  61   4                                              ManiDispatchSteps = 2;
-  62   4                                      }
-  63   3                                      else
-  64   3                                      {
-  65   4                                              ManiDispatchSteps ++;
-  66   4                                      }
-  67   3                              }
-  68   2                      break;
-  69   2                      case 4:
-  70   2                              currentSettingIndex ++;
-  71   2                              if(currentSettingIndex < 4)
-  72   2                              {
-  73   3                                      currentSettingBoardNum =  parameterBoard[currentSettingIndex].boardNumber;
-  74   3                                      currentlyBoardNumber = 0;
-  75   3                                      settingBoardNumber = currentSettingBoardNum;
-  76   3                                      ManiDispatchSteps = 1;
-  77   3                              }
-  78   2                              else
-  79   2                              {
-  80   3                                      ManiDispatchSteps = 20;
-  81   3                                      powerMode = 0;
-  82   3                                      settingBoardLength = 0;
-  83   3                                      settingBoardNumber = 0;
-  84   3                                      currentlySignalNum = 0;
-  85   3                                      currentlyBoardNumber = 0;
-  86   3                                      freshDiaplay = 1;
-  87   3                              }               
-  88   2                      break;
-  89   2                      default:
-  90   2                               _nop_();
-  91   2              }
-  92   1      }
-  93          
-  94          //0：初始状态
-  95          //1：电机输出前进慢
-  96          //2：到达设置长度15%，电机输出前进快
-  97          //3：到达设置长度85%，点击输出前进慢
-  98          //4：到达设置长度100%，切板输出
-  99          //5：切板下方感应
- 100          //6：切板上方感应，过程结束
- 101          //20：结束状态
- 102          void SubDispatch(void)
- 103          {
- 104   1              unsigned int temp, temp1;
- 105   1              switch(SubDispatchSteps)
- 106   1              {
- 107   2                      case 0: //0：开始工作，电机前进慢
- 108   2                              MotorForwardFast = 1;
- 109   2                              MotorBackFast = 1;
- 110   2                              MotorForwardSlow = 0;
- 111   2                              MotorBackSlow = 1;
- 112   2                              HydClamDown = 1;
- 113   2                              HydClamUp = 1;
- 114   2                              SubDispatchSteps ++;
-C51 COMPILER V7.50   DISPATCH                                                              09/30/2014 23:24:06 PAGE 3   
-
- 115   2                      break;
- 116   2                      case 1: //1：板子到达设置长度八分之一，电机前进快
- 117   2                              MotorForwardSlow = 0;
- 118   2                              MotorForwardFast = 1;
- 119   2                              temp = settingBoardLength-errorCorrectionBoardLength;
- 120   2                              temp1 = temp>>3;
- 121   2                              if( currentlyBoardLength > temp1 )
- 122   2                              {
- 123   3                                      MotorForwardSlow = 0;
- 124   3                                      MotorForwardFast = 0;
- 125   3                                      SubDispatchSteps ++;    
- 126   3                              }       
- 127   2                      break;
- 128   2                      case 2: //2：到达设置长度八分之七，电机变为慢速
- 129   2                              MotorForwardSlow = 0;
- 130   2                              MotorForwardFast = 0;
- 131   2                              temp = settingBoardLength-errorCorrectionBoardLength;
- 132   2                              temp1 = (settingBoardLength- errorCorrectionBoardLength) - (temp>>3);
- 133   2                              if( currentlyBoardLength > temp1)
- 134   2                              {
- 135   3                                      MotorForwardSlow = 0;
- 136   3                                      MotorForwardFast = 1;
- 137   3                                      SubDispatchSteps ++;    
- 138   3                              }       
+ 120   2                              SubDispatchSteps = 0;
+ 121   2                              currentlySignalNum = 0;
+ 122   2                              ManiDispatchSteps ++;
+ 123   2                              freshDiaplay = 1;
+ 124   2                      break;
+ 125   2                      case 3:
+ 126   2                              if(SubDispatchSteps == 20)
+ 127   2                              {
+ 128   3                                      currentSettingBoardNum --;
+ 129   3                                      currentlyBoardNumber ++;
+ 130   3                                      if(currentSettingBoardNum > 0)
+ 131   3                                      {
+ 132   4                                              ManiDispatchSteps = 2;
+ 133   4                                      }
+ 134   3                                      else
+ 135   3                                      {
+ 136   4                                              ManiDispatchSteps ++;
+ 137   4                                      }
+ 138   3                              }
  139   2                      break;
- 140   2                      case 3: //3：到达设置长度100%，如果剪刀在上方则输出剪刀向下
- 141   2                              MotorForwardSlow = 0;
- 142   2                              temp = settingBoardLength-errorCorrectionBoardLength;
- 143   2                              if( currentlyBoardLength > temp)
- 144   2                              {
- 145   3                                      MotorForwardSlow = 1;
- 146   3                                      if(HydClamInductorTop == 0)
- 147   3                                      {
- 148   4                                              if(HydClamStatus == 1)
- 149   4                                              {
- 150   5                                                      HydClamDown = 0;
- 151   5                                                      timerCountOperation = 0;
- 152   5                                                      SubDispatchSteps ++;
- 153   5                                              }
- 154   4                                              else
- 155   4                                              {
- 156   5                                                      SubDispatchSteps = 22;
- 157   5                                              }
- 158   4                                      }
- 159   3                                              
- 160   3                              }       
- 161   2                      break;
- 162   2                      case 4: //4：剪刀下方传感器感应到，关闭向下，输出向上
- 163   2                              HydClamDown = 0;
- 164   2                              if(timerCountOperation > 1000) //10s 时间到
- 165   2                              {
- 166   3                                      ManiDispatchStepsBak =  ManiDispatchSteps;
- 167   3                                      SubDispatchStepsBak = SubDispatchSteps;
- 168   3                                      ManiDispatchSteps = 20;
- 169   3                                      SubDispatchSteps = 20;
- 170   3                                      SystemAlarm = 0;
- 171   3                                      powerMode = 2;
- 172   3                                      freshDiaplay = 1;
- 173   3                              }
- 174   2                              if(HydClamInductorBottom == 0)
- 175   2                              {
- 176   3                                      HydClamDown = 1;
-C51 COMPILER V7.50   DISPATCH                                                              09/30/2014 23:24:06 PAGE 4   
+ 140   2                      case 4:
+ 141   2                              currentSettingIndex ++;
+ 142   2                              if(currentSettingIndex < 4)
+ 143   2                              {
+ 144   3                                      currentSettingBoardNum =  parameterBoard[currentSettingIndex].boardNumber;
+ 145   3                                      currentlyBoardNumber = 0;
+ 146   3                                      settingBoardNumber = currentSettingBoardNum;
+ 147   3                                      ManiDispatchSteps = 1;
+ 148   3                              }
+ 149   2                              else
+ 150   2                              {
+ 151   3                                      ManiDispatchSteps = 20;
+ 152   3                                      powerMode = 0;
+ 153   3                                      settingBoardLength = 0;
+ 154   3                                      settingBoardNumber = 0;
+ 155   3                                      currentlySignalNum = 0;
+ 156   3                                      currentlyBoardNumber = 0;
+ 157   3                                      freshDiaplay = 1;
+ 158   3                              }               
+ 159   2                      break;
+ 160   2                      default:
+ 161   2                               _nop_();
+ 162   2              }
+ 163   1      }
+ 164          
+ 165          //0：初始状态
+ 166          //1：电机输出前进慢
+ 167          //2：到达设置长度15%，电机输出前进快
+ 168          //3：到达设置长度85%，点击输出前进慢
+ 169          //4：到达设置长度100%，切板输出
+ 170          //5：切板下方感应
+ 171          //6：切板上方感应，过程结束
+ 172          //20：结束状态
+ 173          void SubDispatch(void)
+ 174          {
+ 175   1              unsigned int temp, temp1;
+ 176   1              switch(SubDispatchSteps)
+C51 COMPILER V7.50   DISPATCH                                                              10/10/2014 20:44:24 PAGE 4   
 
- 177   3                                      HydClamUp = 0;
- 178   3                                      SubDispatchSteps ++;    
- 179   3                              }       
- 180   2                      break;
- 181   2                      case 5: //5：剪刀上方感应器感应到，关闭剪刀向上
- 182   2                              HydClamUp = 0;
- 183   2                              if(timerCountOperation > 1000) //10s 时间到
- 184   2                              {
- 185   3                                      ManiDispatchStepsBak =  ManiDispatchSteps;
- 186   3                                      SubDispatchStepsBak = SubDispatchSteps;
- 187   3                                      ManiDispatchSteps = 20;
- 188   3                                      SubDispatchSteps = 20;
- 189   3                                      SystemAlarm = 0;
- 190   3                                      powerMode = 2;
- 191   3                                      freshDiaplay = 1;
- 192   3                              }
- 193   2                              if(HydClamInductorTop == 0)
- 194   2                              {
- 195   3                                      HydClamUp = 1;
- 196   3                                      SubDispatchSteps = 20;
- 197   3                                      currentlySignalNum = 0; 
- 198   3                              }       
- 199   2                      break;
- 200   2                      case 20:
- 201   2                              MotorForwardFast = 1;
- 202   2                              MotorBackFast = 1;
- 203   2                              MotorForwardSlow = 1;
- 204   2                              MotorBackSlow = 1;
- 205   2                              HydClamDown = 1;
- 206   2                              HydClamUp = 1;
- 207   2                      break;
- 208   2                      case 22:        //22：液压剪刀关闭状态，等待手动开启液压剪刀
- 209   2                              _nop_();        
+ 177   1              {
+ 178   2                      case 0: //0：开始工作，电机前进慢
+ 179   2                              MotorForwardFast = 1;
+ 180   2                              MotorBackFast = 1;
+ 181   2                              MotorForwardSlow = 0;
+ 182   2                              MotorBackSlow = 1;
+ 183   2                              HydClamDown = 1;
+ 184   2                              HydClamUp = 1;
+ 185   2                              SubDispatchSteps ++;
+ 186   2                      break;
+ 187   2                      case 1: //1：板子到达设置长度八分之一，电机前进快
+ 188   2                              MotorForwardSlow = 0;
+ 189   2                              MotorForwardFast = 1;
+ 190   2                              temp = settingBoardLength-errorCorrectionBoardLength;
+ 191   2                              temp1 = temp>>3;
+ 192   2                              if( currentlyBoardLength > temp1 )
+ 193   2                              {
+ 194   3                                      MotorForwardSlow = 0;
+ 195   3                                      MotorForwardFast = 0;
+ 196   3                                      SubDispatchSteps ++;    
+ 197   3                              }       
+ 198   2                      break;
+ 199   2                      case 2: //2：到达设置长度八分之七，电机变为慢速
+ 200   2                              MotorForwardSlow = 0;
+ 201   2                              MotorForwardFast = 0;
+ 202   2                              temp = settingBoardLength-errorCorrectionBoardLength;
+ 203   2                              temp1 = (settingBoardLength- errorCorrectionBoardLength) - (temp>>3);
+ 204   2                              if( currentlyBoardLength > temp1)
+ 205   2                              {
+ 206   3                                      MotorForwardSlow = 0;
+ 207   3                                      MotorForwardFast = 1;
+ 208   3                                      SubDispatchSteps ++;    
+ 209   3                              }       
  210   2                      break;
- 211   2                      default:
- 212   2                              _nop_();
- 213   2              }
- 214   1      }
+ 211   2                      case 3: //3：到达设置长度100%，如果剪刀在上方则输出剪刀向下
+ 212   2                              MotorForwardSlow = 0;
+ 213   2                              temp = settingBoardLength-errorCorrectionBoardLength;
+ 214   2                              if( currentlyBoardLength > temp)
+ 215   2                              {
+ 216   3                                      MotorForwardSlow = 1;
+ 217   3                                      if(HydClamInductorTop == 0)
+ 218   3                                      {
+ 219   4                                              if(HydClamStatus == 1)
+ 220   4                                              {
+ 221   5                                                      HydClamDown = 0;
+ 222   5                                                      timerCountOperation = 0;
+ 223   5                                                      SubDispatchSteps ++;
+ 224   5                                              }
+ 225   4                                              else
+ 226   4                                              {
+ 227   5                                                      SubDispatchSteps = 22;
+ 228   5                                              }
+ 229   4                                      }
+ 230   3                                              
+ 231   3                              }       
+ 232   2                      break;
+ 233   2                      case 4: //4：剪刀下方传感器感应到，关闭向下，输出向上
+ 234   2                              HydClamDown = 0;
+ 235   2                              if(timerCountOperation > 1000) //10s 时间到
+ 236   2                              {
+ 237   3                                      ManiDispatchStepsBak =  ManiDispatchSteps;
+ 238   3                                      SubDispatchStepsBak = SubDispatchSteps;
+C51 COMPILER V7.50   DISPATCH                                                              10/10/2014 20:44:24 PAGE 5   
+
+ 239   3                                      ManiDispatchSteps = 20;
+ 240   3                                      SubDispatchSteps = 20;
+ 241   3                                      /////////////////////////
+ 242   3                                      MotorForwardFast = 1;
+ 243   3                                      MotorBackFast = 1;
+ 244   3                                      MotorForwardSlow = 1;
+ 245   3                                      MotorBackSlow = 1;
+ 246   3                                      HydClamDown = 1;
+ 247   3                                      HydClamUp = 1;
+ 248   3                                      /////////////////////////
+ 249   3                                      SystemAlarm = 0;
+ 250   3                                      powerMode = 2;
+ 251   3                                      freshDiaplay = 1;
+ 252   3                              }
+ 253   2                              if(HydClamInductorBottom == 0)
+ 254   2                              {
+ 255   3                                      HydClamDown = 1;
+ 256   3                                      HydClamUp = 0;
+ 257   3                                      SubDispatchSteps ++;    
+ 258   3                              }       
+ 259   2                      break;
+ 260   2                      case 5: //5：剪刀上方感应器感应到，关闭剪刀向上
+ 261   2                              HydClamUp = 0;
+ 262   2                              if(timerCountOperation > 1000) //10s 时间到
+ 263   2                              {
+ 264   3                                      ManiDispatchStepsBak =  ManiDispatchSteps;
+ 265   3                                      SubDispatchStepsBak = SubDispatchSteps;
+ 266   3                                      ManiDispatchSteps = 20;
+ 267   3                                      SubDispatchSteps = 20;
+ 268   3                                      /////////////////////////
+ 269   3                                      MotorForwardFast = 1;
+ 270   3                                      MotorBackFast = 1;
+ 271   3                                      MotorForwardSlow = 1;
+ 272   3                                      MotorBackSlow = 1;
+ 273   3                                      HydClamDown = 1;
+ 274   3                                      HydClamUp = 1;
+ 275   3                                      /////////////////////////
+ 276   3                                      SystemAlarm = 0;
+ 277   3                                      powerMode = 2;
+ 278   3                                      freshDiaplay = 1;
+ 279   3                              }
+ 280   2                              if(HydClamInductorTop == 0)
+ 281   2                              {
+ 282   3                                      HydClamUp = 1;
+ 283   3                                      SubDispatchSteps = 20;
+ 284   3                                      currentlySignalNum = 0; 
+ 285   3                              }       
+ 286   2                      break;
+ 287   2                      case 20:
+ 288   2                              /*
+ 289   2                              MotorForwardFast = 1;
+ 290   2                              MotorBackFast = 1;
+ 291   2                              MotorForwardSlow = 1;
+ 292   2                              MotorBackSlow = 1;
+ 293   2                              HydClamDown = 1;
+ 294   2                              HydClamUp = 1;
+ 295   2                              */
+ 296   2                      break;
+ 297   2                      case 22:        //22：液压剪刀关闭状态，等待手动开启液压剪刀
+ 298   2                              _nop_();        
+ 299   2                      break;
+ 300   2                      default:
+C51 COMPILER V7.50   DISPATCH                                                              10/10/2014 20:44:24 PAGE 6   
+
+ 301   2                              _nop_();
+ 302   2              }
+ 303   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    842    ----
+   CODE SIZE        =   1008    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =      8       4
+   XDATA SIZE       =     11       4
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

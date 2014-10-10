@@ -7,7 +7,11 @@ extern unsigned char ManiDispatchStepsBak;
 extern unsigned char SubDispatchStepsBak;
 extern unsigned int timerCountOperation;
 
+extern unsigned char ManualDispatchSteps;
+extern unsigned int ManualTimerCount;
+
 void ManiDispatch(void);
-void SubDispatch(void);	
+void SubDispatch(void);
+void ManualDispatch(void);	
 
 #endif

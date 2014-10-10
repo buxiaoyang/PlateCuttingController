@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   UART                                                                  09/30/2014 23:24:00 PAGE 1   
+C51 COMPILER V7.50   UART                                                                  10/10/2014 20:44:24 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE UART
@@ -62,7 +62,7 @@ line level    source
   52          
   53          void uart_init()
   54          {
-C51 COMPILER V7.50   UART                                                                  09/30/2014 23:24:00 PAGE 2   
+C51 COMPILER V7.50   UART                                                                  10/10/2014 20:44:24 PAGE 2   
 
   55   1      #if (PARITYBIT == NONE_PARITY)
   56   1          S2CON = 0x50;           //8-bit variable UART
@@ -126,7 +126,7 @@ line level    source
               #endif
  115   2          }
  116   1          busy = 1;
-C51 COMPILER V7.50   UART                                                                  09/30/2014 23:24:00 PAGE 3   
+C51 COMPILER V7.50   UART                                                                  10/10/2014 20:44:24 PAGE 3   
 
  117   1          S2BUF = ACC;            //Send data to UART2 buffer
  118   1      }
@@ -190,7 +190,7 @@ line level    source
  176   2                              uartBuffer[dataIndex] = dat;
  177   2                              dataIndex ++;
  178   2                              if(dataIndex >= dataLength)
-C51 COMPILER V7.50   UART                                                                  09/30/2014 23:24:00 PAGE 4   
+C51 COMPILER V7.50   UART                                                                  10/10/2014 20:44:24 PAGE 4   
 
  179   2                              {
  180   3                                      anyData();
@@ -254,7 +254,7 @@ line level    source
  238   2                      parameterBoard[2].boardNumber = dat;
  239   2              }
  240   1              else if(uartBuffer[2] == 0x17)  //板材参数_板长4
-C51 COMPILER V7.50   UART                                                                  09/30/2014 23:24:00 PAGE 5   
+C51 COMPILER V7.50   UART                                                                  10/10/2014 20:44:24 PAGE 5   
 
  241   1              {
  242   2                      parameterBoard[3].boardLength = dat;
@@ -307,57 +307,62 @@ line level    source
  289   1              {
  290   2                      if(powerMode == 0)
  291   2                      {
- 292   3                              manualOperation = 1;
- 293   3                      }
- 294   2              }
- 295   1              else if(uartBuffer[2] == 0x24)  //手动操作_后退
- 296   1              {
- 297   2                      if(powerMode == 0)
- 298   2                      {
- 299   3                              manualOperation = 2;
- 300   3                      }
- 301   2              }
- 302   1              else if(uartBuffer[2] == 0x25)  //手动操作_慢进
-C51 COMPILER V7.50   UART                                                                  09/30/2014 23:24:00 PAGE 6   
+ 292   3                              ManualDispatchSteps = 0;
+ 293   3                              manualOperation = 1;
+ 294   3                      }
+ 295   2              }
+ 296   1              else if(uartBuffer[2] == 0x24)  //手动操作_后退
+ 297   1              {
+ 298   2                      if(powerMode == 0)
+ 299   2                      {
+ 300   3                              ManualDispatchSteps = 2;
+ 301   3                              manualOperation = 2;
+ 302   3                      }
+C51 COMPILER V7.50   UART                                                                  10/10/2014 20:44:24 PAGE 6   
 
- 303   1              {
- 304   2                      if(powerMode == 0)
- 305   2                      {
- 306   3                              manualOperation = 3;
- 307   3                      }
- 308   2              }
- 309   1              else if(uartBuffer[2] == 0x26)  //手动操作_切断上
- 310   1              {
- 311   2                      if(powerMode == 0)
- 312   2                      {
- 313   3                              manualOperation = 4;
- 314   3                      }
- 315   2              }
- 316   1              else if(uartBuffer[2] == 0x27)  //手动操作_切断下
- 317   1              {
- 318   2                      if(powerMode == 0)
- 319   2                      {
- 320   3                              manualOperation = 5;
- 321   3                      }
- 322   2              }
- 323   1              else if(uartBuffer[2] == 0x28)  //运行画面_复位按钮
- 324   1              {
- 325   2                      ManiDispatchSteps = 20;
- 326   2                      SubDispatchSteps = 20;
- 327   2                      powerMode = 0;
- 328   2                      settingBoardLength = 0;
- 329   2                      settingBoardNumber = 0;
- 330   2                      currentlySignalNum = 0;
- 331   2                      currentlyBoardNumber = 0;
- 332   2                      ManiDispatchStepsBak = 0;
- 333   2                      SubDispatchStepsBak = 20;
- 334   2              }
- 335   1              freshDiaplay = 1;       
- 336   1      }
+ 303   2              }
+ 304   1              else if(uartBuffer[2] == 0x25)  //手动操作_慢进
+ 305   1              {
+ 306   2                      if(powerMode == 0)
+ 307   2                      {
+ 308   3                              ManualDispatchSteps = 4;
+ 309   3                              manualOperation = 3;
+ 310   3                      }
+ 311   2              }
+ 312   1              else if(uartBuffer[2] == 0x26)  //手动操作_切断上
+ 313   1              {
+ 314   2                      if(powerMode == 0)
+ 315   2                      {
+ 316   3                              ManualDispatchSteps = 6;
+ 317   3                              manualOperation = 4;
+ 318   3                      }
+ 319   2              }
+ 320   1              else if(uartBuffer[2] == 0x27)  //手动操作_切断下
+ 321   1              {
+ 322   2                      if(powerMode == 0)
+ 323   2                      {
+ 324   3                              ManualDispatchSteps = 8;
+ 325   3                              manualOperation = 5;
+ 326   3                      }
+ 327   2              }
+ 328   1              else if(uartBuffer[2] == 0x28)  //运行画面_复位按钮
+ 329   1              {
+ 330   2                      ManiDispatchSteps = 20;
+ 331   2                      SubDispatchSteps = 20;
+ 332   2                      powerMode = 0;
+ 333   2                      settingBoardLength = 0;
+ 334   2                      settingBoardNumber = 0;
+ 335   2                      currentlySignalNum = 0;
+ 336   2                      currentlyBoardNumber = 0;
+ 337   2                      ManiDispatchStepsBak = 0;
+ 338   2                      SubDispatchStepsBak = 20;
+ 339   2              }
+ 340   1              freshDiaplay = 1;       
+ 341   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    928    ----
+   CODE SIZE        =    956    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =     19       5
    PDATA SIZE       =   ----    ----

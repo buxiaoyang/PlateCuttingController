@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   KEY                                                                   09/30/2014 23:24:05 PAGE 1   
+C51 COMPILER V7.50   KEY                                                                   10/10/2014 20:44:24 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE KEY
@@ -62,53 +62,60 @@ line level    source
   52   4                                              //进入停机模式
   53   4                                              ManiDispatchStepsBak =  ManiDispatchSteps;
   54   4                                              SubDispatchStepsBak = SubDispatchSteps;
-C51 COMPILER V7.50   KEY                                                                   09/30/2014 23:24:05 PAGE 2   
+C51 COMPILER V7.50   KEY                                                                   10/10/2014 20:44:24 PAGE 2   
 
   55   4                                              ManiDispatchSteps = 20;
   56   4                                              SubDispatchSteps = 20;
-  57   4                                              ////////
-  58   4                                              powerMode = 0;
-  59   4                                              freshDiaplay = 1;
-  60   4                                      }
-  61   3                                      else if(powerMode == 2)
-  62   3                                      {
-  63   4                                              //恢复自动模式继续工作
-  64   4                                              ManiDispatchSteps = ManiDispatchStepsBak;
-  65   4                                              SubDispatchSteps = SubDispatchStepsBak;
-  66   4                                              //////
-  67   4                                              powerMode = 1;
-  68   4                                              SystemAlarm = 1;
-  69   4                                              timerCountOperation = 0;
-  70   4                                              freshDiaplay = 1;
-  71   4                                      }       
-  72   3                              }
-  73   2                              if(KeyHydClam == 0)
-  74   2                              {
-  75   3                                      //液压钳输出
-  76   3                                      if(SubDispatchSteps == 22 && HydClamInductorTop == 0) //自动状态，并且处于液压钳等待状态
-  77   3                                      {
-  78   4                                              HydClamDown = 0;
-  79   4                                              timerCountOperation = 0;
-  80   4                                              SubDispatchSteps = 4;
-  81   4                                      }
-  82   3                                      freshDiaplay = 1;       
-  83   3                              }
-  84   2                              Key_Scan_Steps = 3;
-  85   2                      break;
-  86   2                      case 3:
-  87   2                              if(KeyStart == 1 && KeyStop == 1 && KeyHydClam == 1)
-  88   2                              {
-  89   3                                      Key_Scan_Steps = 0;
+  57   4                                              /////////////////////////
+  58   4                                              MotorForwardFast = 1;
+  59   4                                              MotorBackFast = 1;
+  60   4                                              MotorForwardSlow = 1;
+  61   4                                              MotorBackSlow = 1;
+  62   4                                              HydClamDown = 1;
+  63   4                                              HydClamUp = 1;
+  64   4                                              /////////////////////////
+  65   4                                              powerMode = 0;
+  66   4                                              freshDiaplay = 1;
+  67   4                                      }
+  68   3                                      else if(powerMode == 2)
+  69   3                                      {
+  70   4                                              //恢复自动模式继续工作
+  71   4                                              ManiDispatchSteps = ManiDispatchStepsBak;
+  72   4                                              SubDispatchSteps = SubDispatchStepsBak;
+  73   4                                              //////
+  74   4                                              powerMode = 1;
+  75   4                                              SystemAlarm = 1;
+  76   4                                              timerCountOperation = 0;
+  77   4                                              freshDiaplay = 1;
+  78   4                                      }       
+  79   3                              }
+  80   2                              if(KeyHydClam == 0)
+  81   2                              {
+  82   3                                      //液压钳输出
+  83   3                                      if(SubDispatchSteps == 22 && HydClamInductorTop == 0) //自动状态，并且处于液压钳等待状态
+  84   3                                      {
+  85   4                                              HydClamDown = 0;
+  86   4                                              timerCountOperation = 0;
+  87   4                                              SubDispatchSteps = 4;
+  88   4                                      }
+  89   3                                      freshDiaplay = 1;       
   90   3                              }
-  91   2                      break;
-  92   2                      default:
-  93   2                               _nop_();
-  94   2              }
-  95   1      }
+  91   2                              Key_Scan_Steps = 3;
+  92   2                      break;
+  93   2                      case 3:
+  94   2                              if(KeyStart == 1 && KeyStop == 1 && KeyHydClam == 1)
+  95   2                              {
+  96   3                                      Key_Scan_Steps = 0;
+  97   3                              }
+  98   2                      break;
+  99   2                      default:
+ 100   2                               _nop_();
+ 101   2              }
+ 102   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    240    ----
+   CODE SIZE        =    252    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      1    ----
    PDATA SIZE       =   ----    ----

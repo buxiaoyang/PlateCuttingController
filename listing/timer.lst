@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   TIMER                                                                 09/30/2014 23:24:03 PAGE 1   
+C51 COMPILER V7.50   TIMER                                                                 10/10/2014 20:44:24 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE TIMER
@@ -42,42 +42,44 @@ line level    source
   31          {
   32   1          TL0 = T1MS;                     //reload timer0 low byte
   33   1          TH0 = T1MS >> 8;                //reload timer0 high byte
-  34   1          if (count10ms-- == 0)               //1ms * 1000 -> 1s
+  34   1          if (count10ms-- == 0)               //1ms * 10 -> 10ms
   35   1          {
   36   2                      timerCountOperation ++;
-  37   2              TestOut = !TestOut;  
-  38   2                      /////////////////////////////// 
-  39   2                      Key_Scan();
-  40   2                      ManiDispatch();
-  41   2                      SubDispatch();  
-  42   2                      /////////////////////////////// 
-  43   2                      count10ms = 9;               //reset counter
-  44   2          }
-  45   1      }
-  46          
-  47          //-----------------------------------------------
+  37   2                      ManualTimerCount ++;
+  38   2              TestOut = !TestOut;  
+  39   2                      /////////////////////////////// 
+  40   2                      Key_Scan();
+  41   2                      ManiDispatch();
+  42   2                      SubDispatch();
+  43   2                      ManualDispatch();       
+  44   2                      /////////////////////////////// 
+  45   2                      count10ms = 9;               //reset counter
+  46   2          }
+  47   1      }
   48          
-  49          /* main program */
-  50          void timer_init()
-  51          {
-  52   1      #ifdef MODE1T
-  53   1          AUXR |= 0x80;                    //timer0 work in 1T mode
-C51 COMPILER V7.50   TIMER                                                                 09/30/2014 23:24:03 PAGE 2   
+  49          //-----------------------------------------------
+  50          
+  51          /* main program */
+  52          void timer_init()
+  53          {
+C51 COMPILER V7.50   TIMER                                                                 10/10/2014 20:44:24 PAGE 2   
 
-  54   1      #endif
-  55   1          TMOD = 0x01;                    //set timer0 as mode1 (16-bit)
-  56   1          TL0 = T1MS;                     //initial timer0 low byte
-  57   1          TH0 = T1MS >> 8;                //initial timer0 high byte
-  58   1          TR0 = 1;                        //timer0 start running
-  59   1          ET0 = 1;                        //enable timer0 interrupt
-  60   1          EA = 1;                         //open global interrupt switch
-  61   1          count10ms = 9;                      //initial counter
-  62   1      }
-  63          
+  54   1      #ifdef MODE1T
+  55   1          AUXR |= 0x80;                    //timer0 work in 1T mode
+  56   1      #endif
+  57   1          TMOD = 0x01;                    //set timer0 as mode1 (16-bit)
+  58   1          TL0 = T1MS;                     //initial timer0 low byte
+  59   1          TH0 = T1MS >> 8;                //initial timer0 high byte
+  60   1          TR0 = 1;                        //timer0 start running
+  61   1          ET0 = 1;                        //enable timer0 interrupt
+  62   1          EA = 1;                         //open global interrupt switch
+  63   1          count10ms = 9;                      //initial counter
+  64   1      }
+  65          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     96    ----
+   CODE SIZE        =    113    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      1    ----
    PDATA SIZE       =   ----    ----

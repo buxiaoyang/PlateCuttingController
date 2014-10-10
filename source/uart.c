@@ -289,6 +289,7 @@ void anyData()
 	{
 		if(powerMode == 0)
 		{
+			ManualDispatchSteps = 0;
 			manualOperation = 1;
 		}
 	}
@@ -296,6 +297,7 @@ void anyData()
 	{
 		if(powerMode == 0)
 		{
+			ManualDispatchSteps = 2;
 			manualOperation = 2;
 		}
 	}
@@ -303,6 +305,7 @@ void anyData()
 	{
 		if(powerMode == 0)
 		{
+			ManualDispatchSteps = 4;
 			manualOperation = 3;
 		}
 	}
@@ -310,6 +313,7 @@ void anyData()
 	{
 		if(powerMode == 0)
 		{
+			ManualDispatchSteps = 6;
 			manualOperation = 4;
 		}
 	}
@@ -317,6 +321,7 @@ void anyData()
 	{
 		if(powerMode == 0)
 		{
+			ManualDispatchSteps = 8;
 			manualOperation = 5;
 		}
 	}

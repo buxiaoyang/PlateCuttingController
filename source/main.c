@@ -101,6 +101,7 @@ void main()
 			parameter_save();
 			saveSetting = 0;
 		}
+		/*
 		//手动操作
 		if(manualOperation == 1) //1, 前进 
 		{
@@ -131,6 +132,7 @@ void main()
 		{
 		
 		}
+		*/
 		//TestOut = ! TestOut;			
 	}   
 }

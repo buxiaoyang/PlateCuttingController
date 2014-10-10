@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   MAIN                                                                  09/30/2014 23:23:55 PAGE 1   
+C51 COMPILER V7.50   MAIN                                                                  10/10/2014 20:44:22 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   52   1              SendDataToScreen(0x0003, sysParm2_ErrorCorrectionValue);
   53   1              SendDataToScreen(0x0005, sysParm3);
   54   1              SendDataToScreen(0x0007, sysParm4);
-C51 COMPILER V7.50   MAIN                                                                  09/30/2014 23:23:55 PAGE 2   
+C51 COMPILER V7.50   MAIN                                                                  10/10/2014 20:44:22 PAGE 2   
 
   55   1              SendDataToScreen(0x0009, sysParm5);
   56   1              SendDataToScreen(0x000B, parameterBoard[0].boardLength);
@@ -113,53 +113,55 @@ line level    source
  101   3                              parameter_save();
  102   3                              saveSetting = 0;
  103   3                      }
- 104   2                      //手动操作
- 105   2                      if(manualOperation == 1) //1, 前进 
- 106   2                      {
- 107   3                              MotorForwardSlow = 0;
- 108   3                              delay_ms(7000);
- 109   3                              MotorForwardSlow = 1;
- 110   3                              manualOperation = 0;    
- 111   3                      }
- 112   2                      else if(manualOperation == 2) //2，后退 
- 113   2                      {
- 114   3                              MotorBackSlow = 0;
- 115   3                              delay_ms(7000);
- 116   3                              MotorBackSlow = 1;
-C51 COMPILER V7.50   MAIN                                                                  09/30/2014 23:23:55 PAGE 3   
+ 104   2                      /*
+ 105   2                      //手动操作
+ 106   2                      if(manualOperation == 1) //1, 前进 
+ 107   2                      {
+ 108   2                              MotorForwardSlow = 0;
+ 109   2                              delay_ms(7000);
+ 110   2                              MotorForwardSlow = 1;
+ 111   2                              manualOperation = 0;    
+ 112   2                      }
+ 113   2                      else if(manualOperation == 2) //2，后退 
+ 114   2                      {
+ 115   2                              MotorBackSlow = 0;
+ 116   2                              delay_ms(7000);
+C51 COMPILER V7.50   MAIN                                                                  10/10/2014 20:44:22 PAGE 3   
 
- 117   3                              manualOperation = 0;    
- 118   3                      }
- 119   2                      else if(manualOperation == 3) //3，慢进 
- 120   2                      {
- 121   3                              MotorForwardSlow = 0;
- 122   3                              delay_ms(7000);
- 123   3                              MotorForwardSlow = 1;
- 124   3                              manualOperation = 0;    
- 125   3                      }
- 126   2                      else if(manualOperation == 4) //4，切断上 
- 127   2                      {
- 128   3                      
- 129   3                      }
- 130   2                      else if(manualOperation == 5) //5，切断下
- 131   2                      {
- 132   3                      
- 133   3                      }
- 134   2                      //TestOut = ! TestOut;                  
- 135   2              }   
- 136   1      }
- 137          
- 138          
+ 117   2                              MotorBackSlow = 1;
+ 118   2                              manualOperation = 0;    
+ 119   2                      }
+ 120   2                      else if(manualOperation == 3) //3，慢进 
+ 121   2                      {
+ 122   2                              MotorForwardSlow = 0;
+ 123   2                              delay_ms(7000);
+ 124   2                              MotorForwardSlow = 1;
+ 125   2                              manualOperation = 0;    
+ 126   2                      }
+ 127   2                      else if(manualOperation == 4) //4，切断上 
+ 128   2                      {
+ 129   2                      
+ 130   2                      }
+ 131   2                      else if(manualOperation == 5) //5，切断下
+ 132   2                      {
+ 133   2                      
+ 134   2                      }
+ 135   2                      */
+ 136   2                      //TestOut = ! TestOut;                  
+ 137   2              }   
+ 138   1      }
  139          
  140          
  141          
  142          
  143          
  144          
+ 145          
+ 146          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    790    ----
+   CODE SIZE        =    720    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

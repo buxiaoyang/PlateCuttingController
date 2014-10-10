@@ -54,7 +54,14 @@ void Key_Scan(void)
 					SubDispatchStepsBak = SubDispatchSteps;
 					ManiDispatchSteps = 20;
 					SubDispatchSteps = 20;
-					////////
+					/////////////////////////
+					MotorForwardFast = 1;
+					MotorBackFast = 1;
+					MotorForwardSlow = 1;
+					MotorBackSlow = 1;
+					HydClamDown = 1;
+					HydClamUp = 1;
+					/////////////////////////
 					powerMode = 0;
 					freshDiaplay = 1;
 				}

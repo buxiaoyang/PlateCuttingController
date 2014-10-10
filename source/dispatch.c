@@ -23,6 +23,77 @@ unsigned char currentSettingBoardNum = 20;
 
 unsigned int timerCountOperation = 0;
 
+
+unsigned char ManualDispatchSteps = 20;
+unsigned int ManualTimerCount = 0;
+
+void ManualDispatch(void)
+{
+	switch(ManualDispatchSteps)
+	{
+		case 0:	 //前进开始
+			MotorForwardSlow = 0;
+			ManualTimerCount = 0;
+			ManualDispatchSteps ++;
+		break;
+		case 1:	 //前进结束
+			if(ManualTimerCount > 10)
+			{
+				MotorForwardSlow = 1;
+				ManualDispatchSteps = 20;
+			}
+		break;
+		case 2:	 //后退开始
+			MotorBackSlow = 0;
+			ManualTimerCount = 0;
+			ManualDispatchSteps ++;
+		break;
+		case 3:	 //后退结束
+			if(ManualTimerCount > 10)
+			{
+				MotorBackSlow = 1;
+				ManualDispatchSteps = 20;
+			}
+		break;
+		case 4:	 //慢进开始
+			MotorForwardSlow = 0;
+			ManualTimerCount = 0;
+			ManualDispatchSteps ++;
+		break;
+		case 5:	 //慢进结束
+			if(ManualTimerCount > 10)
+			{
+				MotorForwardSlow = 1;
+				ManualDispatchSteps = 20;
+			}
+		break;
+		case 6:	 //切断上开始
+			HydClamUp = 0;
+			ManualDispatchSteps ++;
+		break;
+		case 7:	 //切断上结束
+			if(HydClamInductorTop == 0)
+			{
+				HydClamUp = 1;
+				ManualDispatchSteps = 20;
+			}
+		break;
+		case 8:	 //切断下开始
+			HydClamDown = 0;
+			ManualDispatchSteps ++;
+		break;
+		case 9:	 //切断下结束
+			if(HydClamInductorBottom == 0)
+			{
+				HydClamDown = 1;
+				ManualDispatchSteps = 20;
+			}
+		break;
+		default:
+			 _nop_();	
+	}	
+}
+
 void ManiDispatch(void)
 {
 	switch(ManiDispatchSteps)
@@ -167,6 +238,14 @@ void SubDispatch(void)
 				SubDispatchStepsBak = SubDispatchSteps;
 				ManiDispatchSteps = 20;
 				SubDispatchSteps = 20;
+				/////////////////////////
+				MotorForwardFast = 1;
+				MotorBackFast = 1;
+				MotorForwardSlow = 1;
+				MotorBackSlow = 1;
+				HydClamDown = 1;
+				HydClamUp = 1;
+				/////////////////////////
 				SystemAlarm = 0;
 				powerMode = 2;
 				freshDiaplay = 1;
@@ -186,6 +265,14 @@ void SubDispatch(void)
 				SubDispatchStepsBak = SubDispatchSteps;
 				ManiDispatchSteps = 20;
 				SubDispatchSteps = 20;
+				/////////////////////////
+				MotorForwardFast = 1;
+				MotorBackFast = 1;
+				MotorForwardSlow = 1;
+				MotorBackSlow = 1;
+				HydClamDown = 1;
+				HydClamUp = 1;
+				/////////////////////////
 				SystemAlarm = 0;
 				powerMode = 2;
 				freshDiaplay = 1;
@@ -198,12 +285,14 @@ void SubDispatch(void)
 			}	
 		break;
 		case 20:
+			/*
 			MotorForwardFast = 1;
 			MotorBackFast = 1;
 			MotorForwardSlow = 1;
 			MotorBackSlow = 1;
 			HydClamDown = 1;
 			HydClamUp = 1;
+			*/
 		break;
 		case 22:	//22：液压剪刀关闭状态，等待手动开启液压剪刀
 			_nop_();	

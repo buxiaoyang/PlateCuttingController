@@ -31,14 +31,16 @@ void tm0_isr() interrupt 1 using 1
 {
     TL0 = T1MS;                     //reload timer0 low byte
     TH0 = T1MS >> 8;                //reload timer0 high byte
-    if (count10ms-- == 0)               //1ms * 1000 -> 1s
+    if (count10ms-- == 0)               //1ms * 10 -> 10ms
     {
 		timerCountOperation ++;
+		ManualTimerCount ++;
         TestOut = !TestOut;  
 		/////////////////////////////// 
 		Key_Scan();
 		ManiDispatch();
-		SubDispatch();	
+		SubDispatch();
+		ManualDispatch();	
 		/////////////////////////////// 
 		count10ms = 9;               //reset counter
     }
