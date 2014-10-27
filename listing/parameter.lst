@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   PARAMETER                                                             10/10/2014 20:44:23 PAGE 1   
+C51 COMPILER V7.50   PARAMETER                                                             10/27/2014 20:38:35 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE PARAMETER
@@ -62,7 +62,7 @@ line level    source
   52   1              if(IapReadByte(IAP_ADDRESS+200) == 0xEE)
   53   1              {
   54   2                      sysParm1_SignalNumPerMeter = ((IapReadByte(IAP_ADDRESS+0) << 8) | IapReadByte(IAP_ADDRESS+1));
-C51 COMPILER V7.50   PARAMETER                                                             10/10/2014 20:44:23 PAGE 2   
+C51 COMPILER V7.50   PARAMETER                                                             10/27/2014 20:38:35 PAGE 2   
 
   55   2                      sysParm2_ErrorCorrectionValue = ((IapReadByte(IAP_ADDRESS+2) << 8) | IapReadByte(IAP_ADDRESS+3));               
   56   2              }
@@ -126,7 +126,7 @@ line level    source
  114   1              IapProgramByte(IAP_ADDRESS+3, (BYTE)sysParm2_ErrorCorrectionValue);
  115   1              /*
  116   1              IapProgramByte(IAP_ADDRESS+4, (BYTE)(motorStepAngle>>8));
-C51 COMPILER V7.50   PARAMETER                                                             10/10/2014 20:44:23 PAGE 3   
+C51 COMPILER V7.50   PARAMETER                                                             10/27/2014 20:38:35 PAGE 3   
 
  117   1              IapProgramByte(IAP_ADDRESS+5, (BYTE)motorStepAngle);
  118   1              IapProgramByte(IAP_ADDRESS+6, (BYTE)(screwPitch>>8));

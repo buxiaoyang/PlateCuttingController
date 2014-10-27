@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   KEY                                                                   10/10/2014 20:44:24 PAGE 1   
+C51 COMPILER V7.50   KEY                                                                   10/27/2014 20:38:36 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE KEY
@@ -62,7 +62,7 @@ line level    source
   52   4                                              //进入停机模式
   53   4                                              ManiDispatchStepsBak =  ManiDispatchSteps;
   54   4                                              SubDispatchStepsBak = SubDispatchSteps;
-C51 COMPILER V7.50   KEY                                                                   10/10/2014 20:44:24 PAGE 2   
+C51 COMPILER V7.50   KEY                                                                   10/27/2014 20:38:36 PAGE 2   
 
   55   4                                              ManiDispatchSteps = 20;
   56   4                                              SubDispatchSteps = 20;
