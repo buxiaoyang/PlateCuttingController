@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   TIMER                                                                 10/27/2014 20:38:36 PAGE 1   
+C51 COMPILER V7.50   TIMER                                                                 10/27/2014 20:53:08 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE TIMER
@@ -62,7 +62,7 @@ line level    source
   51          /* main program */
   52          void timer_init()
   53          {
-C51 COMPILER V7.50   TIMER                                                                 10/27/2014 20:38:36 PAGE 2   
+C51 COMPILER V7.50   TIMER                                                                 10/27/2014 20:53:08 PAGE 2   
 
   54   1      #ifdef MODE1T
   55   1          AUXR |= 0x80;                    //timer0 work in 1T mode

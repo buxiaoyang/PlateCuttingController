@@ -30,9 +30,9 @@ sbit KeyHydClam				= P0^5;  	// 液压剪刀按钮，液压剪刀关闭自动模式后需要此按钮启
 
 
 //输出
-sbit MotorForwardFast  		= P1^4;  //	电机前进快速
+sbit MotorForwardFast  		= P1^6;  //	电机前进快速
 sbit MotorForwardSlow  		= P1^5;  //	电机前进慢速
-sbit MotorBackFast  		= P1^6;  // 电机后退快速
+sbit MotorBackFast  		= P1^4;  // 电机后退快速
 sbit MotorBackSlow  		= P1^7;  //	电机后退慢速
 
 sbit HydClamDown  			= P1^0;  //	液压剪刀输出(向下)

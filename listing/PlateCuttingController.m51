@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V5.12                                                        10/27/2014  20:38:39  PAGE 1
+BL51 BANKED LINKER/LOCATER V5.12                                                        10/27/2014  20:53:12  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V5.12, INVOKED BY:
@@ -59,7 +59,7 @@ LINK MAP OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
             CODE    0003H     0003H     ABSOLUTE     
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 2
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 2
 
 
                     0006H     0005H                  *** GAP ***
@@ -119,7 +119,7 @@ SEGMENT                                  XDATA_GROUP
   +--> ?PR?PARAMETER_SAVE?PARAMETER
 
 ?PR?PARAMETER_INIT?PARAMETER           -----    -----
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 3
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 3
 
 
   +--> ?PR?PARAMETER_READ?PARAMETER
@@ -179,7 +179,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   VALUE           TYPE          NAME
   ----------------------------------
 
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 4
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 4
 
 
   -------         MODULE        ?C_STARTUP
@@ -239,7 +239,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   -------         PROC          EXINT0
   C:0ABAH         LINE#         22
   C:0AD7H         LINE#         24
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 5
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 5
 
 
   C:0ADAH         LINE#         25
@@ -299,7 +299,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:0B6EH         LINE#         84
   C:0B71H         LINE#         85
   C:0B74H         LINE#         86
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 6
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 6
 
 
   C:0B77H         LINE#         87
@@ -359,7 +359,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 7
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 7
 
 
   D:00A0H         PUBLIC        P2
@@ -419,7 +419,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:0CDAH         LINE#         77
   C:0CE3H         LINE#         78
   C:0CE3H         LINE#         79
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 8
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 8
 
 
   C:0CEAH         LINE#         80
@@ -479,7 +479,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   D:0007H         SYMBOL        n
   -------         DO            
   D:0004H         SYMBOL        x
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 9
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 9
 
 
   -------         ENDDO         
@@ -539,7 +539,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   -------         PROC          _IAPERASESECTOR
   D:0006H         SYMBOL        addr
   C:10BDH         LINE#         114
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 10
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 10
 
 
   C:10BDH         LINE#         115
@@ -599,7 +599,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:10EFH         LINE#         65
   C:10F2H         LINE#         66
   C:10F4H         LINE#         70
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 11
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 11
 
 
   -------         ENDPROC       UART_INIT
@@ -659,7 +659,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   -------         PROC          _RECEIVEDATA
   D:0007H         SYMBOL        dat
   C:0E3BH         LINE#         145
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 12
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 12
 
 
   C:0E3BH         LINE#         146
@@ -719,7 +719,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:00B7H         LINE#         202
   C:00B9H         LINE#         203
   C:00BCH         LINE#         204
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 13
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 13
 
 
   C:00C0H         LINE#         205
@@ -779,7 +779,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:01C2H         LINE#         259
   C:01C5H         LINE#         260
   C:01C9H         LINE#         261
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 14
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 14
 
 
   C:01C9H         LINE#         262
@@ -839,7 +839,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:02A0H         LINE#         318
   C:02A0H         LINE#         319
   C:02A2H         LINE#         320
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 15
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 15
 
 
   C:02AAH         LINE#         321
@@ -899,7 +899,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:0EC1H         LINE#         37
   C:0ECFH         LINE#         38
   C:0ED1H         LINE#         40
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 16
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 16
 
 
   C:0ED4H         LINE#         41
@@ -926,7 +926,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
 
   -------         MODULE        KEY
   C:0000H         SYMBOL        _ICE_DUMMY_
-  B:0090H.4       PUBLIC        MotorForwardFast
+  B:0090H.6       PUBLIC        MotorForwardFast
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
@@ -935,7 +935,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   D:00A8H         PUBLIC        IE
   C:09BEH         PUBLIC        Key_Scan
   B:0090H.5       PUBLIC        MotorForwardSlow
-  B:0090H.6       PUBLIC        MotorBackFast
+  B:0090H.4       PUBLIC        MotorBackFast
   D:00B8H         PUBLIC        IP
   B:0080H.0       PUBLIC        HydClamInductorTop
   B:0090H.7       PUBLIC        MotorBackSlow
@@ -959,7 +959,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:09E1H         LINE#         22
   C:09E1H         LINE#         23
   C:09E7H         LINE#         24
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 17
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 17
 
 
   C:09E7H         LINE#         25
@@ -1019,7 +1019,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:0AA0H         LINE#         89
   C:0AA2H         LINE#         90
   C:0AA2H         LINE#         91
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 18
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 18
 
 
   C:0AA8H         LINE#         92
@@ -1038,7 +1038,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
 
   -------         MODULE        DISPATCH
   C:0000H         SYMBOL        _ICE_DUMMY_
-  B:0090H.4       PUBLIC        MotorForwardFast
+  B:0090H.6       PUBLIC        MotorForwardFast
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
@@ -1048,7 +1048,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   D:00A8H         PUBLIC        IE
   B:0090H.5       PUBLIC        MotorForwardSlow
   C:0C1CH         PUBLIC        ManualDispatch
-  B:0090H.6       PUBLIC        MotorBackFast
+  B:0090H.4       PUBLIC        MotorBackFast
   D:00B8H         PUBLIC        IP
   B:0080H.0       PUBLIC        HydClamInductorTop
   X:004FH         PUBLIC        ManualDispatchSteps
@@ -1079,7 +1079,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:0C4DH         LINE#         36
   C:0C4DH         LINE#         37
   C:0C4DH         LINE#         38
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 19
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 19
 
 
   C:0C4FH         LINE#         39
@@ -1139,7 +1139,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:0CB6H         LINE#         94
   C:0CB6H         LINE#         95
   -------         ENDPROC       MANUALDISPATCH
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 20
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 20
 
 
   -------         PROC          MANIDISPATCH
@@ -1199,7 +1199,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:0835H         LINE#         153
   C:083BH         LINE#         154
   C:0841H         LINE#         155
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 21
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 21
 
 
   C:084BH         LINE#         156
@@ -1259,7 +1259,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:060AH         LINE#         214
   C:061AH         LINE#         215
   C:061AH         LINE#         216
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 22
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 22
 
 
   C:061CH         LINE#         217
@@ -1319,7 +1319,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
   C:06C0H         LINE#         277
   C:06C9H         LINE#         278
   C:06CBH         LINE#         279
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 23
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 23
 
 
   C:06CBH         LINE#         280
@@ -1379,7 +1379,7 @@ SYMBOL TABLE OF MODULE:  .\output\PlateCuttingController (?C_STARTUP)
 
   -------         MODULE        ?C?LSTKXDATA
   C:04D1H         PUBLIC        ?C?LSTKXDATA
-BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:38:39  PAGE 24
+BL51 BANKED LINKER/LOCATER V5.12                                                      10/27/2014  20:53:12  PAGE 24
 
 
   -------         ENDMOD        ?C?LSTKXDATA
