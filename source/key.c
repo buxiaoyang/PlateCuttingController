@@ -36,14 +36,18 @@ void Key_Scan(void)
 		case 2:
 			if(KeyStart == 0)
 			{
-				powerMode = 1;
-				//恢复自动模式继续工作
-				/////////
-				//ManiDispatchSteps = 0;
-				ManiDispatchSteps = ManiDispatchStepsBak;
-				SubDispatchSteps = SubDispatchStepsBak;
-				timerCountOperation = 0;
-				freshDiaplay = 1;
+				if(powerMode != 1)
+				{
+					powerMode = 1;
+					//恢复自动模式继续工作
+					/////////
+					//ManiDispatchSteps = 0;
+					ManiDispatchSteps = ManiDispatchStepsBak;
+					SubDispatchSteps = SubDispatchStepsBak;
+					timerCountOperation = 0;
+					SystemAlarm = 1;
+					freshDiaplay = 1;
+				}
 			}
 			if(KeyStop == 0)
 			{
