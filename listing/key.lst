@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   KEY                                                                   10/28/2014 20:59:33 PAGE 1   
+C51 COMPILER V7.50   KEY                                                                   04/17/2015 20:28:50 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE KEY
@@ -62,7 +62,7 @@ line level    source
   52   2                              if(KeyStop == 0)
   53   2                              {
   54   3                                      if(powerMode == 1)
-C51 COMPILER V7.50   KEY                                                                   10/28/2014 20:59:33 PAGE 2   
+C51 COMPILER V7.50   KEY                                                                   04/17/2015 20:28:50 PAGE 2   
 
   55   3                                      {
   56   4                                              //进入停机模式
@@ -126,7 +126,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
-C51 COMPILER V7.50   KEY                                                                   10/28/2014 20:59:33 PAGE 3   
+C51 COMPILER V7.50   KEY                                                                   04/17/2015 20:28:50 PAGE 3   
 
 END OF MODULE INFORMATION.
 

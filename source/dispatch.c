@@ -175,8 +175,8 @@ void SubDispatch(void)
 	unsigned int temp, temp1;
 	switch(SubDispatchSteps)
 	{
-		case 0:	//0：开始工作，电机前进慢
-			MotorForwardFast = 1;
+		case 0:	//0：开始工作，电机前进慢 2015-4-17 改为电机前进快
+			MotorForwardFast = 0;
 			MotorBackFast = 1;
 			MotorForwardSlow = 0;
 			MotorBackSlow = 1;
@@ -186,7 +186,7 @@ void SubDispatch(void)
 		break;
 		case 1:	//1：板子到达设置长度八分之一，电机前进快
 			MotorForwardSlow = 0;
-			MotorForwardFast = 1;
+			MotorForwardFast = 0;
 			temp = settingBoardLength-errorCorrectionBoardLength;
 			temp1 = temp>>3;
 			if( currentlyBoardLength > temp1 )
